@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
 import { removeFromCart, checkout } from '../store/car.actions'
-import { UserMsg } from './user-msg.jsx'
+
 
 export function AppFooter() {
     const [isCartShown, setIsCartShown] = useState(false)
@@ -24,36 +24,8 @@ export function AppFooter() {
     return (
         <footer className="app-footer">
             <p>
-                coffeerights - count: {count}
+                coffeerights
             </p>
-            {cart.length > 0 &&
-                <h5>
-                    <span>{cart.length}</span> Products in your Cart
-                    <button className="btn-link" onClick={(ev) => {
-                        ev.preventDefault();
-                        setIsCartShown(!isCartShown)
-                    }}>
-                        ({(isCartShown) ? 'hide' : 'show'})
-                    </button>
-                </h5>
-            }
-
-            {isCartShown && cart.length > 0 && <section className="cart" >
-                <h5>Your Cart</h5>
-                <ul>
-                    {
-                        cart.map((car, idx) => <li key={idx}>
-                            <button onClick={() => {
-                                removeFromCart(car._id)
-                            }}>x</button>
-                            {car.vendor}
-                        </li>)
-                    }
-                </ul>
-                <p>Total: ${cartTotal.toLocaleString()} </p>
-                <button onClick={onCheckout}>Checkout</button>
-            </section>}
-            <UserMsg />
         </footer>
     )
 }

@@ -15,15 +15,15 @@
 // Views
 @import "views/about-us";
 @import "views/home-page";
-@import "views/car-app";
-@import "views/review-app";
+@import "views/board-app";
 @import "views/user-details";
 
 // Components
 @import "cmps/app-header";
 @import "cmps/app-footer";
-@import "cmps/user-msg";
-@import "cmps/shopping-cart";
+@import "cmps/board-index";
+@import "cmps/board";
+@import "cmps/group-preview";
 
 
 

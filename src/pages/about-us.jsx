@@ -74,18 +74,7 @@ export function AboutUs() {
     return (
         <section>
             <h2>About Us</h2>
-            <SplitPane
-                left={
-                    <Contacts />
-                }
-                right={
-                    <Projects />
-                } />
-
-            <FancyBox onClose={() => console.log('ok, closing')}>
-                <h3>{count.toLocaleString()} Followers</h3>
-                <button onClick={onTellMeMore}>Tell me More</button>
-            </FancyBox>
+          
 
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni aperiam quo veniam velit dolor reprehenderit, laudantium consequatur neque numquam labore quae. Accusamus libero perferendis ducimus? Alias unde hic quisquam doloremque.</p>
         </section>
