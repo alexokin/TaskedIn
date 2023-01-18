@@ -8,9 +8,9 @@ export function GroupPreview({group}) {
 
   return (
     <div className='group-preview'>
-      <GroupTitle />
-      <TaskList groupId={group.id}/>
-      <AddTask />
+      <GroupTitle group={group} />
+      <TaskList />
+      <button className='add-task-btn'>Add a card</button>
     </div>
   )
 }
