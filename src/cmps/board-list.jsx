@@ -15,7 +15,7 @@ export function BoardList({ boards, onToggleAddBoardModal }) {
       board.isStarred = !board.isStarred
       await updateBoard(board)
     } catch (error) {
-      console.log('Cannot change borad starred status')
+      console.log('Cannot change board starred status')
     }
   }
 
@@ -25,7 +25,7 @@ export function BoardList({ boards, onToggleAddBoardModal }) {
 
   return (
     <ul className="board-list">
-      <li className="btn-board-add" onClick={onToggleAddBoardModal}><span>Create new board</span></li>
+      <li className="btn-board-add" onClick={(event)=>onToggleAddBoardModal(event)}>Create new board</li>
       {boards.map(board => {
         return (
           <li onClick={() => onBoardSelect(board._id)} key={board._id}>
