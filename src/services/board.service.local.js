@@ -4,6 +4,14 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'board'
+const boardStyles = [
+    { backgroundColor: '#0079bf' },
+    { backgroundColor: '#d29034' },
+    { backgroundColor: '#519839' },
+    { backgroundColor: '#b04632' },
+    { backgroundColor: '#89609e' },
+    { backgroundColor: '#cd5a91' }
+]
 
 export const boardService = {
     query,
@@ -11,6 +19,7 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
+    boardStyles
 }
 
 window.cs = boardService
@@ -53,7 +62,7 @@ function getEmptyBoard() {
         title: '',
         isStarred: false,
         archivedAt: '',
-        style: {backgroundColor: 'lightgray'},
+        style: { backgroundColor: 'lightgray' },
         labels: [],
         members: [],
         groups: []

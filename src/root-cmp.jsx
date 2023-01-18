@@ -10,7 +10,7 @@ export function RootCmp() {
     <div>
       <main>
         <Routes>
-          <Route path="" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           {/* <Route path="user/:status" element={<LoginSignup />} /> */}
           <Route path="workspace" element={<Workspace />} />
           <Route path="board/:boardId/*" element={<BoardDetails />} />

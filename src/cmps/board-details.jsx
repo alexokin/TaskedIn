@@ -48,7 +48,7 @@ export function BoardDetails() {
 
   
   return (
-    <div className='board-details'>
+    <div style={board?.style} className='board-details'>
       <BoardNavBar />
       <BoardHeader />
       <SideNavBar />
