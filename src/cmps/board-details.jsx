@@ -7,9 +7,13 @@ import { BoardHeader } from './board-header.jsx'
 import { BoardNavBar } from './board-navbar.jsx'
 import { GroupList } from './group-list.jsx'
 import { SideNavBar } from './side-nav-bar.jsx'
+import { FiPlus } from "react-icons/fi";
+import { GroupAdd } from './group-add.jsx'
 
 export function BoardDetails() {
   const [board, setBoard] = useState(null)
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const [addModalLoc, setAddModalLoc] = useState(null)
   const { boardId } = useParams()
 
   useEffect(() => {
@@ -45,15 +49,25 @@ export function BoardDetails() {
     }
   }
 
+  function onToggleAddModal(ev) {
+    const BoundingClientRect = ev?.target.getBoundingClientRect()
+    const addModalLocToSet = {
+      left: `${BoundingClientRect?.left}px`
+    }
+    setIsAddModalOpen(prevState => !prevState)
+    setAddModalLoc(addModalLocToSet)
+  }
 
-  
+
+
   return (
     <div style={board?.style} className='board-details'>
-      <BoardNavBar />
+      {/* <BoardNavBar />
       <BoardHeader />
-      <SideNavBar />
-      <button onClick={onAddGroup}>Add group</button>
+      <SideNavBar /> */}
       {board && <GroupList setBoard={setBoard} board={board} groups={board.groups} onRemoveGroup={onRemoveGroup} />}
+      <div className='btn-open-addGroup' onClick={(event) => onToggleAddModal(event)}><FiPlus />Add another list</div>
+      {isAddModalOpen && <GroupAdd board={board} setBoard={setBoard} onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} />}
     </div>
   )
 }
