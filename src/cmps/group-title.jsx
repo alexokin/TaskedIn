@@ -1,9 +1,9 @@
 import React from "react";
 
-export function GroupTitle() {
+export function GroupTitle({ group }) {
   return (
     <div className="group-title">
-      <h3>group title</h3>
+      <h3>{group.title}</h3>
       <button className="grp-action-btn">group action</button>
     </div>
   );
