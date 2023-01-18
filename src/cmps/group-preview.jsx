@@ -2,10 +2,10 @@ import React from 'react'
 import { GroupTitle } from './group-title.jsx';
 import { TaskList } from "./task-list.jsx";
 
-export function GroupPreview() {
+export function GroupPreview({group}) {
   return (
     <div className='group-preview'>
-      <GroupTitle />
+      <GroupTitle group={group} />
       <TaskList />
       <button className='add-task-btn'>Add a card</button>
     </div>

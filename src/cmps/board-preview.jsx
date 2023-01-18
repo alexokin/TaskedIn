@@ -1,11 +1,13 @@
 import React from 'react'
 
 
-export function BoardPreview() {
+export function BoardPreview({board}) {
 
   return (
-    <div className='board-preview'>
-      Board
+    <div className='board-preview' style={board.style}>
+      <span>{board.title}</span>
+      <button>Star</button>
+
     </div>
   )
 }
