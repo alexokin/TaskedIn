@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { boardService } from '../services/borad.service.local.js'
+import { boardService } from '../services/board.service.local.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { groupService } from '../services/group.service.local.js'
 import { BoardHeader } from './board-header.jsx'
@@ -44,6 +44,8 @@ export function BoardDetails() {
       showErrorMsg('Cannot remove group', err)
     }
   }
+
+
   
   return (
     <div style={board?.style} className='board-details'>
@@ -51,7 +53,7 @@ export function BoardDetails() {
       <BoardHeader />
       <SideNavBar />
       <button onClick={onAddGroup}>Add group</button>
-      {board && <GroupList groups={board.groups} onRemoveGroup={onRemoveGroup} />}
+      {board && <GroupList setBoard={setBoard} board={board} groups={board.groups} onRemoveGroup={onRemoveGroup} />}
     </div>
   )
 }

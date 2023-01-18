@@ -37,19 +37,10 @@ export async function loadTasks() {
 
 }
 
-export async function removeTask(taskId) {
-    try {
-        await taskService.remove(taskId)
-        store.dispatch(getActionRemoveTask(taskId))
-    } catch (err) {
-        console.log('Cannot remove task', err)
-        throw err
-    }
-}
 
 export async function addTask(task) {
     try {
-        const savedTask = await taskService.save(task)
+        const savedTask = await taskService.add(task)
         console.log('Added Task', savedTask)
         store.dispatch(getActionAddTask(savedTask))
         return savedTask
@@ -59,15 +50,3 @@ export async function addTask(task) {
     }
 }
 
-export function updateTask(task) {
-    return taskService.save(task)
-        .then(savedTask => {
-            console.log('Updated Task:', savedTask)
-            store.dispatch(getActionUpdateTask(savedTask))
-            return savedTask
-        })
-        .catch(err => {
-            console.log('Cannot save task', err)
-            throw err
-        })
-}

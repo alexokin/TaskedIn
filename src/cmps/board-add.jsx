@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { boardService } from "../services/borad.service.local"
+import { boardService } from "../services/board.service.local"
 import { addBoard } from "../store/board.actions"
 import { GrFormClose } from "react-icons/gr";
 
