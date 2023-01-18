@@ -32,6 +32,8 @@
     }
 
     .input-title {
+        height: 35px;
+        width: 100%;
         &:hover {
             background-color: $clr9;
         }
@@ -50,6 +52,9 @@
     }
 
     .btn-create {
+        height: 30px;
+        width: 100%;
+
         &:disabled {
             background-color: $clr8;
             color: $clr9;
