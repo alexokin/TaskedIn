@@ -1,3 +1,12 @@
 .group-preview {
     border: solid 2px lightcoral;
+    background-color: #ebecf0;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    font-size: .875rem;
+    margin-inline-end: 8px;
+    max-height: 98%;
+    min-width: 272px;
+    width: 272px;
 }

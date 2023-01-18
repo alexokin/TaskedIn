@@ -1,7 +1,7 @@
 import { HomePage } from './pages/home-page.jsx'
 import { AboutUs } from './pages/about-us.jsx'
 import { BoardIndex } from './pages/board-index'
-import { Board } from "./cmps/board.jsx";
+import {BoardDetails} from './cmps/board-details.jsx';
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -17,7 +17,7 @@ const routes = [
     },
     {
         path: '/board/:boardId',
-        component: <Board />,
+        component: <BoardDetails />,
         label: 'Board'
     },
     {

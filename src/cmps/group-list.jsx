@@ -1,16 +1,17 @@
 import React from 'react'
+
 import { GroupPreview } from "./group-preview.jsx";
 
 export function GroupList() {
   return (
-    <div className='group-list'>
-      <h3>hello from group list</h3>
+    <section className='group-list'>
+      
       <GroupPreview />
       <GroupPreview />
       <GroupPreview />
       <GroupPreview />
       <GroupPreview />
       <GroupPreview />
-    </div>
+    </section>
   )
 }
