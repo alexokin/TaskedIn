@@ -8,3 +8,26 @@
     position: relative;
     overflow-anchor: none;
 }
+
+.add-task {
+    padding: 0;
+    margin: 0 4px;
+    min-width: 0;
+    width: auto;
+
+    form {
+      width: 100%;
+    }
+
+    textarea {
+      height: 65px;
+      padding-top: 7px;
+      padding-bottom: 42px;
+      margin-bottom: 8px;
+    }
+
+    button {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
