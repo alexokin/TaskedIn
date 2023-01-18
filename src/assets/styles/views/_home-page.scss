@@ -1,0 +1,206 @@
+.signup-main-section {
+    background: url(../../img/white-wave-bg.svg) center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box, linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
+    background-blend-mode: normal, normal;
+    color: rgb(255, 255, 255);
+
+    .signup-sub-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 620px;
+    }
+
+    .left-signup-sub {
+        text-align: left;
+        display: block;
+        flex: 0 0 auto;
+        width: 60%;
+        margin-bottom: 0px;
+        margin-left: 230px;
+        margin-top: 50px;
+    }
+
+    .left-signup-h1 {
+        font-size: 3.8rem;
+        line-height: 1.25;
+        margin-bottom: 0;
+    }
+
+    .left-signup-p {
+        text-align: left;
+        display: block;
+        flex: 0 0 auto;
+        margin-bottom: 0px;
+        margin-bottom: 1.5rem;
+        font-size: 24px;
+
+    }
+
+    .signin-btn {
+        background-color: rgb(57, 57, 148);
+    }
+
+    .ui-img {
+        height: 50%;
+        margin-top: 70px;
+    }
+
+    input {
+        font-size: 1rem;
+        padding: 0.7rem 0.75rem 0.8rem;
+        border: 1px solid rgb(223, 225, 230);
+        border-radius: 0.3rem;
+        max-width: 300px;
+        transition: all 250ms ease-out 0s;
+        width: 376px;
+    }
+
+    .signin-btn {
+        appearance: none;
+        -webkit-box-align: center;
+        align-items: center;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        display: inline-flex;
+        transition: all 250ms ease-out 0s;
+        background-color: rgb(0, 101, 255);
+        border: 1px solid rgb(0, 101, 255);
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 0.7rem 1rem 0.8rem;
+        color: rgb(255, 255, 255) !important;
+        margin-left: 17px;
+    }
+
+    .left-signup-video {
+        margin-top: 15px;
+        font-size: 19px;
+        text-decoration: underline;
+    }
+
+    .left-signup-video {
+        padding-bottom: 5px;
+    }
+
+    signup-wv {
+        top: 0;
+    }
+
+    .material-symbols-outlined {
+        margin-left: 10px;
+    }
+
+}
+
+.productivity-powerhouse-section {
+    margin-left: 450px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+    .powerhouse-div-p {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .powerhouse-div-h2 {
+        font-size: 46px;
+    }
+
+    a {
+        color: rgb(23, 23, 129);
+    }
+
+    .powerhouse-div-p2 {
+        width: 650px;
+        font-size: 24px;
+    }
+}
+
+.ui-main-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(139, 189, 255);
+    background-blend-mode: normal;
+    color: rgb(9, 30, 66);
+
+    .left-center-sub{
+    display: grid;
+        margin-left: 450px;
+
+                .left-button-h3 {
+        margin-top: 0;
+            font-size: 18px;
+        }
+
+        .left-button-p {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+    .left-card-button {
+        background-color: rgb(255, 255, 255);
+        color: rgb(9, 30, 66);
+        box-shadow: rgb(9 30 66 / 15%) 0px 0.5rem 1rem 0px;
+        border-radius: 0.3rem;
+        border: 0px;
+        height: 100%;
+        padding: 1rem 1rem 1rem 1.5rem;
+        position: relative;
+        text-align: left;
+        border-left: 10px solid rgb(0, 199, 229);
+        width: 400px;
+        height: 180px;
+
+    }
+
+    .left-ui-button{
+            background:none;
+        color: rgb(9, 30, 66);
+        border: none;
+        height: 100%;
+        padding: 1rem 1rem 1rem 1.5rem;
+        position: relative;
+        text-align: left;
+        width: 400px;
+        height: 180px;
+    }
+    }
+
+    .ui-img {
+    height: 550px;
+    margin-bottom: 100px;
+    margin-right: 550px;
+    }
+
+}
+
+.empty-space-section {
+height: 70px;
+}
+
+.templates-designed-div{
+margin-left: 150px;
+
+.templates-div-p {
+font-size: 19px;
+font-weight: bold;
+}
+.templates-div-h2 {
+font-size: 45px;
+margin-top: 0;
+}
+}
+
+.carousel-section {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr ;
+
+.carousel-square{
+display: grid;
+grid-template-rows: repeat(6, 1fr);
+
+.header-carousel-square{
+height: 80px;
+width: 300px;
+}
+}
+}

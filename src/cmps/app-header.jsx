@@ -8,35 +8,12 @@ import { LoginSignup } from '../pages/login-signup.jsx'
 export function AppHeader() {
 
     return (
-        <header className="home-page-header-main">
-            <nav className="home-page-nav">
-                <img src="../assets/img/trello-logo.png" alt="trello logo" className="home-page-nav-logo"/>
+        <header className="header-main">
+                <a href="" className='a-logo'><img src={require(`../assets/img/trello-logo.png`)} alt="trello logo" className="header-nav-logo"/></a>
                 <div className="home-page-nav-btns">
-                    <button className="login-btn"></button>
-                    <button className="try-trello-btn"></button>
+                    <a href="" className="login-btn">Log in</a>
+                    <a href="" className="try-trello-btn">Get Trello for free</a>
                 </div>
-            </nav>
         </header>
     )
 }
-
-
-
-
-
-
-
-
-
-
-/* export function AppHeader() {
-
-    return (
-        <header className="app-header">
-            <nav>
-                {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
-            </nav>
-            
-        </header>
-    )
-} */
