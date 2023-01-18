@@ -1,3 +1,73 @@
-.board-add{
+.board-add {
     position: absolute;
+    z-index: 1;
+    background-color: $clr6;
+    padding: 0.5em;
+    border: 1px solid lightgray;
+
+    .board-preview-img{
+        height: 160px;
+        background-image: url('../../img/board-preview.png');
+        background-size: cover;
+        border-radius: 0.3em;
+    }
+
+    .styles {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0.3em;
+
+        .style-item {
+            width: 40px;
+            height: 30px;
+            border-radius: 0.3em;
+            cursor: pointer;
+
+            @for $i from 1 through 6 {
+                &.item#{$i}:hover {
+                    background-color: nth($board-colors-hover, $i) !important;
+                }
+            }
+        }
+    }
+
+    .input-title {
+        height: 35px;
+        width: 100%;
+        &:hover {
+            background-color: $clr9;
+        }
+
+        &:focus {
+            outline-color: $clr1 ;
+        }
+
+        &.empty {
+            border-color: red;
+
+            &:focus {
+                outline-color: red;
+            }
+        }
+    }
+
+    .btn-create {
+        height: 30px;
+        width: 100%;
+
+        &:disabled {
+            background-color: $clr8;
+            color: $clr9;
+            cursor: not-allowed;
+        }
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        color: gray;
+        font-size: 1em;
+    }
 }

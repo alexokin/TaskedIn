@@ -1,0 +1,36 @@
+.group-add{
+    width: 270px;
+    background-color: $clr9;
+    height: min-content;
+    padding: 0.2em;
+    border-radius: 0.2em;
+    position: absolute;
+
+
+    form{
+        display: flex;
+        flex-wrap: wrap;
+
+        input{
+            width: 100%;
+            height: 35px;
+            &:focus{
+                outline-color: $clr1 ;
+            }
+        }
+
+        .btn-add-group{
+            height: 35px;
+            width: 70px;
+            margin-left: 0;
+            border-radius: 0.3em;
+        }
+
+        .btn-close-modal{
+            background: none;
+            color: black;
+            font-size: 1.3em;
+            margin-bottom: 0;
+        }
+    }
+}

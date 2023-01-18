@@ -1,17 +1,36 @@
 import React from "react";
 import { BoardPreview } from "./board-preview.jsx";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { boardService } from "../services/board.service.local.js";
+import { updateBoard } from "../store/board.actions.js";
 
 export function BoardList({ boards, onToggleAddBoardModal }) {
+  const navigate = useNavigate()
+
+  async function onStarredChange(ev, boardId) {
+    ev.stopPropagation()
+    try {
+      const board = await boardService.getById(boardId)
+      board.isStarred = !board.isStarred
+      await updateBoard(board)
+    } catch (error) {
+      console.log('Cannot change board starred status')
+    }
+  }
+
+  function onBoardSelect(boardId) {
+    navigate(`/board/${boardId}`)
+  }
+
   return (
     <ul className="board-list">
-      <li onClick={onToggleAddBoardModal}>Create new board</li>
+      <li className="btn-board-add" onClick={(event)=>onToggleAddBoardModal(event)}>Create new board</li>
       {boards.map(board => {
         return (
-          <li key={board._id}>
-            <Link to={`/board/${board._id}`}>
-              <BoardPreview board={board} />
-            </Link>
+          <li onClick={() => onBoardSelect(board._id)} key={board._id}>
+            <BoardPreview board={board} />
+            <button onClick={(event) => onStarredChange(event, board._id)} className={`btn-starred ${board.isStarred ? 'starred' : ''}`}>{board.isStarred ? <AiFillStar /> : <AiOutlineStar />}</button>
           </li>
         )
       })}
