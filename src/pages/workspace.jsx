@@ -2,9 +2,9 @@ import React from "react";
 import { BoardList } from "../cmps/board-list.jsx";
 
 
-export function BoardIndex() {
+export function Workspace() {
   return (
-    <div className="board-index">
+    <div className="workspace">
       <button>Add Board</button>
       <BoardList />
     </div>

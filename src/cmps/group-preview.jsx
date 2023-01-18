@@ -3,6 +3,8 @@ import { GroupTitle } from './group-title.jsx';
 import { TaskList } from "./task-list.jsx";
 
 export function GroupPreview() {
+  
+
   return (
     <div className='group-preview'>
       <GroupTitle />
