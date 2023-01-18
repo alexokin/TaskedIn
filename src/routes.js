@@ -1,6 +1,6 @@
 import { HomePage } from './pages/home-page.jsx'
-import { AboutUs } from './pages/about-us.jsx'
-import { BoardIndex } from './pages/board-index'
+
+import { Workspace } from './pages/workspace'
 import {BoardDetails} from './cmps/board-details.jsx';
 
 // Routes accesible from the main navigation (in AppHeader)
@@ -8,11 +8,11 @@ const routes = [
     {
         path: '/',
         component: <HomePage />,
-        label: 'Trello 🏠',
+        label: 'Trello',
     },
     {
         path: '/workspace',
-        component: <BoardIndex />,
+        component: <Workspace />,
         label: 'Workspace'
     },
     {

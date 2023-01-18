@@ -7,7 +7,7 @@ import { loadBoards } from "../store/board.actions.js";
 import { useSelector } from "react-redux";
 
 
-export function BoardIndex() {
+export function Workspace() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [isBoardModalOpen, setIsBoardModalOpen] = useState(false)
 
