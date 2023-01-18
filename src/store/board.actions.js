@@ -18,6 +18,7 @@ export function getActionAddBoard(board) {
     }
 }
 export function getActionUpdateBoard(board) {
+    console.log(board);
     return {
         type: UPDATE_BOARD,
         board

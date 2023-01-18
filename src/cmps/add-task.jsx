@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { taskService } from "../services/task.service.local";
+import { addTask } from "../store/actions/task.actions";
 
-export function AddTask({ groupId, board, onAddTask }) {
+
+
+export function AddTask({ groupId, board, setTasks, tasks }) {
   const [title, setTitle] = useState("");
 
   const handleChange = ({ target }) => {
@@ -12,8 +16,9 @@ export function AddTask({ groupId, board, onAddTask }) {
     console.log(groupId);
     if (ev) ev.preventDefault();
     if (!title) return;
-    // onAddTask(groupId, title, board)
-    taskService.save(board._id, groupId, title);
+    const savedTask = addTask(title, groupId, board)
+    tasks.push(savedTask)
+    setTasks((prevTasks) => [...prevTasks])
     setTitle("");
   };
 

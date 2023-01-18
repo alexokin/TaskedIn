@@ -295,6 +295,6 @@ export function HomePage() {
       </section>
 
     </main>
-    <AppFooter />
+    {/* <AppFooter /> */}
   </section>
 }

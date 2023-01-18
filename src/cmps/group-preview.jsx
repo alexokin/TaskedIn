@@ -1,19 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
+import { addTask } from '../store/actions/task.actions.js'
 import { GroupTitle } from "./group-title.jsx";
 import { TaskList } from "./task-list.jsx";
 
-export function GroupPreview({ group, board, setBoard }) {
-  const tasks = useSelector((storeState) => storeState.taskModule.tasks)
+export function GroupPreview({ group, board, setBoard}) {
+
+
  
 
   return (
     <div className="group-preview">
       <GroupTitle group={group} />
-      <TaskList setBoard={setBoard} board={board} tasks={tasks} groupId={group._id} />
-      
-      
+      <TaskList groupTasks={group.tasks} setBoard={setBoard} board={board} groupId={group._id} />
     </div>
   );
 }

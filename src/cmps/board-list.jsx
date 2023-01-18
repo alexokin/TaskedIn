@@ -2,7 +2,7 @@ import React from "react";
 import { BoardPreview } from "./board-preview.jsx";
 import {  useNavigate } from "react-router-dom";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { boardService } from "../services/borad.service.local.js";
+import { boardService } from "../services/board.service.local.js";
 import { updateBoard } from "../store/board.actions.js";
 
 export function BoardList({ boards, onToggleAddBoardModal }) {
