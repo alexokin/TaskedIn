@@ -1,21 +1,19 @@
 import { useState } from "react"
 import { boardService } from "../services/borad.service.local"
 import { addBoard } from "../store/board.actions"
+import { GrFormClose } from "react-icons/gr";
 
 
 export function BoardAdd({ onToggleAddBoardModal }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
 
     function handleChange({ target }) {
-        const { type, value, name: field } = target
-        console.log(boardToAdd)
-        if (type == 'text') {
-            setBoardToAdd(prevBoard => ({ ...prevBoard, [field]: value }))
-        }
-        if (type === 'color') {
-            const styleToSet = { backgroundColor: value }
-            setBoardToAdd(prevBoard => ({ ...prevBoard, [field]: styleToSet }))
-        }
+        const { value, name: field } = target
+        setBoardToAdd(prevBoard => ({ ...prevBoard, [field]: value }))
+    }
+
+    function onStyleChange(style) {
+        setBoardToAdd(prevBoard => ({ ...prevBoard, style }))
     }
 
     async function onAddBoard(ev) {
@@ -31,24 +29,33 @@ export function BoardAdd({ onToggleAddBoardModal }) {
     return (
         <div className="board-add">
             <h3>Create board</h3>
-            <br />
-            <form onSubmit={onAddBoard}>
-                <label htmlFor="style">Background</label>
-                <input type="color"
-                    id="style"
-                    name="style"
-                    onChange={handleChange} />
+            <hr />
 
-                <label htmlFor="title">Board title</label>
-                <input type="text"
+            <span>Background</span>
+            <div className="styles">
+                {boardService.boardStyles.map((style, idx) => {
+                    return (
+                        <div onClick={() => onStyleChange(style)}
+                            key={style.backgroundColor}
+                            className={`style-item item${idx + 1}`}
+                            style={style}>
+                        </div>
+                    )
+                })}
+            </div>
+
+            <form onSubmit={onAddBoard}>
+                <label htmlFor="title">Board title<span style={{ color: ' red' }}>*</span></label>
+                <input className={`input-title ${!boardToAdd.title ? 'empty' : ''}`} type="text"
                     id="title"
                     name="title"
                     value={boardToAdd.title}
                     onChange={handleChange}
                     required />
-                <button>Create</button>
+                {!boardToAdd.title && <div>👋 Board title is required</div>}
+                <button className="btn-create" disabled={boardToAdd.title === ''} >Create</button>
             </form>
-            <button onClick={onToggleAddBoardModal}>X</button>
+            <button className="btn-close" onClick={onToggleAddBoardModal}><GrFormClose /></button>
         </div>
     )
 }

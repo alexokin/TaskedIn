@@ -1,5 +1,5 @@
 // Colors
-$clr1: #ce2e6c;
+$clr1: #0079bf;
 $clr2: #4f3a65;
 $clr3: #574f7d;
 $clr4: #95adbe;
@@ -7,6 +7,18 @@ $clr5: #dff0ea;
 $clr6: #fff;
 $clr7: #222;
 
+$clr8: #f5f6f8;
+$clr9: #ecedf0;
+$clr10: #f0d400;
+
+$clr21: #0079bf;
+$clr22: #d29034;
+$clr23: #519839;
+$clr24: #b04632;
+$clr25: #89609e;
+$clr26: #cd5a91;
+
+$board-colors-hover: (darken($clr21,5),darken($clr22,5),darken($clr23,5),darken($clr24,5),darken($clr25,5),darken($clr26,5));
 
 // Breakpoints
 $mobile-breakpoint: 460px;
