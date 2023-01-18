@@ -25,7 +25,7 @@ export function BoardList({ boards, onToggleAddBoardModal }) {
 
   return (
     <ul className="board-list">
-      <li className="btn-board-add" onClick={onToggleAddBoardModal}><span>Create new board</span></li>
+      <li className="btn-board-add" onClick={(event)=>onToggleAddBoardModal(event)}>Create new board</li>
       {boards.map(board => {
         return (
           <li onClick={() => onBoardSelect(board._id)} key={board._id}>

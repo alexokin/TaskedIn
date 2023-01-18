@@ -4,7 +4,7 @@ import { addBoard } from "../store/board.actions"
 import { GrFormClose } from "react-icons/gr";
 
 
-export function BoardAdd({ onToggleAddBoardModal }) {
+export function BoardAdd({ onToggleAddBoardModal,addModalLoc }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
 
     function handleChange({ target }) {
@@ -27,10 +27,10 @@ export function BoardAdd({ onToggleAddBoardModal }) {
     }
 
     return (
-        <div className="board-add">
+        <div style={addModalLoc} className="board-add">
             <h3>Create board</h3>
             <hr />
-
+            <div className="board-preview-img" style={boardToAdd?.style}></div>
             <span>Background</span>
             <div className="styles">
                 {boardService.boardStyles.map((style, idx) => {
