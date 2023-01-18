@@ -8,23 +8,19 @@ const routes = [
     {
         path: '/',
         component: <HomePage />,
-        label: 'Home 🏠',
+        label: 'Trello 🏠',
     },
     {
-        path: '/board',
+        path: '/workspace',
         component: <BoardIndex />,
-        label: 'Boards'
+        label: 'Workspace'
     },
     {
         path: '/board/:boardId',
         component: <BoardDetails />,
         label: 'Board'
-    },
-    {
-        path: 'about',
-        component: <AboutUs />,
-        label: 'About us'
-    },
+    }
+    
 ]
 
 export default routes
