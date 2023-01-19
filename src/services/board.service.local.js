@@ -12,6 +12,28 @@ const boardStyles = [
     { backgroundColor: '#89609e' },
     { backgroundColor: '#cd5a91' }
 ]
+const boardStylesImg = [
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80                                                                           ')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    }
+]
 
 export const boardService = {
     query,
@@ -19,20 +41,20 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
-    boardStyles
+    getDefaultFilter,
+    boardStyles,
+    boardStylesImg
 }
 
 window.cs = boardService
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = getDefaultFilter()) {
     var boards = await storageService.query(STORAGE_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    // }
-    // if (filterBy.price) {
-    //     cars = cars.filter(car => car.price <= filterBy.price)
-    // }
+    if (filterBy.title) {
+        const regex = new RegExp(filterBy.title, 'i')
+        boards = boards.filter(board => regex.test(board.title))
+    }
+    boards.sort((board1, board2) => board1[filterBy.sortBy].localeCompare(board2[filterBy.sortBy]) * filterBy.sortDesc)
     return boards
 }
 
@@ -66,6 +88,14 @@ function getEmptyBoard() {
         labels: [],
         members: [],
         groups: []
+    }
+}
+
+function getDefaultFilter() {
+    return {
+        title: '',
+        sortBy: 'title',
+        sortDesc: 1
     }
 }
 

@@ -13,7 +13,6 @@ import { TaskDetails } from "./task-details";
 
 
 export function BoardDetails() {
-  // const [board, setBoard] = useState(null)
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
   const [addModalLoc, setAddModalLoc] = useState(null)
@@ -29,16 +28,6 @@ export function BoardDetails() {
     })()
   }, [])
 
-  async function onRemoveGroup(groupId) {
-    try {
-      await groupService.remove(boardId, groupId)
-      board.groups = board.groups.filter(group => group._id !== groupId)
-      updateBoard(board)
-    } catch (err) {
-      showErrorMsg('Cannot remove group', err)
-    }
-  }
-
   function onToggleAddModal(ev) {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
     const addModalLocToSet = {
@@ -47,8 +36,6 @@ export function BoardDetails() {
     setIsAddModalOpen(prevState => !prevState)
     setAddModalLoc(addModalLocToSet)
   }
-
-
 
   return (
     <div style={board?.style} className='board-details'>
@@ -60,5 +47,9 @@ export function BoardDetails() {
       {isAddModalOpen && <GroupAdd board={board}  onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} />}
       {taskId && <TaskDetails />}
     </div>
+  { board && <GroupList board={board} groups={board.groups} /> }
+  <div className='btn-open-addGroup' onClick={(event) => onToggleAddModal(event)}><FiPlus />Add another list</div>
+  { isAddModalOpen && <GroupAdd board={board} onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} /> }
+    </div >
   )
 }

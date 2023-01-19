@@ -8,7 +8,7 @@ export function GroupPreview({ group, board}) {
 
   return (
     <div className="group-preview">
-      <GroupTitle group={group} boardId={board._id} />
+      <GroupTitle group={group} board={board} />
       <TaskList groupTasks={group.tasks} board={board} groupId={group._id} />
     </div>
   )

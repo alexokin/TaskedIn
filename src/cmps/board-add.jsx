@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { boardService } from "../services/board.service.local"
 import { addBoard } from "../store/board.actions"
-import { GrFormClose } from "react-icons/gr";
+import { GrFormClose } from "react-icons/gr"
 
 
 export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
@@ -20,7 +20,7 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
         ev.preventDefault()
         try {
             onToggleAddBoardModal()
-            await addBoard(boardToAdd) 
+            await addBoard(boardToAdd)
         } catch (err) {
             console.log(err)
         }
@@ -31,8 +31,22 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
         <div style={addModalLoc} className="board-add">
             <h3>Create board</h3>
             <hr />
-            <div className="board-preview-img" style={boardToAdd?.style}></div>
+
+            <div className="board-preview-img" style={boardToAdd?.style}>
+                <div className="board-preview-img"></div>
+            </div>
             <span>Background</span>
+            <div className="styles-img">
+                {boardService.boardStylesImg.map((style, idx) => {
+                    return (
+                        <div onClick={() => onStyleChange(style)}
+                            key={style.backgroundColor}
+                            className={`style-img img${idx + 1}`}
+                        >
+                        </div>
+                    )
+                })}
+            </div>
             <div className="styles">
                 {boardService.boardStyles.map((style, idx) => {
                     return (

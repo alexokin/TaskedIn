@@ -7,20 +7,6 @@
     li {
         position: relative;
         height: fit-content;
-
-        &:hover .btn-remove-group {
-            display: block;
-        }
-
-        .btn-remove-group {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: none;
-            color: gray;
-            display: none;
-            font-size: 1.2em;
-        }
     }
 
 }

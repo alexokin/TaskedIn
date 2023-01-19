@@ -71,6 +71,28 @@
         }
     }
 
+    .styles-img {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.3em;
+        margin-bottom: 0.5em;
+
+        .style-img {
+            width: 60px;
+            height: 30px;
+            border-radius: 0.3em;
+            cursor: pointer;
+
+            @for $i from 1 through 4 {
+                &.img#{$i} {
+                    background-image: url('../../img/board-bg#{$i}.jpg') !important;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+
     .btn-close {
         position: absolute;
         top: 0;
