@@ -12,7 +12,7 @@ export function AppHeader() {
                 <a href="" className='a-logo'><img src={require(`../assets/img/trello-logo.png`)} alt="trello logo" className="header-nav-logo"/></a>
                 <div className="home-page-nav-btns">
                     <a href="" className="login-btn">Log in</a>
-                    <a href="" className="try-trello-btn">Get Trello for free</a>
+                    <a href="/workspace" className="try-trello-btn">Get Trello for free</a>
                 </div>
         </header>
     )
