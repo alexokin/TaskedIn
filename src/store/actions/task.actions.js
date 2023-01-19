@@ -10,9 +10,6 @@ import {loadBoards, getActionUpdateBoard, updateBoard } from "../board.actions";
 export async function addTask(title, groupId, board) {
     try {
         const savedTask = await taskService.add(title, groupId, board)
-        // const updatedBoard = await boardService.save(savedBoard)
-        // if(!savedBoard) throw new Error('can\'t save right now')
-    
         updateBoard(board)
         return savedTask
         
