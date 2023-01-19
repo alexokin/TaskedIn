@@ -4,12 +4,52 @@
     background-color: $clr6;
     padding: 0.5em;
     border: 1px solid lightgray;
+    max-width: 280px;
 
-    .board-preview-img{
+    .board-preview-img {
         height: 160px;
         background-image: url('../../img/board-preview.png');
         background-size: cover;
         border-radius: 0.3em;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        .input-title {
+            height: 35px;
+            width: 100%;
+            align-self: center;
+
+            &:hover {
+                background-color: $clr9;
+            }
+
+            &:focus {
+                outline-color: $clr1 ;
+            }
+
+            &.empty {
+                border-color: red;
+
+                &:focus {
+                    outline-color: red;
+                }
+            }
+        }
+
+        .btn-create {
+            height: 30px;
+            width: 100%;
+            align-self: center;
+
+            &:disabled {
+                background-color: $clr8;
+                color: $clr9;
+                cursor: not-allowed;
+            }
+        }
     }
 
     .styles {
@@ -28,37 +68,6 @@
                     background-color: nth($board-colors-hover, $i) !important;
                 }
             }
-        }
-    }
-
-    .input-title {
-        height: 35px;
-        width: 100%;
-        &:hover {
-            background-color: $clr9;
-        }
-
-        &:focus {
-            outline-color: $clr1 ;
-        }
-
-        &.empty {
-            border-color: red;
-
-            &:focus {
-                outline-color: red;
-            }
-        }
-    }
-
-    .btn-create {
-        height: 30px;
-        width: 100%;
-
-        &:disabled {
-            background-color: $clr8;
-            color: $clr9;
-            cursor: not-allowed;
         }
     }
 

@@ -23,9 +23,9 @@ export function Workspace() {
   },[])
 
   function onToggleAddBoardModal(ev) {
-    const BoundingClientRect = ev.target.getBoundingClientRect()
+    const BoundingClientRect = ev?.target.getBoundingClientRect()
     const addModalLocToSet = {
-      left: `${BoundingClientRect.left+BoundingClientRect.width+5}px`
+      left: `${BoundingClientRect?.left+BoundingClientRect?.width+5}px`
     }
     setIsBoardModalOpen(prevState => !prevState)
     setAddModalLoc(addModalLocToSet)

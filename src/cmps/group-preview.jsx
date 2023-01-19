@@ -11,7 +11,7 @@ export function GroupPreview({ group, board, setBoard}) {
 
   return (
     <div className="group-preview">
-      <GroupTitle group={group} />
+      <GroupTitle group={group} boardId={board._id} />
       <TaskList groupTasks={group.tasks} setBoard={setBoard} board={board} groupId={group._id} />
     </div>
   );
