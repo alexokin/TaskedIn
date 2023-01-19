@@ -1,3 +1,12 @@
-.board-header {
-    
+.board-nav-bar {
+    align-items: center;
+    background-color: #026aa7;
+    border-bottom: 1px solid hsla(0,0%,100%,.16);
+    color: #fff;
+    display: flex;
+    font-family: CharlieText-regular;
+    justify-content: space-between;
+    min-height: 44px;
+    position: relative;
+    width: 100%;
 }
