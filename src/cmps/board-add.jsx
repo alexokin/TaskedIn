@@ -4,7 +4,7 @@ import { addBoard } from "../store/board.actions"
 import { GrFormClose } from "react-icons/gr";
 
 
-export function BoardAdd({ onToggleAddBoardModal,addModalLoc }) {
+export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
 
     function handleChange({ target }) {
@@ -19,7 +19,8 @@ export function BoardAdd({ onToggleAddBoardModal,addModalLoc }) {
     async function onAddBoard(ev) {
         ev.preventDefault()
         try {
-            await addBoard(boardToAdd)
+            onToggleAddBoardModal()
+            await addBoard(boardToAdd) 
         } catch (err) {
             console.log(err)
         }
