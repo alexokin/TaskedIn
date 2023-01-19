@@ -30,11 +30,11 @@ export function HomePage() {
       </section>
 
       <section className="productivity-powerhouse-section">
-          <div className="productivity-powerhouse-div">
-            <p className="powerhouse-div-p">TRELLO 101</p>
-            <h2 className="powerhouse-div-h2">A Productivity powerhouse</h2>
-          </div>
-          <p className="powerhouse-div-p2">Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in our <a href="">guide for getting started.</a></p>
+        <div className="productivity-powerhouse-div">
+          <p className="powerhouse-div-p">TRELLO 101</p>
+          <h2 className="powerhouse-div-h2">A Productivity powerhouse</h2>
+        </div>
+        <p className="powerhouse-div-p2">Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in our <a href="">guide for getting started.</a></p>
       </section>
 
       <section className="ui-main-section">
@@ -61,10 +61,10 @@ export function HomePage() {
               </button>
             </section>
           </section>
-          </section>
-          <section className="right-sub-section">
-            <img className="ui-img" src={require(`../assets/img/trello-ui-boards-lists-cards.webp`)} alt="trello-ui-boards-lists-cards img" />
-          </section>
+        </section>
+        <section className="right-sub-section">
+          <img className="ui-img" src={require(`../assets/img/trello-ui-boards-lists-cards.webp`)} alt="trello-ui-boards-lists-cards img" />
+        </section>
       </section>
 
       <section className="empty-space-section"></section>
@@ -85,65 +85,71 @@ export function HomePage() {
         <div className="carousel-section">
 
           <div className="carousel-square">
-            {/* <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" /></div> */}
-            <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel-square"></div>
+            </div>
             <div className="bottom-carousel-square">
-              <h3 className="bottom-carousel-square-h3">Project Management Tamplate</h3>
-              <span className="bottom-carousel-square-span">by Trello Marketing Team</span>
-              <p className="bottom-carousel-square-p">Big dreams turn into bigger results with a project plan. Use this template to build your team's ideal workflow, for projects big or small.</p>
+              <h3 className="carousel-square-h3">Project Management  <br></br>Tamplate</h3>
+              <span className="carousel-square-span">by Trello Marketing Team</span>
+              <p className="carousel-square-p">Big dreams turn into bigger results with a project plan. Use this template to build your team's ideal workflow, for projects big or small.</p>
             </div>
           </div>
 
           <div className="carousel-square">
-            <div className="header-carousel-square"></div>
-            <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background2.jpg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel-square"></div>
+            </div>
             <div className="bottom-carousel-square">
-              <h3 className="bottom-carousel-square-h3">Product Roadmap Template</h3>
-              <span className="bottom-carousel-square-span">by Trello Product Team</span>
-              <p className="bottom-carousel-square-p">Use the Trello product roadmap template to track product development and feature requests, and collaborate on development processes.</p>
+              <h3 className="carousel-square-h3">Product Roadmap Template</h3>
+              <span className="carousel-square-span">by Trello Marketing Team</span>
+              <p className="carousel-square-p">Use the Trello product roadmap template to track product development and feature requests, and collaborate on development processes."</p>
             </div>
           </div>
 
           <div className="carousel-square">
-            <div className="header-carousel-square"></div>
-            <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background3.jpg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel-square"></div>
+            </div>
             <div className="bottom-carousel-square">
-              <h3 className="bottom-carousel-square-h3">Task Management Tamplate</h3>
-              <span className="bottom-carousel-square-span">by Mitchell Fry, Engineer @ Oliver Wyman</span>
-              <p className="bottom-carousel-square-p">Easily keep track of what you’ve done, what you have to do, and when you have to do it with this Trello task management template. </p>
+              <h3 className="carousel-square-h3">Task Management Template</h3>
+              <span className="carousel-square-span">by Mitchell Fry, Engineer @ Oliver <br></br>Wyman</span>
+              <p className="carousel-square-p">Easily keep track of what you’ve done, what you have to do, and when you have to do it with this Trello task management template.</p>
             </div>
           </div>
 
           <div className="carousel-square">
-            <div className="header-carousel-square"></div>
-            <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background4.jpeg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel-square"></div>
+            </div>
             <div className="bottom-carousel-square">
-              <h3 className="bottom-carousel-square-h3">Meeting Agenda Template</h3>
-              <span className="bottom-carousel-square-span">by Darren Chait, Co-Founder @ Hugo</span>
-              <p className="bottom-carousel-square-p">Great meetings require planning. Use this Trello template as the framework for more effective, collaborative team meetings.</p>
+              <h3 className="carousel-square-h3">Meeting Agenda Template</h3>
+              <span className="carousel-square-span">by Darren Chait, Co-Founder @ Hugo</span>
+              <p className="carousel-square-p">Great meetings require planning. Use this Trello template as the framework for more effective, collaborative team meetings.</p>
             </div>
           </div>
 
           <div className="carousel-square">
-            <div className="header-carousel-square"></div>
-            <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel-square"></div>
+            </div>
             <div className="bottom-carousel-square">
-              <h3 className="bottom-carousel-square-h3">Social Media Marketing Template</h3>
-              <span className="bottom-carousel-square-span">by Moisson Marketing</span>
-              <p className="bottom-carousel-square-p">From generating ideas to planning your release schedule, use this Trello social media template to manage everything in one place.</p>
+              <h3 className="carousel-square-h3">Project Management  <br></br>Tamplate</h3>
+              <span className="carousel-square-span">by Trello Marketing Team</span>
+              <p className="carousel-square-p">Big dreams turn into bigger results with a project plan. Use this template to build your team's ideal workflow, for projects big or small.</p>
             </div>
           </div>
 
           <div className="carousel-square">
-            <div className="header-carousel-square"></div>
-            <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel-square"></div>
+            </div>
             <div className="bottom-carousel-square">
-              <h3 className="bottom-carousel-square-h3">Kanban Template</h3>
-              <span className="bottom-carousel-square-span">by Trello Engineering Team</span>
-              <p className="bottom-carousel-square-p">Use this simple Kanban template to improve the productivity of your engineering team and help them build better products, faster.</p>
+              <h3 className="carousel-square-h3">Project Management  <br></br>Tamplate</h3>
+              <span className="carousel-square-span">by Trello Marketing Team</span>
+              <p className="carousel-square-p">Big dreams turn into bigger results with a project plan. Use this template to build your team's ideal workflow, for projects big or small.</p>
             </div>
           </div>
-
+          
         </div>
       </div>
 
