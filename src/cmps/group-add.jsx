@@ -34,7 +34,7 @@ export function GroupAdd({ setBoard, board, onToggleAddModal, addModalLoc }) {
                 <input type="text"
                     id="title"
                     name="title"
-                    placeholder="Enter list title..."
+                    placeholder="Enter a title for this..."
                     value={groupToAdd?.title}
                     onChange={onHandleChange}
                     required
