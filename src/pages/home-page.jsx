@@ -1,4 +1,5 @@
-import { AppHeader } from "../cmps/app-header";
+import { AppHeader } from "../cmps/app-header"
+import { AppFooter } from "../cmps/app-footer"
 
 export function HomePage() {
 
@@ -6,74 +7,73 @@ export function HomePage() {
     <AppHeader />
     <main>
 
-      <section className="home-page-signup-main-section">
-        <section className="home-page-signup-sub-section">
-          <div className="left-signup-sub-section">
-            <h1 className="left-signup-sub-section-h1">Trello brings all your tasks, teammates, and tools together</h1>
-            <p className="left-signup-sub-section-p">Keep everything in the same place—even if your team isn't.</p>
-            <div className="left-signup-sub-section-email-sign-div">
+      <section className="signup-main-section">
+        <section className="signup-sub-section">
+          <div className="left-signup-sub">
+            <h1 className="left-signup-h1">Trello brings all your tasks, teammates, and tools together</h1>
+            <p className="left-signup-p">Keep everything in the same place—even if your team isn't.</p>
+            <div className="left-signup-div">
               <input type="text" placeHolder="Email" />
-              <button>Sign up - it's free!</button>
+              <button className="signin-btn">Sign up - it's free!</button>
             </div>
-            <div className="left-signup-sub-section-video">
-              <span>Watch video</span>
-              <img src="" alt="watch video play sign" />
+            <div className="left-signup-video">
+              <span className="signup-wv">Watch video</span>
+              <span class="material-symbols-outlined">
+                play_circle
+              </span>
             </div>
           </div>
           <div className="right-signup-sub-section">
-            <img src="../assets/img/trello-ui-collage.webp" alt="ui home page picture" />
+            <img className="ui-img" src={require(`../assets/img/trello-ui-collage.webp`)} alt="ui home page picture" />
           </div>
         </section>
       </section>
 
-      <section className="home-page-productivity-powerhouse-section">
-        <div className="left-home-page-productivity-powerhouse-div">
-          <div className="upper-left-home-page-productivity-powerhouse-div">
-            <p className="upper-left-home-page-productivity-powerhouse-div-p">TRELLO 101</p>
-            <h2 className="upper-left-home-page-productivity-powerhouse-div-h2">A Productivity powerhouse</h2>
+      <section className="productivity-powerhouse-section">
+          <div className="productivity-powerhouse-div">
+            <p className="powerhouse-div-p">TRELLO 101</p>
+            <h2 className="powerhouse-div-h2">A Productivity powerhouse</h2>
           </div>
-          <p className="bottom-left-home-page-productivity-powerhouse-div-p">Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in our <a href="">guide for getting started</a></p>
-        </div>
+          <p className="powerhouse-div-p2">Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in our <a href="">guide for getting started.</a></p>
       </section>
 
-      <section className="home-page-boards-lists-cards-ui-main-section">
-        <section className="home-page-boards-lists-cards-ui-sub-section">
-          <section className="left-home-page-boards-lists-cards-ui-sub-section">
-            <section className="left-home-page-boards-lists-cards-ui-sub-section">
-              <button className="left-home-page-boards-lists-cards-ui-button">
-                <div className="left-home-page-boards-lists-cards-ui-button-div">
-                  <h3 className="left-home-page-boards-lists-cards-ui-button-div-h3">Boards</h3>
-                  <p className="left-home-page-boards-lists-cards-ui-button-div-p">Trello boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>
+      <section className="ui-main-section">
+        <section className="ui-sub-section">
+          <section className="left-sub-section">
+            <section className="left-center-sub">
+              <button className="left-card-button">
+                <div className="left-button-div">
+                  <h3 className="left-button-h3">Boards</h3>
+                  <p className="left-button-p">Trello boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>
                 </div>
               </button>
-              <button className="left-home-page-boards-lists-cards-ui-button">
-                <div className="left-home-page-boards-lists-cards-ui-button-div">
-                  <h3 className="left-home-page-boards-lists-cards-ui-button-div-h3">Lists</h3>
-                  <p className="left-home-page-boards-lists-cards-ui-button-div-p">The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your team’s needs. There’s no wrong way to Trello.</p>
+              <button className="left-ui-button">
+                <div className="left-ui-div">
+                  <h3 className="left-button-h3">Lists</h3>
+                  <p className="left-button-p">The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your team’s needs. There’s no wrong way to Trello.</p>
                 </div>
               </button>
-              <button className="left-home-page-boards-lists-cards-ui-button">
-                <div className="left-home-page-boards-lists-cards-ui-button-div">
-                  <h3 className="left-home-page-boards-lists-cards-ui-button-div-h3">Cards</h3>
-                  <p className="left-home-page-boards-lists-cards-ui-button-div-p">Cards represent tasks and ideas and hold all the information to get the job done. As you make progress, move cards across lists to show their status.</p>
+              <button className="left-ui-button">
+                <div className="left-ui-div">
+                  <h3 className="left-button-h3">Cards</h3>
+                  <p className="left-button-p">Cards represent tasks and ideas and hold all the information to get the job done. As you make progress, move cards across lists to show their status.</p>
                 </div>
               </button>
             </section>
           </section>
-          <section className="right-home-page-boards-lists-cards-ui-sub-section">
-            <img src="../assets/img/trello-ui-boards-lists-cards.webp" alt="trello-ui-boards-lists-cards img" />
           </section>
-        </section>
+          <section className="right-sub-section">
+            <img className="ui-img" src={require(`../assets/img/trello-ui-boards-lists-cards.webp`)} alt="trello-ui-boards-lists-cards img" />
+          </section>
       </section>
 
-      <section className="home-page-empty-space-section"></section>
+      <section className="empty-space-section"></section>
 
-      <section className="home-page-templates-designed-main-section">
+      <section className="templates-main-section">
         <div className="templates-designed-div">
-          <p className="templates-designed-div-p">A BLUEPRINT FOR SUCCESS</p>
-          <h2 className="templates-designed-div-p">Templates designed for any team</h2>
+          <p className="templates-div-p">A BLUEPRINT FOR SUCCESS</p>
+          <h2 className="templates-div-h2">Templates designed for any team</h2>
         </div>
-        <div className="templates-designed-empty-div"></div>
       </section>
 
       <div className="carousel-controller">
@@ -85,7 +85,7 @@ export function HomePage() {
         <div className="carousel-section">
 
           <div className="carousel-square">
-            <div className="header-carousel-square"></div>
+            {/* <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" /></div> */}
             <div className="logo-carousel-square"></div>
             <div className="bottom-carousel-square">
               <h3 className="bottom-carousel-square-h3">Project Management Tamplate</h3>
@@ -278,20 +278,20 @@ export function HomePage() {
       </section>
 
       <section className="teams-worldwide-main-section">
-      <section className="teams-worldwide-centered-sub-section">
-        <p>Join over 2,000,000 teams worldwide that are using Trello to get more done.</p>
-        <img src="../assets/img/logos.svd" alt="logos" />
-      </section>
+        <section className="teams-worldwide-centered-sub-section">
+          <p>Join over 2,000,000 teams worldwide that are using Trello to get more done.</p>
+          <img src="../assets/img/logos.svd" alt="logos" />
+        </section>
       </section>
 
       <section className="get-started-with-trello-main-section">
-      <section className="get-started-with-trello-centered-sub-section">
-        <h2>Get started with Trello today</h2>
-        <form action="" className="form-signup">
-          <input type="text" placeHolder="Email"/>
-          <button>Sign up - it’s free!</button>
-        </form>
-      </section>
+        <section className="get-started-with-trello-centered-sub-section">
+          <h2>Get started with Trello today</h2>
+          <form action="" className="form-signup">
+            <input type="text" placeHolder="Email" />
+            <button>Sign up - it’s free!</button>
+          </form>
+        </section>
       </section>
 
     </main>
