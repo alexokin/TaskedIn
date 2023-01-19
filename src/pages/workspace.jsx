@@ -32,7 +32,7 @@ export function Workspace() {
   }
 
   return (
-    <div className="board-index">
+    <div className="workspace">
       <BoardFilter />
       {isBoardModalOpen && <BoardAdd addModalLoc={addModalLoc} onToggleAddBoardModal={onToggleAddBoardModal} />}
       {boards && <BoardList boards={boards} onToggleAddBoardModal={onToggleAddBoardModal} />}
