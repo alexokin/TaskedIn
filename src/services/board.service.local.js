@@ -12,6 +12,28 @@ const boardStyles = [
     { backgroundColor: '#89609e' },
     { backgroundColor: '#cd5a91' }
 ]
+const boardStylesImg = [
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80                                                                           ')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    }
+]
 
 export const boardService = {
     query,
@@ -19,7 +41,8 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
-    boardStyles
+    boardStyles,
+    boardStylesImg
 }
 
 window.cs = boardService

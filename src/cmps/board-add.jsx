@@ -33,6 +33,17 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
             <hr />
             <div className="board-preview-img" style={boardToAdd?.style}></div>
             <span>Background</span>
+            <div className="styles-img">
+                {boardService.boardStylesImg.map((style, idx) => {
+                    return (
+                        <div onClick={() => onStyleChange(style)}
+                            key={style.backgroundColor}
+                            className={`style-img img${idx + 1}`}
+                            >
+                        </div>
+                    )
+                })}
+            </div>
             <div className="styles">
                 {boardService.boardStyles.map((style, idx) => {
                     return (

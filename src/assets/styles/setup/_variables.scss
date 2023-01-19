@@ -19,6 +19,7 @@ $clr25: #89609e;
 $clr26: #cd5a91;
 
 $board-colors-hover: (darken($clr21,5),darken($clr22,5),darken($clr23,5),darken($clr24,5),darken($clr25,5),darken($clr26,5));
+$board-bg-imgs: (url('../../img/board-bg1.jpg'),url('../../img/board-bg2.jpg'),url('../../img/board-bg3.jpg'),url('../../img/board-bg4.jpg'));
 
 // Breakpoints
 $mobile-breakpoint: 460px;

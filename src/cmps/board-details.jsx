@@ -42,9 +42,9 @@ export function BoardDetails() {
       {/* <BoardNavBar />
       <BoardHeader />
       <SideNavBar /> */}
-      {board && <GroupList board={board} groups={board.groups} />}
-      <div className='btn-open-addGroup' onClick={(event) => onToggleAddModal(event)}><FiPlus />Add another list</div>
-      {isAddModalOpen && <GroupAdd board={board}  onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} />}
-    </div>
+  { board && <GroupList board={board} groups={board.groups} /> }
+  <div className='btn-open-addGroup' onClick={(event) => onToggleAddModal(event)}><FiPlus />Add another list</div>
+  { isAddModalOpen && <GroupAdd board={board} onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} /> }
+    </div >
   )
 }
