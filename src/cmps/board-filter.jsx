@@ -10,7 +10,6 @@ export function BoardFilter({ onSetFilter }) {
     onSetFilter(filterByToEdit)
   }, [filterByToEdit])
 
-
   function handleChange({ target }) {
     let { value } = target
     if (target.type === 'text') {
@@ -20,9 +19,9 @@ export function BoardFilter({ onSetFilter }) {
       setFilterByToEdit(prevFilter => ({ ...prevFilter, sortBy: value.sortBy, sortDesc: value.sortDesc }))
     }
   }
+
   return (
     <div className="board-filter">
-
       <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
         <div className="form-container">
           <div className="form-item-sort">
