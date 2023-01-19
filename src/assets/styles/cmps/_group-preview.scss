@@ -2,7 +2,7 @@
     border: none;
     background-color: $clr9;
     padding: 1em;
-    border-radius: 0.3em;
+    border-radius: 0.1875rem;
     display: flex;
     flex-direction: column;
     font-size: .875rem;
@@ -10,4 +10,23 @@
     max-height: 98%;
     min-width: 270px;
     width: 270px;
+
+    .group-title {
+        display: flex;
+        justify-content: space-between;
+        .grp-action-btn {
+            align-items: flex-start;
+            background-color: transparent;
+            border: none;
+            border-radius: 3px;
+            color: #6d788a;
+            display: flex;
+            font-size: 18px;
+            height: 32px;
+            justify-content: center;
+            line-height: 20px;
+            margin-bottom: 6px;
+            width: 32px;
+        }
+    }
 }

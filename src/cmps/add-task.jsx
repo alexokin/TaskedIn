@@ -13,14 +13,14 @@ export function AddTask({ onToggleAddModal, groupId, board, setTasks, tasks }) {
   }
 
   const onAdd = (ev) => {
-    console.log(groupId)
-    if (ev) ev.preventDefault()
-    if (!title) return
+    ev.preventDefault();
+    if (!title) return;
     const savedTask = addTask(title, groupId, board)
     tasks.push(savedTask)
     setTasks((prevTasks) => [...prevTasks])
     setTitle("")
   }
+
 
   return (
     <section className="add-task">
