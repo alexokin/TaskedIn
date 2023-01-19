@@ -4,21 +4,7 @@ import { store } from "../store.js"
 
 import {loadBoards, getActionUpdateBoard, updateBoard } from "../board.actions";
 
-// export async function loadTasks() {
-//     try {
-//         const tasks = await taskService.query()
-//         console.log('Tasks from DB:', tasks)
-//         store.dispatch({
-//             type: SET_TASKS,
-//             tasks
-//         })
 
-//     } catch (err) {
-//         console.log('Cannot load tasks', err)
-//         throw err
-//     }
-
-// }
 
 
 export async function addTask(title, groupId, board) {

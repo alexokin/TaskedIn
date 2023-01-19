@@ -13,14 +13,14 @@ export function AddTask({ groupId, board, setTasks, tasks }) {
   };
   
   const onAdd = (ev) => {
-    console.log(groupId);
-    if (ev) ev.preventDefault();
+    ev.preventDefault();
     if (!title) return;
     const savedTask = addTask(title, groupId, board)
     tasks.push(savedTask)
     setTasks((prevTasks) => [...prevTasks])
     setTitle("");
   };
+
 
   return (
     <section className="add-task">
@@ -32,7 +32,7 @@ export function AddTask({ groupId, board, setTasks, tasks }) {
           onChange={handleChange}
         />
         <button>Add card</button>
-        <section className="svg-holder"></section>
+        
       </form>
     </section>
   );
