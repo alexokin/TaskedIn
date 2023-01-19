@@ -1,4 +1,3 @@
-import { log } from "console";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { taskService } from "../services/task.service.local";
@@ -23,7 +22,7 @@ export function AddTask({ onToggleAddModal, groupId, board, setTasks, tasks }) {
     setTitle("");
     }
     catch (err) {
-      console.log('Cannot add task', err)
+      // console.log('Cannot add task', err)
       throw err
   }
   }
