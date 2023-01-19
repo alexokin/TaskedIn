@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { taskService } from "../services/task.service.local";
+import React, { useState } from "react";
 import { addTask } from "../store/actions/task.actions";
 import { AiOutlineClose } from "react-icons/ai";
 
