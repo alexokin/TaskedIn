@@ -2,7 +2,7 @@ import { boardService } from "../services/board.service.local.js";
 import { userService } from "../services/user.service.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, UPDATE_BOARD } from "./board.reducer.js";
+import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, UPDATE_BOARD, SET_BOARD } from "./board.reducer.js";
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -33,12 +33,24 @@ export async function loadBoards() {
             type: SET_BOARDS,
             boards
         })
-
     } catch (err) {
         console.log('Cannot load boards', err)
         throw err
     }
+}
 
+export async function setBoard(boardId) {
+    try {
+        const board = await boardService.getById(boardId)
+        console.log('Board from DB:', board)
+        store.dispatch({
+            type: SET_BOARD,
+            board
+        })
+    } catch (err) {
+        console.log('Cannot set board', err)
+        throw err
+    }
 }
 
 export async function removeBoard(boardId) {
@@ -50,6 +62,9 @@ export async function removeBoard(boardId) {
         throw err
     }
 }
+
+
+
 
 export async function addBoard(board) {
     try {

@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import { taskService } from "../services/task.service.local";
 import { addTask } from "../store/actions/task.actions";
 import { AiOutlineClose } from "react-icons/ai";
+import { updateBoard } from "../store/board.actions";
 
-export function AddTask({ onToggleAddModal, groupId, board, setTasks, tasks }) {
+export function AddTask({ onToggleAddModal, groupId, board, tasks }) {
   const [title, setTitle] = useState("");
 
   const handleChange = ({ target }) => {
@@ -19,7 +20,6 @@ export function AddTask({ onToggleAddModal, groupId, board, setTasks, tasks }) {
     try {
       const savedTask = await addTask(title, groupId, board);
       tasks.push(savedTask);
-      setTasks((prevTasks) => [...prevTasks]);
       setTitle("");
     } catch (error) {
       console.log("Cannot add task", error);

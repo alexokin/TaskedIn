@@ -4,15 +4,12 @@ import { addTask } from '../store/actions/task.actions.js'
 import { GroupTitle } from "./group-title.jsx";
 import { TaskList } from "./task-list.jsx";
 
-export function GroupPreview({ group, board, setBoard}) {
-
-
- 
+export function GroupPreview({ group, board}) {
 
   return (
     <div className="group-preview">
       <GroupTitle group={group} boardId={board._id} />
-      <TaskList groupTasks={group.tasks} setBoard={setBoard} board={board} groupId={group._id} />
+      <TaskList groupTasks={group.tasks} board={board} groupId={group._id} />
     </div>
-  );
+  )
 }

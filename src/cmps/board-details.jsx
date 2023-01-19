@@ -9,9 +9,12 @@ import { GroupList } from './group-list.jsx'
 import { SideNavBar } from './side-nav-bar.jsx'
 import { FiPlus } from "react-icons/fi";
 import { GroupAdd } from './group-add.jsx'
+import { useSelector } from 'react-redux'
+import { setBoard, updateBoard } from '../store/board.actions.js'
 
 export function BoardDetails() {
-  const [board, setBoard] = useState(null)
+  // const [board, setBoard] = useState(null)
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
   const [addModalLoc, setAddModalLoc] = useState(null)
   const { boardId } = useParams()
@@ -19,31 +22,18 @@ export function BoardDetails() {
   useEffect(() => {
     ; (async () => {
       try {
-        const boardToSet = await boardService.getById(boardId)
-        setBoard(boardToSet)
+        setBoard(boardId)
       } catch (err) {
         showErrorMsg('Cannot load board', err)
       }
     })()
   }, [])
 
-  async function onAddGroup() {
-    let group = groupService.getEmptyGroup()
-    try {
-      group.title = prompt('Group title?')
-      group = await groupService.save(boardId, group)
-      board.groups.push(group)
-      setBoard(prevBoard => ({ ...prevBoard }))
-    } catch (err) {
-      showErrorMsg('Cannot save group', err)
-    }
-  }
-
   async function onRemoveGroup(groupId) {
     try {
       await groupService.remove(boardId, groupId)
       board.groups = board.groups.filter(group => group._id !== groupId)
-      setBoard(prevBoard => ({ ...prevBoard }))
+      updateBoard(board)
     } catch (err) {
       showErrorMsg('Cannot remove group', err)
     }
@@ -65,9 +55,9 @@ export function BoardDetails() {
       {/* <BoardNavBar />
       <BoardHeader />
       <SideNavBar /> */}
-      {board && <GroupList setBoard={setBoard} board={board} groups={board.groups} onRemoveGroup={onRemoveGroup} />}
+      {board && <GroupList board={board} groups={board.groups} onRemoveGroup={onRemoveGroup} />}
       <div className='btn-open-addGroup' onClick={(event) => onToggleAddModal(event)}><FiPlus />Add another list</div>
-      {isAddModalOpen && <GroupAdd board={board} setBoard={setBoard} onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} />}
+      {isAddModalOpen && <GroupAdd board={board}  onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} />}
     </div>
   )
 }
