@@ -1,0 +1,15 @@
+.task-preview{
+    .task-title{
+        background-color: $clr6;
+        padding: 0.5em;
+        border-radius: 0.3em ;
+        border: 1px solid lightgray;
+        min-height: 30px;
+        cursor: pointer;
+
+        &:hover{
+            background-color: rgba(128, 128, 128, 0.25);
+        }
+    }
+
+}
