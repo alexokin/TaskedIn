@@ -41,21 +41,20 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
+    getDefaultFilter,
     boardStyles,
     boardStylesImg
 }
 
 window.cs = boardService
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = getDefaultFilter()) {
     var boards = await storageService.query(STORAGE_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    // }
-    // if (filterBy.price) {
-    //     cars = cars.filter(car => car.price <= filterBy.price)
-    // }
+    if (filterBy.title) {
+        const regex = new RegExp(filterBy.title, 'i')
+        boards = boards.filter(board => regex.test(board.title))
+    }
+    boards.sort((board1, board2) => board1[filterBy.sortBy].localeCompare(board2[filterBy.sortBy]) * filterBy.sortDesc)
     return boards
 }
 
@@ -89,6 +88,14 @@ function getEmptyBoard() {
         labels: [],
         members: [],
         groups: []
+    }
+}
+
+function getDefaultFilter() {
+    return {
+        title: '',
+        sortBy: 'title',
+        sortDesc: 1
     }
 }
 
