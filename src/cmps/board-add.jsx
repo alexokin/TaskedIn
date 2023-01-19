@@ -20,7 +20,7 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
         ev.preventDefault()
         try {
             onToggleAddBoardModal()
-            await addBoard(boardToAdd) 
+            await addBoard(boardToAdd)
         } catch (err) {
             console.log(err)
         }
@@ -31,7 +31,10 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
         <div style={addModalLoc} className="board-add">
             <h3>Create board</h3>
             <hr />
-            <div className="board-preview-img" style={boardToAdd?.style}></div>
+
+            <div className="board-preview-img" style={boardToAdd?.style}>
+                <div className="board-preview-img"></div>
+            </div>
             <span>Background</span>
             <div className="styles-img">
                 {boardService.boardStylesImg.map((style, idx) => {
@@ -39,7 +42,7 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc }) {
                         <div onClick={() => onStyleChange(style)}
                             key={style.backgroundColor}
                             className={`style-img img${idx + 1}`}
-                            >
+                        >
                         </div>
                     )
                 })}
