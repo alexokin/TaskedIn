@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { showErrorMsg } from "../services/event-bus.service";
 import { groupService } from "../services/group.service.local";
 import { updateBoard } from "../store/board.actions";
 import { GroupActions } from "./group-actions";
 import { HiDotsHorizontal } from "react-icons/hi";
+import { utilService } from "../services/util.service";
 
 export function GroupTitle({ group, board }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
   const [isActionsModalOpen, setIsActionsModalOpen] = useState(false)
+  const saveGroupDebounce = useRef(utilService.debounce(groupService.save))
 
 
   useEffect(() => {
-    groupService.save(board._id, groupToEdit)
+    saveGroupDebounce.current(board._id, groupToEdit)
   }, [groupToEdit])
 
   async function onHandleChange({ target }) {
