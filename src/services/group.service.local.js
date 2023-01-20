@@ -14,16 +14,14 @@ export const groupService = {
     remove,
     getEmptyGroup,
     getGroupTitle,
-    getDefaultFilter
 }
 
 window.cs = groupService
 
-async function query(boardId, filter = getDefaultFilter()) {
+async function query(boardId ) {
     try {
         const board = await storageService.get(STORAGE_KEY, boardId)
-        const regex = new RegExp(filter.keyword, 'i')
-        return board.groups.filter(group => regex.test(group.title))
+        return board.groups
     } catch (err) {
         throw err
     }
@@ -75,12 +73,6 @@ async function getGroupTitle(boardId, groupId) {
     const group = await groupService.getById(boardId, groupId)
     const groupTitle = group.title
     return groupTitle
-}
-
-function getDefaultFilter() {
-    return {
-        keyword: ''
-    }
 }
 
 function getEmptyGroup() {
