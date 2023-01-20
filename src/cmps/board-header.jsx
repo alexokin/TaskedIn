@@ -6,6 +6,7 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { MemberModal } from "./member-Modal";
 import { FilterModal } from "./filter-modal";
 import { useSelector } from "react-redux";
+import { setFilter } from "../store/system.actions";
 
 export function BoardHeader({ board }) {
   const [currMember, setCurrMember] = useState(null)
@@ -32,6 +33,7 @@ export function BoardHeader({ board }) {
       </div>
       <div className="board-action">
         <button onClick={onToggleFilterModal} className={`btn-filter ${filter.keyword ? 'active' : ''}`} ><IoFilterSharp /> Filter</button>
+        {filter.keyword && <button className="btn-clear-filter" onClick={()=>setFilter({keyword:''})} title="Clear filter">X</button>}
         <div className="members-container">
           {board.members?.map((member, idx) => {
             return (
