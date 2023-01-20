@@ -2,10 +2,11 @@
     width: 270px;
     background-color: $clr9;
     height: min-content;
+    min-height: 98px;
     padding: 0.2em;
     border-radius: 0.2em;
     position: absolute;
-
+    right: 24px;
 
     form{
         display: flex;

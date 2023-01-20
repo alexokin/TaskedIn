@@ -5,7 +5,7 @@ import { showErrorMsg } from "../services/event-bus.service";
 import { updateBoard } from "../store/board.actions";
 
 
-export function GroupAdd({ board, onToggleAddModal, addModalLoc }) {
+export function GroupAdd({ board, onToggleAddModal }) {
     const [groupToAdd, setGroupToAdd] = useState(groupService.getEmptyGroup())
 
 
@@ -29,7 +29,7 @@ export function GroupAdd({ board, onToggleAddModal, addModalLoc }) {
     }
 
     return (
-        <div className="group-add" style={addModalLoc}>
+        <div className="group-add" >
             <form onSubmit={onAddGroup}>
                 <input type="text"
                     id="title"

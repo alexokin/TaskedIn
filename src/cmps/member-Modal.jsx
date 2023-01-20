@@ -11,7 +11,7 @@ export function MemberModal({ member, onMemberSelect }) {
             </div>
             <div className="btn-member">Edit profile info</div>
             <div className="btn-member">View member's board activity</div>
-            <button className="btn-close-moadl" onClick={()=>onMemberSelect(null)}><GrFormClose /></button>
+            <button className="btn-close-modal" onClick={()=>onMemberSelect(null)}><GrFormClose /></button>
         </div>
     )
 }

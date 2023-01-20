@@ -13,28 +13,35 @@ import { TaskDetails } from "./task-details";
 import { BoardHeader } from "./board-header.jsx";
 
 export function BoardDetails() {
-  const board = useSelector((storeState) => storeState.boardModule.currBoard);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [addModalLoc, setAddModalLoc] = useState(null);
-  const { boardId, taskId } = useParams();
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const filter = useSelector((storeState) => storeState.systemModule.filter)
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const { boardId, taskId } = useParams()
+  const [groupsToDisplay, setGroupsToDisplay] = useState(null)
 
   useEffect(() => {
-    (async () => {
+    ; (async () => {
       try {
-        setBoard(boardId);
+        const groupsToSet = await groupService.query(boardId, filter)
+        setGroupsToDisplay(groupsToSet)
       } catch (err) {
-        showErrorMsg("Cannot load board", err);
+        showErrorMsg("Cannot load groups", err)
       }
-    })();
-  }, []);
+    })()
+  }, [filter])
 
-  function onToggleAddModal(ev) {
-    const BoundingClientRect = ev?.target.getBoundingClientRect();
-    const addModalLocToSet = {
-      left: `${BoundingClientRect?.left}px`,
-    };
-    setIsAddModalOpen((prevState) => !prevState);
-    setAddModalLoc(addModalLocToSet);
+  useEffect(() => {
+    ; (async () => {
+      try {
+        setBoard(boardId)
+      } catch (err) {
+        showErrorMsg("Cannot load board", err)
+      }
+    })()
+  }, [])
+
+  function onToggleAddModal() {
+    setIsAddModalOpen((prevState) => !prevState)
   }
 
   return (
@@ -43,7 +50,7 @@ export function BoardDetails() {
       {/* <SideNavBar /> */}
 
       <div className="board-content">
-        {board && <GroupList board={board} groups={board.groups} />}
+        {groupsToDisplay && <GroupList board={board} groups={groupsToDisplay} />}
         <div
           className="btn-open-addGroup"
           onClick={(event) => onToggleAddModal(event)}
@@ -51,15 +58,15 @@ export function BoardDetails() {
           <FiPlus />
           Add another list
         </div>
+        {isAddModalOpen && (
+          <GroupAdd
+            board={board}
+            onToggleAddModal={onToggleAddModal}
+          />
+        )}
       </div>
-      {isAddModalOpen && (
-        <GroupAdd
-          board={board}
-          onToggleAddModal={onToggleAddModal}
-          addModalLoc={addModalLoc}
-        />
-      )}
+
       {taskId && <TaskDetails />}
     </div>
-  );
+  )
 }
