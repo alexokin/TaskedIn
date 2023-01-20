@@ -12,6 +12,7 @@ export function GroupTitle({ group, board }) {
 
   useEffect(() => {
     groupService.save(board._id, groupToEdit)
+    updateBoard(board)
   }, [groupToEdit])
 
   async function onHandleChange({ target }) {

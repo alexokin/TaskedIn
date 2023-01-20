@@ -10,13 +10,7 @@ export function BoardList({ boards, onToggleAddBoardModal }) {
 
   async function onStarredChange(ev, boardId) {
     ev.stopPropagation()
-    try {
-      const board = await boardService.getById(boardId)
-      board.isStarred = !board.isStarred
-      await updateBoard(board)
-    } catch (error) {
-      console.log('Cannot change board starred status')
-    }
+    await boardService.toggleStar(boardId)
   }
 
   function onBoardSelect(boardId) {
