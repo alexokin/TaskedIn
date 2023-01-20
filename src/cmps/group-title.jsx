@@ -11,11 +11,7 @@ export function GroupTitle({ group, board }) {
 
 
   useEffect(() => {
-    ;(async()=>{
-      const savedGroup = await groupService.save(board._id, groupToEdit)
-      board.groups.map(group=> group._id===savedGroup._id? savedGroup: group)
-      updateBoard(board)
-    })()
+    groupService.save(board._id, groupToEdit)
   }, [groupToEdit])
 
   async function onHandleChange({ target }) {
