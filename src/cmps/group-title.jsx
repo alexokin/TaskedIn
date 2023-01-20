@@ -11,7 +11,6 @@ export function GroupTitle({ group, board }) {
   const [isActionsModalOpen, setIsActionsModalOpen] = useState(false)
   const saveGroupDebounce = useRef(utilService.debounce(groupService.save))
 
-
   useEffect(() => {
     saveGroupDebounce.current(board._id, groupToEdit)
   }, [groupToEdit])
