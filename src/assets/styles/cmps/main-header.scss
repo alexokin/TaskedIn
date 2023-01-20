@@ -1,12 +1,24 @@
 .main-header {
     align-items: center;
-    background-color: #026aa7;
+    background-color: $clr1;
     border-bottom: 1px solid hsla(0,0%,100%,.16);
     color: #fff;
     display: flex;
     font-family: CharlieText-regular;
-    justify-content: space-between;
     min-height: 44px;
     position: relative;
     width: 100%;
+    padding: 0.5em;
+
+    .left-container{
+        display: flex;
+        flex-basis: 50%;
+    }
+
+    .right-container{
+        display: flex;
+        gap: 1em;
+        justify-content: flex-end;
+        flex-basis: 50%;
+    }
 }
