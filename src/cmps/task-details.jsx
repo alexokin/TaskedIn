@@ -13,8 +13,8 @@ export function TaskDetails() {
   const navigate = useNavigate();
   const { boardId, groupId, taskId } = useParams();
 
-  const group = board.groups.find((group) => group._id === groupId)
-  let task = group.tasks.find((task) => task._id === taskId)
+  const group = board.groups?.find((group) => group._id === groupId)
+  let task = group.tasks?.find((task) => task._id === taskId)
 
  
 

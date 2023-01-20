@@ -4,6 +4,8 @@ import { BiSearch } from "react-icons/bi"
 import { AiOutlineDown } from "react-icons/ai"
 
 export function MainHeader() {
+
+  
   return (
     <div className='main-header'>
       <div className='left-container'>
@@ -19,22 +21,12 @@ export function MainHeader() {
         <div className='btn-create'>Create</div>
       </div>
       <div className='right-container'>
-        <TextField
-          id="title"
-          size="small"
-          placeholder='Search'
-          //onChange={handleChange}
-          //value={filterByToEdit.title}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <BiSearch />
-              </InputAdornment>
-            ),
-          }}
-          variant="outlined"
-        />
-        <img width='40px' src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" />
+        <div className='search-container'>
+          <BiSearch />
+          <input type="text"
+            placeholder='Search' />
+        </div>
+        <img width='30px' src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" />
       </div>
     </div>
   )
