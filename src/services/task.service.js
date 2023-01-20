@@ -11,7 +11,7 @@ export const taskService = {
 
 function add(title, groupId, board) {
   const group = board.groups.find((group) => group._id === groupId);
-  const savedTask = { title, _id: utilService.makeId() };
+  const savedTask = { title, _id: utilService.makeId() , description: ''};
   group.tasks.push(savedTask);
   return Promise.resolve(savedTask);
 }

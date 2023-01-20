@@ -42,7 +42,7 @@ export function TaskDetails() {
             <div className="task-body">
               <section className="task-content">
                 {/* <TaskDetailsOverview /> */}
-                <TaskDescription />
+                <TaskDescription board={board} task={task} groupId={groupId}/>
                 <TaskDetailsActivities />
               </section>
               <TaskDetailsSidebar taskId={taskId} groupId={groupId} board={board}/>
