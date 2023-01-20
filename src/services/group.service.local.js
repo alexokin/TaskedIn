@@ -43,6 +43,7 @@ async function remove(boardId, groupId) {
         const board = await storageService.get(STORAGE_KEY, boardId)
         board.groups = board.groups.filter(group => group._id !== groupId)
         await storageService.put(STORAGE_KEY, board)
+        updateBoard(board)
     } catch (err) {
         throw err
     }
@@ -73,7 +74,6 @@ async function getGroupTitle(boardId, groupId) {
     const groupTitle = group.title
     return groupTitle
   }
-
 
 function getEmptyGroup() {
     return {

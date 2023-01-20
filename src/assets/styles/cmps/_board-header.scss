@@ -1,39 +1,64 @@
 .board-header{
     width: 100vw;
     display: flex;
-
-    .board-title{
-        font-size: 2em;
-        color: $clr6;
-    }
+    justify-content: space-between;
+    padding: 0 1em;
+    position: relative;
 
     button{
         background-color: rgba(255, 255, 255, 0.2);
         border-radius: 0.3em;
     }
 
-    .btn-star{
-        font-size: 1.5em;
-        padding: 5px;
-        height: 34px;
+    .board-status{
+        display: flex;
 
-        &:hover{
-            color: $clr10;
+        .board-title{
+            font-size: 2em;
+            color: $clr6;
         }
 
-        &.starred{
-            color: $clr10;
-
+        .btn-star{
+            font-size: 1.5em;
+            padding: 5px;
+            height: 34px;
+    
             &:hover{
-                color: $clr6;
+                color: $clr10;
+            }
+    
+            &.starred{
+                color: $clr10;
+    
+                &:hover{
+                    color: $clr6;
+                }
             }
         }
     }
 
-    .btn-filter,.btn-menu{
+    .board-action{
+        display: flex;
 
-        &:hover{
-            background-color:rgba(255, 255, 255, 0.3) ;
+        .btn-filter,.btn-menu{
+
+            &:hover{
+                background-color:rgba(255, 255, 255, 0.3) ;
+            }
+        }
+    
+        .members-container{
+            width: 100px;
+            position: relative;
+            overflow-x: hidden;
+            img{
+                position: absolute;
+                width: 40px;
+                cursor: pointer;
+                &:hover{
+                    z-index: 999;
+                }
+            }
         }
     }
 

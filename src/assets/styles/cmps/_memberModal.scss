@@ -1,0 +1,49 @@
+.member-modal {
+    background: -webkit-linear-gradient(top, $clr1 0%, $clr1 33%, $clr6 33%, $clr6 100%);
+    position: absolute;
+    top: 100%;
+    right: 0.5em;
+    padding: 0 12px 12px;
+    width: 300px;
+    // height: 220px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.3em;
+
+    .member-info {
+        margin: 0 -12px;
+        display: flex;
+        padding: 24px 8px 12px 14px;
+        color: $clr6;
+
+        .member-name {
+            height: min-content;
+            padding-top: 14px;
+            padding-left: 8px;
+        }
+
+        img {
+            width: 86px;
+            cursor: pointer;
+        }
+    }
+
+    .btn-member {
+        // height: 2em;
+        margin-bottom: 0.5em;
+        padding: 0.5em;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(128, 128, 128, 0.1);
+        }
+    }
+
+    .btn-close-moadl {
+        position: absolute;
+        right: 0;
+        background: none;
+        font-size: 1.3em;
+    }
+
+}

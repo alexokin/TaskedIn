@@ -3,6 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { updateBoard } from '../store/board.actions.js'
+import { FaUserCircle } from "react-icons/fa";
 
 const STORAGE_KEY = 'board'
 const boardStyles = [
@@ -76,19 +77,36 @@ async function save(board) {
     } else {
         // Later, owner is set by the backend
         //board.createdBy = userService.getLoggedinUser()
+        board.members = [
+            {
+                _id: "u101",
+                fullname: "Eli Shallev",
+                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+            },
+            {
+                _id: "u102",
+                fullname: "Alex Okin",
+                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+            },
+            {
+                _id: "u103",
+                fullname: "Yossef Nahari",
+                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+            },
+        ]
         savedBoard = await storageService.post(STORAGE_KEY, board)
     }
     return savedBoard
 }
 
-async function toggleStar(boardId){
+async function toggleStar(boardId) {
     try {
         const board = await boardService.getById(boardId)
         board.isStarred = !board.isStarred
         await updateBoard(board)
-      } catch (error) {
+    } catch (error) {
         console.log('Cannot change board starred status')
-      }
+    }
 }
 
 function getEmptyBoard() {
