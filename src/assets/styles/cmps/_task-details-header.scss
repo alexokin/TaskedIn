@@ -16,9 +16,19 @@
     }
 
     .header-icon {
-        bottom: 46px;
+        bottom: 39.7px;
         font-size: 18px;
         position: relative;
         right: 26px;
+    }
+
+    .sub-title {
+        color: #616d82;
+        font-size: 0.781rem;
+        margin-inline-start: 8px;
+
+        .task-group-title {
+            text-decoration: underline;
+        }
     }
 }
