@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 import { IoCloseOutline } from 'react-icons/io5'
 import { TaskDetailsHeader } from "./task-details-header";
 import { TaskDetailsSidebar } from "./task-details-sidebar";
+import { TaskDescription } from "./task-description";
+import { TaskDetailsActivities } from "./task-details-activity";
 
 
 export function TaskDetails() {
@@ -28,11 +30,12 @@ export function TaskDetails() {
 
           <TaskDetailsHeader />
           <div className="task-body">
-            {/* <section className="task-content">
-              <TaskDetailsOverview />
+            <section className="task-content">
+              {/* <TaskDetailsOverview /> */}
               <TaskDescription/>
-              <Activities/>
-            </section> */}
+              <TaskDetailsActivities />
+         
+            </section>
             <TaskDetailsSidebar />
           </div>
         </section>

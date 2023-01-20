@@ -1,0 +1,47 @@
+.task-details-activity {
+    padding: 8px 0;
+
+    .header {
+        color: #172a4d;
+        font-size: 17px;
+        font-size: 16px;
+        font-weight: 600;
+        gap: 17px;
+        line-height: 20px;
+        margin: 10px 7px 4px;
+        padding: 0;
+        align-items: center;
+        border-radius: 3px;
+        display: flex;
+        gap: 15px;
+        height: 32px;
+        justify-content: flex-start;
+        margin: 8px 12px 4px;
+        padding: 0 14px;
+    }
+
+    .add-comment {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+        padding-right: 4px;
+        position: relative;
+
+        input {
+            width: 508px;
+            height: 36px;
+        }
+    }
+
+    .activity-list {
+        font-size: 14px;
+        gap: 16px;
+        margin-top: 8px;
+        max-width: 552px;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 8px 0 8px 13px;
+    }
+}
