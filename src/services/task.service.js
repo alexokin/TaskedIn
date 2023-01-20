@@ -1,32 +1,39 @@
+import { storageService } from "./async-storage.service";
 import { utilService } from "./util.service";
+
+const STORAGE_KEY = "board";
 
 export const taskService = {
   add,
-  // remove,
-  // update,
+  remove,
+  update,
 };
 
 function add(title, groupId, board) {
   const group = board.groups.find((group) => group._id === groupId);
-  const savedTask ={ title, _id: utilService.makeId()}
+  const savedTask = { title, _id: utilService.makeId() , description: ''};
   group.tasks.push(savedTask);
-  return Promise.resolve(savedTask)
+  return Promise.resolve(savedTask);
 }
 
-// function remove(groupId, taskId, board) {
-//      const group = board.groups.find((group) => group._id === groupId)
-//      console.log(group);
-//   const task = group.tasks.find((task) => task._id === taskId)
-//   group.tasks = group.tasks.filter((task) => task._id !== taskId)
-//   return group.tasks
-// }
+async function remove(board, groupId, taskId) {
+  try {
+    const group = board.groups.find((group) => group._id === groupId);
+    group.tasks = group.tasks.filter((task) => task._id !== taskId);
+    await storageService.put(STORAGE_KEY, board);
+  } catch (err) {
+    throw err;
+  }
+}
 
-// function update(board, groupId, task) {
-//   const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-//   const taskIdx = board.groups[groupIdx].tasks.findIndex((currTask) => currTask.id === task.id)
-//   board.groups[groupIdx].tasks.splice(taskIdx, 1, task)
-
-//   return board
-// }
-
-
+async function update(board, groupId, task) {
+  try {
+    const group = board.groups.find((group) => group._id === groupId);
+    group.tasks = group.tasks.map((currTask) =>
+      currTask._id === task._id ? task : currTask
+    );
+    await storageService.put(STORAGE_KEY, board);
+  } catch (err) {
+    throw err;
+  }
+}

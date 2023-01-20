@@ -1,11 +1,22 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
+
 import { BsPerson, BsCheck2Square, BsSquareHalf } from "react-icons/bs";
 import { AiOutlineTag, AiOutlineClockCircle } from "react-icons/ai";
 import { ImAttachment } from "react-icons/im";
 import { GoArchive } from "react-icons/go";
 import { IoLocationSharp } from "react-icons/io5";
+import { removeTask } from "../store/actions/task.actions.js";
 
-export function TaskDetailsSidebar() {
+export function TaskDetailsSidebar({taskId, groupId, board}) {
+  const navigate = useNavigate()
+
+  function onRemoveTask(ev) {
+    ev.preventDefault()
+    removeTask(taskId, groupId, board)
+    navigate(-1)
+  }
+
   return (
     <section className="task-sidebar">
       <h3 className="sidebar-title">Add to card</h3>
@@ -34,7 +45,7 @@ export function TaskDetailsSidebar() {
           <IoLocationSharp className="icon" />
           Location
         </button>
-        <button>
+        <button >
           <BsSquareHalf
             className="icon"
             style={{
@@ -44,7 +55,7 @@ export function TaskDetailsSidebar() {
           Cover
         </button>
 
-        <button className="btn-sidebar">
+        <button onClick={onRemoveTask} className="btn-sidebar">
           <GoArchive className="icon" />
           Delete
         </button>

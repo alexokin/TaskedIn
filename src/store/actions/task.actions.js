@@ -19,3 +19,25 @@ export async function addTask(title, groupId, board) {
     }
 }
 
+export async function removeTask(taskId, groupId, board) {
+    try {
+        await taskService.remove(board, groupId, taskId)
+        updateBoard(board)
+        
+    } catch (err) {
+        console.log('Cannot add task', err)
+        throw err
+    }
+}
+
+export async function updateTask(task, groupId, board) {
+    try {
+        await taskService.update(board, groupId, task)
+        updateBoard(board)
+        
+    } catch (err) {
+        console.log('Cannot add task', err)
+        throw err
+    }
+}
+

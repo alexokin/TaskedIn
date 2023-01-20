@@ -38,14 +38,14 @@ export function TaskDetails() {
               <IoCloseOutline />
             </button>
 
-            <TaskDetailsHeader task={task} groupId={groupId} groupTitle={group.title} />
+            <TaskDetailsHeader board={board} task={task} groupId={groupId} groupTitle={group.title} />
             <div className="task-body">
               <section className="task-content">
                 {/* <TaskDetailsOverview /> */}
-                <TaskDescription />
+                <TaskDescription board={board} task={task} groupId={groupId}/>
                 <TaskDetailsActivities />
               </section>
-              <TaskDetailsSidebar />
+              <TaskDetailsSidebar taskId={taskId} groupId={groupId} board={board}/>
             </div>
           </section>
         </section>
