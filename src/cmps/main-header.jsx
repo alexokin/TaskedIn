@@ -1,8 +1,8 @@
 import React from 'react'
 
-export function BoardNavBar() {
+export function MainHeader() {
   return (
-    <div className='board-nav-bar'>
+    <div className='main-header'>
      <a href="/workspace">blabla</a>
     </div>
   )

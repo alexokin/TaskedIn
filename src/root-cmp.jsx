@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router";
 import { BoardDetails } from "./cmps/board-details";
-import { BoardNavBar } from "./cmps/board-navbar";
+import { MainHeader } from "./cmps/main-header";
 import { TaskDetails } from "./cmps/task-details";
 import { HomePage } from "./pages/home-page";
 import { Workspace } from "./pages/workspace";
@@ -11,7 +11,7 @@ export function RootCmp() {
   return (
     <div>
       <main>
-        <BoardNavBar />
+        <MainHeader />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/workspace" element={<Workspace />} />
