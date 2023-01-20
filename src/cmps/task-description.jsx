@@ -31,7 +31,7 @@ export function TaskDescription({ board, task, groupId }) {
         <GrTextAlignFull className="description-icon" />
       </div>
       <div className="description-body">
-        <input onBlur={handleDescChange} onChange={handleChange} onFocus={() => {
+        <input value={descText} onBlur={handleDescChange} onChange={handleChange} onFocus={() => {
             setIsBtnsDesc(true)
           }} placeholder="Add a more detailed description..." type="text" />
         {isBtnsDesc && 
