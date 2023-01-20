@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { setBoard, updateBoard } from "../store/board.actions.js";
 import { BoardNavBar } from "./board-navbar";
 import { TaskDetails } from "./task-details";
+import { BoardHeader } from "./board-header.jsx";
 
 export function BoardDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
@@ -38,17 +39,18 @@ export function BoardDetails() {
 
   return (
     <div style={board?.style} className="board-details">
-      {/* <BoardNavBar /> */}
-      {/* <BoardHeader />
-      <SideNavBar /> */}
+      <BoardHeader board={board} />
+      {/* <SideNavBar /> */}
 
-      {board && <GroupList board={board} groups={board.groups} />}
-      <div
-        className="btn-open-addGroup"
-        onClick={(event) => onToggleAddModal(event)}
-      >
-        <FiPlus />
-        Add another list
+      <div className="board-content">
+        {board && <GroupList board={board} groups={board.groups} />}
+        <div
+          className="btn-open-addGroup"
+          onClick={(event) => onToggleAddModal(event)}
+        >
+          <FiPlus />
+          Add another list
+        </div>
       </div>
       {isAddModalOpen && (
         <GroupAdd

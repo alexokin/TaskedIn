@@ -2,6 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { updateBoard } from '../store/board.actions.js'
 
 const STORAGE_KEY = 'board'
 const boardStyles = [
@@ -42,6 +43,7 @@ export const boardService = {
     remove,
     getEmptyBoard,
     getDefaultFilter,
+    toggleStar,
     boardStyles,
     boardStylesImg
 }
@@ -77,6 +79,16 @@ async function save(board) {
         savedBoard = await storageService.post(STORAGE_KEY, board)
     }
     return savedBoard
+}
+
+async function toggleStar(boardId){
+    try {
+        const board = await boardService.getById(boardId)
+        board.isStarred = !board.isStarred
+        await updateBoard(board)
+      } catch (error) {
+        console.log('Cannot change board starred status')
+      }
 }
 
 function getEmptyBoard() {
