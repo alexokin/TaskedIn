@@ -3,6 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { boardService } from './board.service.local.js'
+import { updateBoard } from '../store/board.actions.js'
 
 const STORAGE_KEY = 'board'
 
@@ -59,6 +60,7 @@ async function save(boardId, group) {
             board.groups.push(group)
         }
         await storageService.put(STORAGE_KEY, board)
+        updateBoard(board)
         return group
     } catch (err) {
         throw err
