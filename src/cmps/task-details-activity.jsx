@@ -5,7 +5,7 @@ export function TaskDetailsActivities() {
   return (
     <section className="task-details-activity">
       <section className="header">
-      <GrSort />
+      <GrSort className="header-icon" />
         <p>Activity</p>
       </section>
       <section className="add-comment">
@@ -13,7 +13,7 @@ export function TaskDetailsActivities() {
           <img src="#" alt="" />
         </div>
         <form>
-          <input placeholder="write a comment..." type="text" />
+          <input placeholder="Write a comment..." type="text" />
           <button>Save</button>
         </form>
       </section>

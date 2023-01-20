@@ -12,6 +12,7 @@ export const groupService = {
     save,
     remove,
     getEmptyGroup,
+    getGroupTitle
 }
 
 window.cs = groupService
@@ -64,6 +65,13 @@ async function save(boardId, group) {
     }
 
 }
+
+async function getGroupTitle(boardId, groupId) {
+    const group = await groupService.getById(boardId, groupId)
+    const groupTitle = group.title
+    return groupTitle
+  }
+
 
 function getEmptyGroup() {
     return {
