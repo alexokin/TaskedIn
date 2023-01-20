@@ -1,13 +1,15 @@
 import { FormControl, InputAdornment, InputLabel, MenuItem, Select, TextField } from "@mui/material"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { boardService } from "../services/board.service.local"
 import { BiSearch } from "react-icons/bi";
+import { utilService } from "../services/util.service";
 
 export function BoardFilter({ onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState(boardService.getDefaultFilter())
+  const onSetFilterRef = useRef(utilService.debounce(onSetFilter))
 
   useEffect(() => {
-    onSetFilter(filterByToEdit)
+    onSetFilterRef.current(filterByToEdit)
   }, [filterByToEdit])
 
   function handleChange({ target }) {
