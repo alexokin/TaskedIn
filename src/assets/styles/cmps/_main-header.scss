@@ -61,6 +61,7 @@
         align-items: center;
         flex-grow: 1;
         margin-right: 0.5em;
+        position: relative;
 
         .search-container {
             background-color: rgba(255, 255, 255, 0.2);
@@ -71,37 +72,10 @@
             gap: 0.5em;
             padding-left: 0.5em;
             border-radius: 0.3em;
+            cursor: pointer;
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.3);
-            }
-
-            &:focus-within {
-                width: 100%;
-                background-color: $clr6;
-                color: black;
-                margin-left: 0.5em;
-                border: 2px solid $clr6;
-            }
-
-            input {
-                border: none;
-                background: none;
-
-                &::placeholder {
-                    opacity: 1;
-                    color: $clr6;
-                }
-
-                &:focus {
-                    width: 100%;
-                    outline: none;
-
-                    &::placeholder {
-                        opacity: 0.5;
-                        color: black;
-                    }
-                }
             }
         }
     }
