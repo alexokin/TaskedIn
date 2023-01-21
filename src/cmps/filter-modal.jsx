@@ -4,12 +4,13 @@ import { GrFormClose } from "react-icons/gr"
 import { groupService } from "../services/group.service.local"
 import { useSelector } from "react-redux"
 import { setFilter } from "../store/system.actions"
+import { setBoard, updateBoard } from "../store/board.actions"
 
-export function FilterModal({ onToggleFilterModal }) {
+export function FilterModal({ onToggleFilterModal, board }) {
 
     const filter = useSelector((storeState) => storeState.systemModule.filter)
     const [filterToEdit, setFilterToEdit] = useState(filter)
-   
+
 
     useEffect(() => {
         setFilter(filterToEdit)

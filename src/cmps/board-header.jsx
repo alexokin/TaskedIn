@@ -44,7 +44,7 @@ export function BoardHeader({ board }) {
         </div>
         <button className="btn-menu"><HiDotsHorizontal /></button>
         {currMember && <MemberModal member={currMember} onMemberSelect={onMemberSelect} />}
-        {isFilterModalOpen && <FilterModal onToggleFilterModal={onToggleFilterModal} />}
+        {isFilterModalOpen && <FilterModal board={board} onToggleFilterModal={onToggleFilterModal} />}
       </div>
     </div>
   )
