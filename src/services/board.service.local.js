@@ -2,6 +2,8 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { updateBoard } from '../store/board.actions.js'
+import { FaUserCircle } from "react-icons/fa";
 
 const STORAGE_KEY = 'board'
 const boardStyles = [
@@ -12,6 +14,28 @@ const boardStyles = [
     { backgroundColor: '#89609e' },
     { backgroundColor: '#cd5a91' }
 ]
+const boardStylesImg = [
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    },
+    {
+        backgroundImage: `url('https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80                                                                           ')`,
+        backgroundSize: 'cover',
+        // backgroundRepeat: 'no - repeat'
+    }
+]
 
 export const boardService = {
     query,
@@ -19,20 +43,21 @@ export const boardService = {
     save,
     remove,
     getEmptyBoard,
-    boardStyles
+    getDefaultFilter,
+    toggleStar,
+    boardStyles,
+    boardStylesImg
 }
 
 window.cs = boardService
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = getDefaultFilter()) {
     var boards = await storageService.query(STORAGE_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    // }
-    // if (filterBy.price) {
-    //     cars = cars.filter(car => car.price <= filterBy.price)
-    // }
+    if (filterBy.title) {
+        const regex = new RegExp(filterBy.title, 'i')
+        boards = boards.filter(board => regex.test(board.title))
+    }
+    boards.sort((board1, board2) => board1[filterBy.sortBy].localeCompare(board2[filterBy.sortBy]) * filterBy.sortDesc)
     return boards
 }
 
@@ -52,9 +77,36 @@ async function save(board) {
     } else {
         // Later, owner is set by the backend
         //board.createdBy = userService.getLoggedinUser()
+        board.members = [
+            {
+                _id: "u101",
+                fullname: "Eli Shallev",
+                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+            },
+            {
+                _id: "u102",
+                fullname: "Alex Okin",
+                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+            },
+            {
+                _id: "u103",
+                fullname: "Yossef Nahari",
+                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+            },
+        ]
         savedBoard = await storageService.post(STORAGE_KEY, board)
     }
     return savedBoard
+}
+
+async function toggleStar(boardId) {
+    try {
+        const board = await boardService.getById(boardId)
+        board.isStarred = !board.isStarred
+        await updateBoard(board)
+    } catch (error) {
+        console.log('Cannot change board starred status')
+    }
 }
 
 function getEmptyBoard() {
@@ -66,6 +118,14 @@ function getEmptyBoard() {
         labels: [],
         members: [],
         groups: []
+    }
+}
+
+function getDefaultFilter() {
+    return {
+        title: '',
+        sortBy: 'title',
+        sortDesc: 1
     }
 }
 

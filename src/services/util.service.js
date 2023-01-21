@@ -4,6 +4,7 @@ export const utilService = {
     getRandomIntInclusive,
     debounce,
     randomPastTime,
+    getModalPosition,
     saveToStorage,
     loadFromStorage
 }
@@ -35,7 +36,6 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
 }
 
-
 function randomPastTime() {
     const HOUR = 1000 * 60 * 60
     const DAY = 1000 * 60 * 60 * 24
@@ -52,6 +52,18 @@ function debounce(func, timeout = 300){
       timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
 }
+
+function getModalPosition(type, ref) {
+    const rect = ref.current.getBoundingClientRect()
+    const pos = { bottom: rect.bottom + 8, left: rect.left }
+    if (window.innerWidth - rect.right < 150) pos.left -= 130
+    if (window.innerHeight - rect.bottom < 450) pos.bottom -= 200
+    if (type === 'Filter' || type === 'Account') {
+      pos.right = 5
+      pos.bottom += 8
+    }
+    return pos
+  }
 
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))

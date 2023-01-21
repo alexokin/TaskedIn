@@ -8,8 +8,7 @@ import { taskService } from "../services/task.service.local.js";
 import { addTask } from "../store/actions/task.actions";
 import { FiPlus } from "react-icons/fi";
 
-export function TaskList({ groupTasks, groupId, board, setBoard }) {
-  const [tasks, setTasks] = useState(groupTasks)
+export function TaskList({ groupTasks, groupId, board }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
   function onToggleAddModal() {
@@ -18,11 +17,11 @@ export function TaskList({ groupTasks, groupId, board, setBoard }) {
 
   return (
     <div className="task-list">
-      {tasks.map((task, index) => (
-        <TaskPreview board={board} key={task.id} task={task} groupId={groupId} />
+      {groupTasks.map((task, index) => (
+        <TaskPreview board={board} key={task._id} task={task} groupId={groupId} />
       ))}
       {!isAddModalOpen && <div onClick={onToggleAddModal} className="btn-open-add-task"><FiPlus />Add another list</div>}
-      {isAddModalOpen && <AddTask onToggleAddModal={onToggleAddModal} tasks={tasks} setTasks={setTasks} board={board} groupId={groupId} />}
+      {isAddModalOpen && <AddTask onToggleAddModal={onToggleAddModal} tasks={groupTasks} board={board} groupId={groupId} />}
     </div>
   );
 }

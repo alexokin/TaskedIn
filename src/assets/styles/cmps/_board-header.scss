@@ -1,3 +1,87 @@
-.board-header {
+.board-header{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
+    position: fixed;
+    z-index: 1;
+
+    button{
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 0.3em;
+    }
+
+    .board-status{
+        display: flex;
+
+        .board-title{
+            font-size: 1.125rem;
+            color: $clr6;
+        }
+
+        .btn-star{
+            font-size: 1.5em;
+            padding: 5px;
+            height: 34px;
     
+            &:hover{
+                color: $clr10;
+            }
+    
+            &.starred{
+                color: $clr10;
+    
+                &:hover{
+                    color: $clr6;
+                }
+            }
+        }
+    }
+
+    .board-action{
+        display: flex;
+
+        .btn-menu{
+            &:hover{
+                background-color:rgba(255, 255, 255, 0.3) ;
+            }
+        }
+
+        .btn-filter{
+            margin-right: 0;
+            &:hover{
+                background-color:rgba(255, 255, 255, 0.3) ;
+            }
+
+            &.active{
+                background-color: $clr6 ;
+                color: black;
+            }
+        }
+
+        .btn-clear-filter{
+            margin-left: 0;
+            color: black;
+
+            &:hover{
+                background-color: $clr6;
+            }
+        }
+    
+        .members-container{
+            width: 100px;
+            margin-left: 0.5em;
+            position: relative;
+            overflow-x: hidden;
+            img{
+                position: absolute;
+                width: 40px;
+                cursor: pointer;
+                &:hover{
+                    z-index: 999;
+                }
+            }
+        }
+    }
+
 }

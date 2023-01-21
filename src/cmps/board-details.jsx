@@ -1,73 +1,56 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { boardService } from '../services/board.service.local.js'
-import { showErrorMsg } from '../services/event-bus.service.js'
-import { groupService } from '../services/group.service.local.js'
-import { BoardHeader } from './board-header.jsx'
-import { BoardNavBar } from './board-navbar.jsx'
-import { GroupList } from './group-list.jsx'
-import { SideNavBar } from './side-nav-bar.jsx'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { showErrorMsg } from "../services/event-bus.service.js";
+import { GroupList } from "./group-list.jsx";
 import { FiPlus } from "react-icons/fi";
-import { GroupAdd } from './group-add.jsx'
+import { GroupAdd } from "./group-add.jsx";
+import { useSelector } from "react-redux";
+import { setBoard } from "../store/board.actions.js";
+import { TaskDetails } from "./task-details";
+import { BoardHeader } from "./board-header.jsx";
 
 export function BoardDetails() {
-  const [board, setBoard] = useState(null)
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
-  const [addModalLoc, setAddModalLoc] = useState(null)
-  const { boardId } = useParams()
+  const { boardId, taskId } = useParams()
 
   useEffect(() => {
     ; (async () => {
       try {
-        const boardToSet = await boardService.getById(boardId)
-        setBoard(boardToSet)
+        setBoard(boardId)
       } catch (err) {
-        showErrorMsg('Cannot load board', err)
+        showErrorMsg("Cannot load board", err)
       }
     })()
   }, [])
 
-  async function onAddGroup() {
-    let group = groupService.getEmptyGroup()
-    try {
-      group.title = prompt('Group title?')
-      group = await groupService.save(boardId, group)
-      board.groups.push(group)
-      setBoard(prevBoard => ({ ...prevBoard }))
-    } catch (err) {
-      showErrorMsg('Cannot save group', err)
-    }
+  function onToggleAddModal() {
+    setIsAddModalOpen((prevState) => !prevState)
   }
-
-  async function onRemoveGroup(groupId) {
-    try {
-      await groupService.remove(boardId, groupId)
-      board.groups = board.groups.filter(group => group._id !== groupId)
-      setBoard(prevBoard => ({ ...prevBoard }))
-    } catch (err) {
-      showErrorMsg('Cannot remove group', err)
-    }
-  }
-
-  function onToggleAddModal(ev) {
-    const BoundingClientRect = ev?.target.getBoundingClientRect()
-    const addModalLocToSet = {
-      left: `${BoundingClientRect?.left}px`
-    }
-    setIsAddModalOpen(prevState => !prevState)
-    setAddModalLoc(addModalLocToSet)
-  }
-
-
 
   return (
-    <div style={board?.style} className='board-details'>
-      {/* <BoardNavBar />
-      <BoardHeader />
-      <SideNavBar /> */}
-      {board && <GroupList setBoard={setBoard} board={board} groups={board.groups} onRemoveGroup={onRemoveGroup} />}
-      <div className='btn-open-addGroup' onClick={(event) => onToggleAddModal(event)}><FiPlus />Add another list</div>
-      {isAddModalOpen && <GroupAdd board={board} setBoard={setBoard} onToggleAddModal={onToggleAddModal} addModalLoc={addModalLoc} />}
+    <div style={board?.style} className="board-details">
+      <BoardHeader board={board} />
+      {/* <SideNavBar /> */}
+
+      <div className="board-content">
+        {board && <GroupList board={board} groups={board.groups} />}
+        <div
+          className="btn-open-addGroup"
+          onClick={(event) => onToggleAddModal(event)}
+        >
+          <FiPlus />
+          Add another list
+        </div>
+        {isAddModalOpen && (
+          <GroupAdd
+            board={board}
+            onToggleAddModal={onToggleAddModal}
+          />
+        )}
+      </div>
+
+      {taskId && <TaskDetails />}
     </div>
   )
 }

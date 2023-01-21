@@ -3,6 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { boardService } from './board.service.local.js'
+import { updateBoard } from '../store/board.actions.js'
 
 const STORAGE_KEY = 'board'
 
@@ -12,11 +13,12 @@ export const groupService = {
     save,
     remove,
     getEmptyGroup,
+    getGroupTitle,
 }
 
 window.cs = groupService
 
-async function query(boardId) {
+async function query(boardId ) {
     try {
         const board = await storageService.get(STORAGE_KEY, boardId)
         return board.groups
@@ -41,6 +43,7 @@ async function remove(boardId, groupId) {
         const board = await storageService.get(STORAGE_KEY, boardId)
         board.groups = board.groups.filter(group => group._id !== groupId)
         await storageService.put(STORAGE_KEY, board)
+        updateBoard(board)
     } catch (err) {
         throw err
     }
@@ -58,11 +61,18 @@ async function save(boardId, group) {
             board.groups.push(group)
         }
         await storageService.put(STORAGE_KEY, board)
+        updateBoard(board)
         return group
     } catch (err) {
         throw err
     }
 
+}
+
+async function getGroupTitle(boardId, groupId) {
+    const group = await groupService.getById(boardId, groupId)
+    const groupTitle = group.title
+    return groupTitle
 }
 
 function getEmptyGroup() {

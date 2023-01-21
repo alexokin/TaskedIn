@@ -1,0 +1,67 @@
+import React, { useRef } from "react";
+import { useNavigate } from 'react-router-dom'
+
+import { BsPerson, BsCheck2Square, BsSquareHalf } from "react-icons/bs";
+import { AiOutlineTag, AiOutlineClockCircle } from "react-icons/ai";
+import { ImAttachment } from "react-icons/im";
+import { GoArchive } from "react-icons/go";
+import { IoLocationSharp } from "react-icons/io5";
+import { removeTask } from "../store/actions/task.actions.js";
+
+
+export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
+  const navigate = useNavigate()
+  const checklistBtnRef = useRef()
+
+  function onRemoveTask(ev) {
+    ev.preventDefault()
+    removeTask(taskId, groupId, board)
+    navigate(-1)
+  }
+
+  return (
+    <section className="task-sidebar">
+      <h3 className="sidebar-title">Add to card</h3>
+      <div className="btn-container">
+        <button>
+          <BsPerson className="icon" />
+          Members
+        </button>
+        <button>
+          <AiOutlineTag className="icon" />
+          Labels
+        </button>
+        <button ref={checklistBtnRef} onClick={()=> onOpenModal('Checklist', checklistBtnRef)}>
+          <BsCheck2Square className="icon" />
+          Checklist
+        </button>
+        <button>
+          <AiOutlineClockCircle className="icon" />
+          Dates
+        </button>
+        <button>
+          <ImAttachment className="icon" />
+          Attachment
+        </button>
+        <button>
+          <IoLocationSharp className="icon" />
+          Location
+        </button>
+        <button >
+          <BsSquareHalf
+            className="icon"
+            style={{
+              transform: "rotate(0.75turn) translateY(-20%) translateX(22%)",
+            }}
+          />
+          Cover
+        </button>
+
+        <button onClick={onRemoveTask} className="btn-sidebar">
+          <GoArchive className="icon" />
+          Delete
+        </button>
+      </div>
+    </section>
+  );
+}

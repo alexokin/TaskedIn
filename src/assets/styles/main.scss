@@ -17,14 +17,22 @@
 @import "views/home-page";
 @import "views/board-app";
 @import "views/user-details";
+@import "views/task-details";
 
 // Components
+
 @import "cmps/app-header";
 @import "cmps/app-footer";
 @import "cmps/workspace";
+@import "cmps/board-header";
 @import "cmps/board-details";
 @import "cmps/group-preview";
 @import "cmps/task-list";
+@import "cmps/task-details-header";
+@import "cmps/task-detail-modal";
+@import "cmps/task-description";
+@import "cmps/task-details-activities";
+@import "cmps/check-list";
 @import "cmps/board-add";
 @import "cmps/board-list";
 @import "cmps/board-preview";
@@ -32,6 +40,13 @@
 @import "cmps/group-add";
 @import "cmps/group-title";
 @import "cmps/task-preview";
+@import "cmps/group-actions";
+@import "cmps/board-filter";
+@import "cmps/main-header.scss";
+@import "cmps/member-modal";
+@import "cmps/filter-modal";
+@import "cmps/board-starred-list";
+@import "cmps/board-search-list";
 
 
 

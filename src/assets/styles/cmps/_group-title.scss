@@ -1,0 +1,24 @@
+.group-title {
+    display: flex;
+
+    input {
+        background: none;
+        border: none;
+        width: 100%;
+        font-size: 1.3em;
+
+        &:focus {
+            background-color: $clr6;
+            outline-color: $clr1;
+        }
+    }
+
+    .group-action-btn {
+        background: none;
+        color: gray;
+        font-size: 1.5em;
+        padding: 0;
+        margin: 0;
+        margin-left: 0.5em;
+    }
+}

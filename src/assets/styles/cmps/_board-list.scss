@@ -25,24 +25,42 @@
         overflow: hidden;
 
         &:hover {
-            .btn-starred {
+            .btn-starred,.btn-remove-board {
                 translate: 0;
             }
         }
-    }
 
-    .btn-starred {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        translate: 150%;
-        transition: translate 0.5s;
-        background: none;
-        font-size: 1em;
+        .btn-starred {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            translate: 150%;
+            transition: translate 0.5s;
+            background: none;
+            font-size: 1em;
 
-        &.starred {
-            color: $clr10;
-            translate: 0;
+            &:hover{
+                color: black;
+            }
+
+            &.starred {
+                color: $clr10;
+                translate: 0;
+            }
+        }
+
+        .btn-remove-board {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            color: $clr9;
+            translate: 150%;
+            transition: translate 0.5s;
+
+            &:hover{
+                color: black;
+            }
         }
     }
 }

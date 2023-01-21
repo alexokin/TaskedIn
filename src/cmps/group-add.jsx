@@ -2,9 +2,10 @@ import { useState } from "react"
 import { groupService } from "../services/group.service.local"
 import { AiOutlineClose } from "react-icons/ai";
 import { showErrorMsg } from "../services/event-bus.service";
+import { updateBoard } from "../store/board.actions";
 
 
-export function GroupAdd({ setBoard, board, onToggleAddModal, addModalLoc }) {
+export function GroupAdd({ board, onToggleAddModal }) {
     const [groupToAdd, setGroupToAdd] = useState(groupService.getEmptyGroup())
 
 
@@ -18,8 +19,7 @@ export function GroupAdd({ setBoard, board, onToggleAddModal, addModalLoc }) {
         try {
             const savedGroup = await groupService.save(board._id, groupToAdd)
             board.groups.push(savedGroup)
-            setBoard(prevBoard => ({ ...prevBoard }))
-            
+            updateBoard(board)   
         } catch (err) {
             showErrorMsg('Cannot save group', err)
         }
@@ -29,7 +29,7 @@ export function GroupAdd({ setBoard, board, onToggleAddModal, addModalLoc }) {
     }
 
     return (
-        <div className="group-add" style={addModalLoc}>
+        <div className="group-add" >
             <form onSubmit={onAddGroup}>
                 <input type="text"
                     id="title"
