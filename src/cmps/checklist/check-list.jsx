@@ -11,7 +11,6 @@ function handleChange({target}) {
 
 function onAddChecklist(ev) {
     ev.preventDefault()
-
 }
 
   return (
