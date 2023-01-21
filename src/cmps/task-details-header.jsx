@@ -6,7 +6,7 @@ import { updateTask } from "../store/actions/task.actions";
 
 
 export function TaskDetailsHeader({ task, groupId, groupTitle, board }) {
-  const [taskText, setTextTitle] = useState(task.title)
+  const [textTitle, setTextTitle] = useState(task.title)
 
   function handleChange({ target }) {
     let { value } = target
@@ -14,14 +14,14 @@ export function TaskDetailsHeader({ task, groupId, groupTitle, board }) {
 }
 
   function setTaskTitle() {
-    task.title = taskText
+    task.title = textTitle
     updateTask(task, groupId, board)
   }
   
 
   return (
     <section className="task-details-header">
-      <input type="text" value={taskText} onChange={handleChange} onBlur={setTaskTitle}/>
+      <input type="text" value={textTitle} onChange={handleChange} onBlur={setTaskTitle}/>
       <div className="sub-title">
         in list &nbsp;
         <span className="task-group-title">{groupTitle}</span>
