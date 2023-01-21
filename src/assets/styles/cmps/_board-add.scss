@@ -1,10 +1,11 @@
 .board-add {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     background-color: $clr6;
     padding: 0.5em;
     border: 1px solid lightgray;
     max-width: 280px;
+     color: black;
 
     .board-preview-img {
         height: 160px;

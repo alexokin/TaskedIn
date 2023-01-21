@@ -3,10 +3,14 @@ import React, { useState } from 'react'
 import { BiSearch } from "react-icons/bi"
 import { AiOutlineDown } from "react-icons/ai"
 import { BoardStarredList } from './board-starred-list'
+import { BoardAdd } from './board-add'
+import { useNavigate } from 'react-router'
 
 export function MainHeader() {
   const [isStarredListOpen, setIsStarredListOpen] = useState(false)
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [modalLoc, setmodalLoc] = useState(null)
+
 
   function toggleStarredList(ev) {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
@@ -15,6 +19,16 @@ export function MainHeader() {
       top: `${BoundingClientRect?.bottom}px`
     }
     setIsStarredListOpen(prevState => !prevState)
+    setmodalLoc(modalLocToSet)
+  }
+
+  function onToggleCreateBoardModal(ev) {
+    const BoundingClientRect = ev?.target.getBoundingClientRect()
+    const modalLocToSet = {
+      left: `${BoundingClientRect?.left}px`,
+      top: `${BoundingClientRect?.bottom + 16}px`
+    }
+    setIsCreateModalOpen(prevState => !prevState)
     setmodalLoc(modalLocToSet)
   }
 
@@ -30,7 +44,7 @@ export function MainHeader() {
           Starred
           <AiOutlineDown />
         </div>
-        <div className='btn-create'>Create</div>
+        <div className='btn-create' onClick={(event) => onToggleCreateBoardModal(event)}>Create</div>
       </div>
       <div className='right-container'>
         <div className='search-container'>
@@ -42,6 +56,7 @@ export function MainHeader() {
       </div>
 
       {isStarredListOpen && <BoardStarredList toggleStarredList={toggleStarredList} modalLoc={modalLoc} />}
+      {isCreateModalOpen && <BoardAdd addModalLoc={modalLoc} onToggleAddBoardModal={onToggleCreateBoardModal} fromHeader={true} />}
     </div>
   )
 }
