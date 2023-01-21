@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoCloseOutline } from "react-icons/io5";
@@ -6,24 +6,28 @@ import { TaskDetailsHeader } from "./task-details-header";
 import { TaskDetailsSidebar } from "./task-details-sidebar";
 import { TaskDescription } from "./task-description";
 import { TaskDetailsActivities } from "./task-details-activity";
+import { TaskDetailsModal } from "./task-details-modal";
 import { groupService } from "../services/group.service.local";
+import { utilService } from "../services/util.service";
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
   const navigate = useNavigate();
   const { boardId, groupId, taskId } = useParams();
+  const [taskDetailsModal, setTaskDetailsModal] = useState(null);
 
-  const group = board.groups?.find((group) => group._id === groupId)
-  let task = group.tasks?.find((task) => task._id === taskId)
-
- 
+  const group = board.groups?.find((group) => group._id === groupId);
+  let task = group.tasks?.find((task) => task._id === taskId);
 
   function backToBoard(ev) {
     ev.stopPropagation();
     navigate(-1);
   }
 
-  
+  function onOpenModal(type, ref) {
+    const pos = utilService.getModalPosition(type, ref)
+    setTaskDetailsModal({type, pos})
+  }
 
   return (
     <Fragment>
@@ -38,17 +42,35 @@ export function TaskDetails() {
               <IoCloseOutline />
             </button>
 
-            <TaskDetailsHeader board={board} task={task} groupId={groupId} groupTitle={group.title} />
+            <TaskDetailsHeader
+              board={board}
+              task={task}
+              groupId={groupId}
+              groupTitle={group.title}
+            />
             <div className="task-body">
               <section className="task-content">
                 {/* <TaskDetailsOverview /> */}
-                <TaskDescription board={board} task={task} groupId={groupId}/>
+                <TaskDescription board={board} task={task} groupId={groupId} />
                 <TaskDetailsActivities />
               </section>
-              <TaskDetailsSidebar taskId={taskId} groupId={groupId} board={board}/>
+              <TaskDetailsSidebar
+                onOpenModal={onOpenModal}
+                taskId={taskId}
+                groupId={groupId}
+                board={board}
+              />
             </div>
           </section>
         </section>
+        {taskDetailsModal && (
+          <TaskDetailsModal
+            setTaskDetailsModal={setTaskDetailsModal}
+            task={task}
+            data={taskDetailsModal}
+            groupId={groupId}
+          />
+        )}
       </section>
     </Fragment>
   );

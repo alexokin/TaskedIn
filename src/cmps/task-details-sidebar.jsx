@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from 'react-router-dom'
 
 import { BsPerson, BsCheck2Square, BsSquareHalf } from "react-icons/bs";
@@ -8,8 +8,10 @@ import { GoArchive } from "react-icons/go";
 import { IoLocationSharp } from "react-icons/io5";
 import { removeTask } from "../store/actions/task.actions.js";
 
-export function TaskDetailsSidebar({taskId, groupId, board}) {
+
+export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
   const navigate = useNavigate()
+  const checklistBtnRef = useRef()
 
   function onRemoveTask(ev) {
     ev.preventDefault()
@@ -29,7 +31,7 @@ export function TaskDetailsSidebar({taskId, groupId, board}) {
           <AiOutlineTag className="icon" />
           Labels
         </button>
-        <button>
+        <button ref={checklistBtnRef} onClick={()=> onOpenModal('Checklist', checklistBtnRef)}>
           <BsCheck2Square className="icon" />
           Checklist
         </button>
