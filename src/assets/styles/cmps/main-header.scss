@@ -1,24 +1,108 @@
 .main-header {
     align-items: center;
-    background-color: $clr1;
-    border-bottom: 1px solid hsla(0,0%,100%,.16);
+    background-color: $clr11;
+    border-bottom: 1px solid hsla(0, 0%, 100%, .16);
     color: #fff;
     display: flex;
     font-family: CharlieText-regular;
     min-height: 44px;
     position: relative;
     width: 100%;
-    padding: 0.5em;
 
-    .left-container{
+    .left-container {
         display: flex;
-        flex-basis: 50%;
+        width: fit-content;
+        margin-left: 0.5em;
+        gap: 1em;
+        align-items: center;
+
+        .logo {
+            font-size: 1.5em;
+            color: white;
+            text-decoration: none;
+            padding: 0.15em;
+            border-radius: 0.15em;
+
+            &:hover {
+                background-color: $clr12;
+            }
+        }
+
+        .btn-recent,
+        .btn-starred {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            padding: 0.5em;
+            cursor: pointer;
+            border-radius: 0.3em;
+
+            &:hover {
+                background-color: $clr12;
+            }
+        }
+
+        .btn-create {
+            padding: 0.5em;
+            background-color: $clr12;
+            cursor: pointer;
+            border-radius: 0.3em;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+        }
     }
 
-    .right-container{
+    .right-container {
         display: flex;
         gap: 1em;
         justify-content: flex-end;
-        flex-basis: 50%;
+        align-items: center;
+        flex-grow: 1;
+        margin-right: 0.5em;
+
+        .search-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            height: 32px;
+            width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            padding-left: 0.5em;
+            border-radius: 0.3em;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+
+            &:focus-within {
+                width: 100%;
+                background-color: $clr6;
+                color: black;
+                margin-left: 0.5em;
+                border: 2px solid $clr6;
+            }
+
+            input {
+                border: none;
+                background: none;
+
+                &::placeholder {
+                    opacity: 1;
+                    color: $clr6;
+                }
+
+                &:focus {
+                    width: 100%;
+                    outline: none;
+
+                    &::placeholder {
+                        opacity: 0.5;
+                        color: black;
+                    }
+                }
+            }
+        }
     }
 }
