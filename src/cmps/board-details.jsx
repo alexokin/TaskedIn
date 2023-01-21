@@ -11,7 +11,6 @@ import { BoardHeader } from "./board-header.jsx";
 
 export function BoardDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
-  const filter = useSelector((storeState) => storeState.systemModule.filter)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
   const { boardId, taskId } = useParams()
 
