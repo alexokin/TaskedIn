@@ -6,6 +6,7 @@ import { updateTask } from "../store/actions/task.actions";
 
 
 export function TaskDetailsHeader({ task, groupId, groupTitle, board }) {
+  
   const [textTitle, setTextTitle] = useState(task.title)
 
   function handleChange({ target }) {
