@@ -20,7 +20,7 @@ export function TaskList({ groupTasks, groupId, board }) {
       {groupTasks.map((task, index) => (
         <TaskPreview board={board} key={task._id} task={task} groupId={groupId} />
       ))}
-      {!isAddModalOpen && <div onClick={onToggleAddModal} className="btn-open-add-task"><FiPlus />Add another list</div>}
+      {!isAddModalOpen && <div onClick={onToggleAddModal} className="btn-open-add-task"><FiPlus />Add a card</div>}
       {isAddModalOpen && <AddTask onToggleAddModal={onToggleAddModal} tasks={groupTasks} board={board} groupId={groupId} />}
     </div>
   );
