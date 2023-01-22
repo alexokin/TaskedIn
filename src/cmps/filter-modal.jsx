@@ -9,20 +9,20 @@ import { setBoard, updateBoard } from "../store/board.actions"
 export function FilterModal({ onToggleFilterModal, board }) {
 
     const filter = useSelector((storeState) => storeState.systemModule.filter)
-    const [filterToEdit, setFilterToEdit] = useState(filter)
+    const [taskFilter, setTaskFilter] = useState(filter)
 
 
     useEffect(() => {
-        setFilter(filterToEdit)
-    }, [filterToEdit])
+        setFilter(taskFilter)
+    }, [taskFilter])
 
     function hanleChange({ target }) {
         const { value, name: field } = target
-        setFilterToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
+        setTaskFilter(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
     return (
-        <div className="filter-modal">
+        <div className="filter-modal" onBlur={onToggleFilterModal}>
             <div className="modal-header">
                 <span>Filter</span>
                 <button className="btn-close-modal" onClick={onToggleFilterModal}><GrFormClose /></button>
@@ -34,8 +34,9 @@ export function FilterModal({ onToggleFilterModal, board }) {
                     id="keyword"
                     name="keyword"
                     placeholder="Enter a keyword..."
-                    value={filterToEdit?.keyword}
-                    onChange={hanleChange} />
+                    value={taskFilter?.keyword}
+                    onChange={hanleChange}
+                    autoFocus />
             </form>
         </div>
     )
