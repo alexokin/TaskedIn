@@ -37,7 +37,7 @@ export function BoardHeader({ board }) {
         <div className="members-container">
           {board.members?.map((member, idx) => {
             return (
-              <img onClick={() => setCurrMember(member)} style={{ left: `${idx * 30}px` }} key={member._id} src={member.imgUrl} alt="" />
+              <img onClick={() => setCurrMember(member)} style={{ left: `${idx * 25}px` }} key={member._id} src={member.imgUrl} alt="" />
             )
           })}
 

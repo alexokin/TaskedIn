@@ -13,10 +13,11 @@
 
     .board-status{
         display: flex;
-
+        align-items: center;
         .board-title{
             font-size: 1.125rem;
             color: $clr6;
+            height: min-content;
         }
 
         .btn-star{
@@ -73,9 +74,13 @@
             margin-left: 0.5em;
             position: relative;
             overflow-x: hidden;
+            display: flex;
+            align-items: center;
             img{
                 position: absolute;
-                width: 40px;
+                border-radius: 50%;
+                width: 28px;
+                height: 28px;
                 cursor: pointer;
                 &:hover{
                     z-index: 999;
