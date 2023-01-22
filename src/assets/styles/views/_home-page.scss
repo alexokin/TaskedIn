@@ -88,7 +88,7 @@
 }
 
 .productivity-powerhouse-section {
-    margin-left: 385px;
+    margin-left: 230px;
     display: grid;
     grid-template-rows: 1fr 1fr;
 
@@ -123,7 +123,7 @@
 
     .left-center-sub {
         display: grid;
-        margin-left: 382px;
+        margin-left: 220px;
 
         .left-button-h3 {
             margin-top: 0;
@@ -185,7 +185,7 @@
 }
 
 .templates-designed-div {
-    margin-left: 385px;
+    margin-left: 220px;
 
     .templates-div-p {
         font-size: rem(16px);
@@ -221,7 +221,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     height: 470px;
-    margin-left: 350px;
+    margin-left: 190px;
     font-family: Charlie-light;
 
 
@@ -314,7 +314,7 @@
 
     .left-explore-section {
         width: fit-content;
-        margin-left: 385px;
+        margin-left: 220px;
         width: 790px;
 
         .left-explore-p {
@@ -325,7 +325,7 @@
     }
 
     .right-explore-section {
-        margin-left: 30px;
+        margin-left: 130px;
         margin-top: 10px;
         margin-bottom: 60px;
         width: 200px;
@@ -349,7 +349,7 @@
     height: 1050px;
 
     .see-sub-section {
-        margin-left: 470px;
+        margin-left: 320px;
         width: 950px;
         text-align: center;
 
@@ -357,13 +357,14 @@
             padding-top: 60px;
             font-size: rem(35px);
             margin-bottom: 0;
+            margin-right: 30px;
         }
 
         .see-sub-p {
             margin-left: 95px;
             margin-top: 0;
             font-size: rem(20px);
-            width: 750px;
+            width: 720px;
         }
 
         .discover-btn {
@@ -382,6 +383,7 @@
             color: $clr45;
             font-family: Charlie-Thin;
             width: 212px;
+            margin-right: 30px;
 
             span {
                 font-weight: bold;
