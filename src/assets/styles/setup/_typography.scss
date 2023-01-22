@@ -1,8 +1,14 @@
 @font-face {
-    font-family: PTSans-Regular;
-    src: url(../../font/PTSans-Regular.ttf);
+    font-family: Charlie-regular;
+    src: url(../../font/charlie//CharlieDisplay-Regular.ttf);
 }
+
 @font-face {
-    // font-family: montserrat;
-    // src: url(../../fonts/Montserrat/Montserrat-Regular.ttf);
+    font-family: Charlie-light;
+    src: url(../../font/charlie/CharlieDisplay-Light.ttf);
+}
+
+@font-face {
+    font-family: Charlie-Thin;
+    src: url(../../font/charlie/CharlieDisplay-Thin.ttf);
 }

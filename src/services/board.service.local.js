@@ -81,17 +81,17 @@ async function save(board) {
             {
                 _id: "u101",
                 fullname: "Eli Shallev",
-                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+                imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333645/trello-profile-pics/T043N4KE97B-U049AMXDTPY-9ec00af7e7df-512_kaegik.jpg'
             },
             {
                 _id: "u102",
                 fullname: "Alex Okin",
-                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+                imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333627/trello-profile-pics/T043N4KE97B-U0436HRD15K-ed7a82d2139d-512_xrimhd.jpg'
             },
             {
                 _id: "u103",
                 fullname: "Yossef Nahari",
-                imgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+                imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333641/trello-profile-pics/T043N4KE97B-U04310KBZ6K-8b9f2fcd3a1e-512_ejqkve.jpg'
             },
         ]
         savedBoard = await storageService.post(STORAGE_KEY, board)
