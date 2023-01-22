@@ -2,8 +2,10 @@
     width: 100vw;
     display: flex;
     justify-content: space-between;
-    padding: 0 1em;
+    align-items: center;
+    padding: 8px 4px 4px 12px;
     position: fixed;
+    height: 48px;
     z-index: 1;
 
     button {
@@ -14,6 +16,7 @@
     .board-status {
         display: flex;
         align-items: center;
+        padding-left: 8px;
 
         .board-title {
             font-size: 1.125rem;
@@ -53,6 +56,14 @@
         display: flex;
 
         .btn-menu {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            margin-right: 4px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             &:hover {
                 background-color: rgba(255, 255, 255, 0.3);
             }
@@ -60,6 +71,8 @@
 
         .btn-filter {
             margin-right: 0;
+            height: 32px;
+            width: 78px;
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.3);
@@ -81,7 +94,7 @@
         }
 
         .members-container {
-            width: 100px;
+            width: 80px;
             margin-left: 0.5em;
             position: relative;
             overflow-x: hidden;
