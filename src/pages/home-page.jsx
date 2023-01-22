@@ -13,7 +13,7 @@ export function HomePage() {
             <h1 className="left-signup-h1">Trello brings all your tasks, teammates, and tools together</h1>
             <p className="left-signup-p">Keep everything in the same place—even if your team isn't.</p>
             <div className="left-signup-div">
-              <input type="text" placeHolder="Email" />
+              <input className="signin-input" type="text" placeHolder="Email" />
               <button className="signin-btn">Sign up - it's free!</button>
             </div>
             <div className="left-signup-video">
@@ -34,7 +34,7 @@ export function HomePage() {
           <p className="powerhouse-div-p">TRELLO 101</p>
           <h2 className="powerhouse-div-h2">A Productivity powerhouse</h2>
         </div>
-        <p className="powerhouse-div-p2">Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in our <a href="">guide for getting started.</a></p>
+        <p className="powerhouse-div-p2">Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of whos doing what and what needs to get done. Learn more in our <a href="" className="powerhouse-link">guide for getting started.</a></p>
       </section>
 
       <section className="ui-main-section">
@@ -47,13 +47,13 @@ export function HomePage() {
                   <p className="left-button-p">Trello boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>
                 </div>
               </button>
-              <button className="left-ui-button">
+              <button className="ui-button">
                 <div className="left-ui-div">
                   <h3 className="left-button-h3">Lists</h3>
                   <p className="left-button-p">The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your team’s needs. There’s no wrong way to Trello.</p>
                 </div>
               </button>
-              <button className="left-ui-button">
+              <button className="ui-button cards">
                 <div className="left-ui-div">
                   <h3 className="left-button-h3">Cards</h3>
                   <p className="left-button-p">Cards represent tasks and ideas and hold all the information to get the job done. As you make progress, move cards across lists to show their status.</p>
@@ -77,8 +77,8 @@ export function HomePage() {
       </section>
 
       <div className="carousel-controller">
-        <svg>arrow left</svg>
-        <svg>arrow right</svg>
+        <a href="" className="arrow"><img className="img-arrow" src={require(`../assets/img/left.png`)} alt="" /></a>
+        <a href="" className="arrow"><img className="img-arrow" src={require(`../assets/img/next.png`)} alt="" /></a>
       </div>
 
       <div className="carousel-main-section">
@@ -86,7 +86,7 @@ export function HomePage() {
 
           <div className="carousel-square">
             <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" />
-              <div className="logo-carousel-square"></div>
+              <div className="logo-carousel square"></div>
             </div>
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Project Management  <br></br>Tamplate</h3>
@@ -97,7 +97,7 @@ export function HomePage() {
 
           <div className="carousel-square">
             <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background2.jpg`)} alt="trello-ui-boards-lists-cards img" />
-              <div className="logo-carousel-square"></div>
+              <div className="logo-carousel square"></div>
             </div>
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Product Roadmap Template</h3>
@@ -108,7 +108,7 @@ export function HomePage() {
 
           <div className="carousel-square">
             <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background3.jpg`)} alt="trello-ui-boards-lists-cards img" />
-              <div className="logo-carousel-square"></div>
+              <div className="logo-carousel man"></div>
             </div>
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Task Management Template</h3>
@@ -119,7 +119,7 @@ export function HomePage() {
 
           <div className="carousel-square">
             <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background4.jpeg`)} alt="trello-ui-boards-lists-cards img" />
-              <div className="logo-carousel-square"></div>
+              <div className="logo-carousel hugo"></div>
             </div>
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Meeting Agenda Template</h3>
@@ -129,81 +129,72 @@ export function HomePage() {
           </div>
 
           <div className="carousel-square">
-            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" />
-              <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background4.jpg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel moisson"></div>
             </div>
             <div className="bottom-carousel-square">
-              <h3 className="carousel-square-h3">Project Management  <br></br>Tamplate</h3>
-              <span className="carousel-square-span">by Trello Marketing Team</span>
-              <p className="carousel-square-p">Big dreams turn into bigger results with a project plan. Use this template to build your team's ideal workflow, for projects big or small.</p>
+              <h3 className="carousel-square-h3">Social Media Marketing<br></br>Tamplate</h3>
+              <span className="carousel-square-span">by Moisson Marketing</span>
+              <p className="carousel-square-p">From generating ideas to planning your release schedule, use this Trello social media template to manage everything in one place.</p>
             </div>
           </div>
 
           <div className="carousel-square">
-            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/background1.jpg`)} alt="trello-ui-boards-lists-cards img" />
-              <div className="logo-carousel-square"></div>
+            <div className="header-carousel-square"><img className="header-carousel-square" src={require(`../assets/img/rainbow.jpg`)} alt="trello-ui-boards-lists-cards img" />
+              <div className="logo-carousel square"></div>
             </div>
             <div className="bottom-carousel-square">
-              <h3 className="carousel-square-h3">Project Management  <br></br>Tamplate</h3>
-              <span className="carousel-square-span">by Trello Marketing Team</span>
-              <p className="carousel-square-p">Big dreams turn into bigger results with a project plan. Use this template to build your team's ideal workflow, for projects big or small.</p>
+              <h3 className="carousel-square-h3">Kanban Template</h3>
+              <span className="carousel-square-span">by Trello Engineering Team</span>
+              <p className="carousel-square-p">Use this simple Kanban template to improve the productivity of your engineering team and help them build better products, faster.</p>
             </div>
           </div>
-          
+
         </div>
       </div>
 
-      <div className="explore-all-templates-main-section">
-        <div className="left-explore-all-templates-main-section">
-          <p className="left-explore-all-templates-main-section-p">No need to start from scratch. Jump start your board with tried-and-true templates, then customize it to make it your own.</p>
+      <div className="explore-main-section">
+        <div className="left-explore-section">
+          <p className="left-explore-p">No need to start from scratch. Jump start your board with tried-and-true templates, then customize it to make it your own.</p>
         </div>
-        <div className="right-explore-all-templates-main-section">
-          <a href=""><span>Explore all templates</span></a>
+        <div className="right-explore-section">
+          <a href=""><span>Explore all Templates</span></a>
         </div>
       </div>
 
-      <section className="see-work-in-full-width-main-section">
-        <div className="see-work-in-centered-sub-section">
-          <div className="header-centered-sub-section">
-            <div className="sub-header-centered-sub-section">
-              <div className="h2-p-btn-sub-first-centered-sub-div">
-                <h2>See work in a whole new way</h2>
-                <p>View your teams projects from every angle and bring a fresh perspective to the task at hand.</p>
-                <a href=""><span>Discover all Trello views</span></a>
-              </div>
-            </div>
-          </div>
+      <section className="see-main-section">
+        <div className="see-sub-section">
+          <h2 className="see-sub-h2">See work in a whole new way</h2>
+          <p className="see-sub-p">View your teams projects from every angle and bring a fresh perspective to the task at hand.</p>
+          <a href="" className="discover-btn"><span>Discover all Trello views</span></a>
         </div>
-      </section>
 
-      <section className="first-centered-main-section">
-        <section className="first-centered-sub-section">
-          <img src="../assets/img/trello hit deadlines.webp" alt="left-img-first-centered-sub-section" />
-          <section className="right-first-centered-sub-section">
-            <div className="right-first-centered-sub-section-div">
-              <img src="" alt="svg lines" />
-              <h3>HIT DEADLINES EVERY TIME</h3>
-            </div>
-            <p>From weekly sprints to annual planning, Timeline view keeps all tasks on track. Quickly get a glimpse of what’s coming down the pipeline and identify any gaps that might impede your team’s progress.</p>
-            <a href="">Learn more about Timeline view</a>
+        <section className="centered-main">
+          <div className="img-div">
+            <img className="left-img-section" src={require(`../assets/img/trello hit deadlines.webp`)} alt="left-img-section" />
+          </div>
+          <section className="right-first-centered">
+            <img className="svg-lines" src={require(`../assets/img/hit-logo.jpg`)} alt="svg lines" />
+            <h3 className="h3-right">HIT DEADLINES EVERY TIME</h3>
+            <p className="p-right">From weekly sprints to annual planning, Timeline view keeps all tasks on track. <br></br>Quickly get a glimpse of whats coming <br></br>down the pipeline and identify any gaps <br></br> that might impede your teams progress.</p>
+            <a href="" className="a-right">Learn more about Timeline view</a>
           </section>
+        </section>
+
+        <section className="centered-main">
+          <section className="right-first-centered">
+            <img className="calendar" src={require(`../assets/img/calendar.jpg`)} alt="svg calendar" />
+            <h3 className="h3-left">Stay on top of tasks</h3>
+            <p className="p-left">Start each day without any surprises. Whether scheduling an editorial calendar or staying on top of to-dos, Calendar view is like a crystal ball giving you a clear vision of what work lies ahead.</p>
+            <a href="" className="a-left">Learn more about Calendar view</a>
+          </section>
+          <div className="img-div">
+            <img className="right-img-section" src={require(`../assets/img/trello-stay-on-top-of-tasks.webp`)} alt="right-img-second-centered-sub-section" />
+          </div>
         </section>
       </section>
 
-      <section className="second-centered-main-section">
-        <section className="second-centered-sub-section">
-          <img src="../assets/img/trello-stay-on-top-of-tasks.webp" alt="right-img-second-centered-sub-section" />
-          <section className="left-second-centered-sub-section">
-            <div className="left-second-centered-sub-section-div">
-              <img src="" alt="svg lines" />
-              <h3>Stay on top of tasks</h3>
-            </div>
-            <p>Start each day without any surprises. Whether scheduling an editorial calendar or staying on top of to-dos, Calendar view is like a crystal ball giving you a clear vision of what work lies ahead.</p>
-            <a href="">Learn more about Calendar view</a>
-          </section>
-        </section>
-      </section>
-
+{/* 
       <section className="home-page-empty-space-section"></section>
       <section className="home-page-empty-space-section"></section>
 
@@ -298,7 +289,7 @@ export function HomePage() {
             <button>Sign up - it’s free!</button>
           </form>
         </section>
-      </section>
+      </section> */}
 
     </main>
     {/* <AppFooter /> */}
