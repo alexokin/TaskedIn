@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { BiSearch } from "react-icons/bi"
+import { SiTrello } from 'react-icons/si'
 import { AiOutlineDown } from "react-icons/ai"
 import { BoardStarredList } from './board-starred-list'
 import { BoardAdd } from './board-add'
@@ -54,6 +55,7 @@ export function MainHeader() {
     <div>
       {!hideHeader && <div className='main-header'>
         <div className='left-container'>
+        <SiTrello />
           <a className='logo' href="/workspace">Trello</a>
           <div className='btn-recent'>
             Recent
