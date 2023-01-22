@@ -1,11 +1,15 @@
-import React from 'react'
-import { IoCloseOutline } from 'react-icons/io5'
-import { CheckList } from './checklist/check-list';
+import React, { useRef } from "react";
+import { IoCloseOutline } from "react-icons/io5";
+import { CheckList } from "./checklist/check-list";
 
-export function TaskDetailsModal({task, groupId, setTaskDetailsModal, data, board}) {
-
-
-
+export function TaskDetailsModal({
+  task,
+  groupId,
+  setTaskDetailsModal,
+  data,
+  board,
+}) {
+  const modalRef = useRef()
   const { type, pos } = data;
   const modalStyle = { left: pos.left + "px", top: pos.bottom + "px" };
   if (pos.right) {
@@ -13,23 +17,47 @@ export function TaskDetailsModal({task, groupId, setTaskDetailsModal, data, boar
     modalStyle.right = pos.right;
   }
 
+  function getDynModal(type) {
+    switch (type) {
+      case "Checklist":
+        return (
+          <CheckList
+            board={board}
+            task={task}
+            groupId={groupId}
+            setTaskDetailsModal={setTaskDetailsModal}
+          />
+        );
+        default:
+          return
+    }
+  }
+
+  function getModalTitle(type) {
+    switch (type) {
+      case 'Checklist':
+        return 'Add checklist'
+      default:
+        return type
+    }
+  }
+
+  const title = getModalTitle()
 
   return (
-    <section className='task-details-modal' style={modalStyle}>
-      <div className='task-modal-title'>
-        <p>
-          Add checklist
-        </p>
+    <section className="task-details-modal" style={modalStyle}>
+      <div className="task-modal-title">
+        <p>{title}</p>
         <span>
-            <IoCloseOutline
-             onClick={(ev) => {
+          <IoCloseOutline
+            onClick={(ev) => {
               ev.preventDefault();
               setTaskDetailsModal(null);
             }}
-            />
-          </span>
+          />
+        </span>
       </div>
-      <CheckList board={board} task={task} groupId={groupId} setTaskDetailsModal={setTaskDetailsModal}/>
+      {getDynModal(type)}
     </section>
-  )
+  );
 }
