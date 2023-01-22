@@ -1,55 +1,78 @@
 .check-list {
-    margin-top: 13px;
-    padding: 0 12px 12px;
-    font-size: 12px;
-    width: 304px;
-    border: none;
-    border-radius: 3px;
-    outline: none;
-    label {
-      color: #5e6c84;
-      font-size: 0.75rem;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 4px;
-      margin-top: 12px;
+  margin-top: 13px;
+  padding: 0 12px 12px;
+  font-size: 12px;
+  width: 304px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+
+  label {
+    color: #172a4d;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+    margin-top: 12px;
+  }
+
+  .input-container {
+
+    input {
+      height: 36px;
+      margin-bottom: 22px;
+      width: 100%;
     }
-  
-    .input-container {
-  
-      input {
-        height: 36px;
-        margin-bottom: 22px;
-        width: 100%;
-      }
-  
-      &:hover input {
-        background-color: #ebecf0;
-        box-shadow: inset 0 0 0 2px #dfe1e6;
-      }
-  
-      input:focus {
-        background-color: white;
-        box-shadow: inset 0 0 0 2px #0079bf;
-  
-      }
+
+    &:hover input {
+      background-color: #ebecf0;
+      box-shadow: inset 0 0 0 2px #dfe1e6;
     }
-  
-    button {
-      margin: 0;
-      height: 32px;
-      padding: 6px 24px;
+
+    input:focus {
+      background-color: white;
+      box-shadow: inset 0 0 0 2px #0079bf;
+
     }
   }
 
+  button {
+    
+    margin: 0;
+    height: 32px;
+    padding: 6px 24px;
+  }
+}
+
 .checklist-header {
+  color: #172a4d;
   display: flex;
   justify-content: space-between;
+
   .header-left {
     display: flex;
     gap: 1rem;
-    .checklist-icon{
+    margin-left: 0.4rem;
+    h3 {
+      font-size: 16px;
+    }
+    .checklist-icon {
       align-self: center;
+    }
+  }
+
+  .header-right{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    button {
+      background-color: #ebecef;
+      border: none;
+      border-radius: 3px;
+      color: #1c2a4b
+    }
+    button:hover{
+      background-color: #e1e4e9;
     }
   }
 }
