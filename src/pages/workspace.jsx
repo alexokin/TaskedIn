@@ -5,7 +5,7 @@ import { boardService } from "../services/board.service.local.js";
 import { BoardAdd } from "../cmps/board-add.jsx";
 import { loadBoards } from "../store/board.actions.js";
 import { useSelector } from "react-redux";
-
+import { AiOutlineStar } from "react-icons/ai";
 
 export function Workspace() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -36,12 +36,43 @@ export function Workspace() {
     setAddModalLoc(addModalLocToSet)
   }
 
+  function getLastviewedBoards() {
+    let sortedBoards = JSON.parse(JSON.stringify(boards))
+    sortedBoards = sortedBoards.filter(board => board.lastViewed)
+    sortedBoards.sort((board1, board2) => board2.lastViewed - board1.lastViewed)
+    return sortedBoards.slice(0, 4)
+
+  }
+
   return (
     <div className="workspace">
-      <h1>Boards</h1>
-      <BoardFilter onSetFilter={onSetFilter} />
-      {isBoardModalOpen && <BoardAdd addModalLoc={addModalLoc} onToggleAddBoardModal={onToggleAddBoardModal} />}
-      {boards && <BoardList boards={boards} onToggleAddBoardModal={onToggleAddBoardModal} />}
+      {/* <h1>Boards</h1>
+      <BoardFilter onSetFilter={onSetFilter} /> */}
+
+      {boards.filter(board => board.isStarred).length !== 0 && <div className="starred-boards">
+
+        <div className="starred-boards-title">
+          <span className="star"><AiOutlineStar /></span>
+          <span className="title">Starred boards</span>
+        </div>
+
+        <BoardList isAddable={false} boards={boards.filter(board => board.isStarred)} onToggleAddBoardModal={onToggleAddBoardModal} />
+
+      </div>}
+
+      <div className="recent-boards">
+        <div className="recent-boards-title">
+          <span className="recent-icon"><AiOutlineStar /></span>
+          <span className="title">Recent boards</span>
+        </div>
+
+        <BoardList isAddable={false} boards={getLastviewedBoards()} onToggleAddBoardModal={onToggleAddBoardModal} />
+
+      </div>
+
+      {boards && <BoardList isAddable={true} boards={boards} onToggleAddBoardModal={onToggleAddBoardModal} />}
+
+      {isBoardModalOpen && <BoardAdd  addModalLoc={addModalLoc} onToggleAddBoardModal={onToggleAddBoardModal} />}
     </div>
   );
 }

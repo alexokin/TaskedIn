@@ -43,12 +43,16 @@ export function BoardDetails() {
           <FiPlus />
           Add another list
         </div>
-        {isAddModalOpen && (
-          <GroupAdd
-            board={board}
-            onToggleAddModal={onToggleAddModal}
-          />
-        )}
+        <div className="group-add-container">
+          {isAddModalOpen && (
+            <GroupAdd
+              board={board}
+              onToggleAddModal={onToggleAddModal}
+            />
+          )}
+
+        </div>
+
       </div>
 
       {taskId && <TaskDetails />}

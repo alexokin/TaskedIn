@@ -41,7 +41,9 @@ export async function loadBoards(filterBy) {
 
 export async function setBoard(boardId) {
     try {
-        const board = await boardService.getById(boardId)
+        let board = await boardService.getById(boardId)
+        board.lastViewed = Date.now()
+        board = await boardService.save(board)
         console.log('Board from DB:', board)
         store.dispatch({
             type: SET_BOARD,
