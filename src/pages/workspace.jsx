@@ -6,6 +6,7 @@ import { BoardAdd } from "../cmps/board-add.jsx";
 import { loadBoards } from "../store/board.actions.js";
 import { useSelector } from "react-redux";
 import { AiOutlineStar } from "react-icons/ai";
+import { FiClock } from "react-icons/fi";
 
 export function Workspace() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -52,7 +53,7 @@ export function Workspace() {
       {boards.filter(board => board.isStarred).length !== 0 && <div className="starred-boards">
 
         <div className="starred-boards-title">
-          <span className="star"><AiOutlineStar /></span>
+          <span className="star-icon"><AiOutlineStar /></span>
           <span className="title">Starred boards</span>
         </div>
 
@@ -62,15 +63,15 @@ export function Workspace() {
 
       <div className="recent-boards">
         <div className="recent-boards-title">
-          <span className="recent-icon"><AiOutlineStar /></span>
-          <span className="title">Recent boards</span>
+          <span className="recent-icon"><FiClock /></span>
+          <span className="title">Recently viewed</span>
         </div>
 
         <BoardList isAddable={false} boards={getLastviewedBoards()} onToggleAddBoardModal={onToggleAddBoardModal} />
 
       </div>
       <div className="all-boards">
-        <span>YOUR BOARDS</span>
+        <span className="your-boards-title">YOUR BOARDS</span>
         {boards && <BoardList isAddable={true} boards={boards} onToggleAddBoardModal={onToggleAddBoardModal} />}
       </div>
       {isBoardModalOpen && <BoardAdd addModalLoc={addModalLoc} onToggleAddBoardModal={onToggleAddBoardModal} />}

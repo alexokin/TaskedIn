@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { BiSearch } from "react-icons/bi"
+import { setBoard, updateBoard } from "../store/board.actions"
 
 export function BoardSearchList({ modalLoc, toggleSearchList }) {
 
@@ -20,6 +21,8 @@ export function BoardSearchList({ modalLoc, toggleSearchList }) {
     }, [filterbyStr])
 
     function onBoardSelect(boardId) {
+        console.log('testtttt')
+        updateBoard(boardId)
         navigate(`/board/${boardId}`)
     }
 
