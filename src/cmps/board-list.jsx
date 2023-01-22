@@ -5,7 +5,7 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { boardService } from "../services/board.service.local.js";
 import { removeBoard, updateBoard } from "../store/board.actions.js";
 
-export function BoardList({ boards, onToggleAddBoardModal }) {
+export function BoardList({ boards, onToggleAddBoardModal, isAddable }) {
   const navigate = useNavigate()
 
   async function onStarredChange(ev, boardId) {
@@ -28,7 +28,6 @@ export function BoardList({ boards, onToggleAddBoardModal }) {
 
   return (
     <ul className="board-list">
-      <li className="btn-board-add" onClick={(event) => onToggleAddBoardModal(event)}>Create new board</li>
       {boards.map(board => {
         return (
           <li onClick={() => onBoardSelect(board._id)} key={board._id}>
@@ -38,6 +37,7 @@ export function BoardList({ boards, onToggleAddBoardModal }) {
           </li>
         )
       })}
+       {isAddable && <li className="btn-board-add" onClick={(event) => onToggleAddBoardModal(event)}>Create new board</li>}
     </ul>
   )
 }

@@ -69,10 +69,11 @@ export function Workspace() {
         <BoardList isAddable={false} boards={getLastviewedBoards()} onToggleAddBoardModal={onToggleAddBoardModal} />
 
       </div>
-
-      {boards && <BoardList isAddable={true} boards={boards} onToggleAddBoardModal={onToggleAddBoardModal} />}
-
-      {isBoardModalOpen && <BoardAdd  addModalLoc={addModalLoc} onToggleAddBoardModal={onToggleAddBoardModal} />}
+      <div className="all-boards">
+        <span>YOUR BOARDS</span>
+        {boards && <BoardList isAddable={true} boards={boards} onToggleAddBoardModal={onToggleAddBoardModal} />}
+      </div>
+      {isBoardModalOpen && <BoardAdd addModalLoc={addModalLoc} onToggleAddBoardModal={onToggleAddBoardModal} />}
     </div>
   );
 }
