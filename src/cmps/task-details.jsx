@@ -9,6 +9,7 @@ import { TaskDetailsActivities } from "./task-details-activity";
 import { TaskDetailsModal } from "./task-details-modal";
 import { groupService } from "../services/group.service.local";
 import { utilService } from "../services/util.service";
+import { TaskCheckList } from "./checklist/task-checklist";
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
@@ -52,6 +53,7 @@ export function TaskDetails() {
               <section className="task-content">
                 {/* <TaskDetailsOverview /> */}
                 <TaskDescription board={board} task={task} groupId={groupId} />
+                {task.checklists?.length > 0 && <TaskCheckList board={board} task={task} groupId={groupId}/> }
                 <TaskDetailsActivities />
               </section>
               <TaskDetailsSidebar
@@ -65,6 +67,7 @@ export function TaskDetails() {
         </section>
         {taskDetailsModal && (
           <TaskDetailsModal
+          board={board}
             setTaskDetailsModal={setTaskDetailsModal}
             task={task}
             data={taskDetailsModal}

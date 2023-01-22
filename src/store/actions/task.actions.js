@@ -38,3 +38,15 @@ export async function updateTask(task, groupId, board) {
     }
 }
 
+export async function addChecklist(title, taskId, groupId, board) {
+    try {
+        await taskService.addChecklist(title, taskId, groupId, board)
+        updateBoard(board)
+        
+    } catch (err) {
+        console.log('Cannot add task', err)
+        throw err
+    }
+}
+
+

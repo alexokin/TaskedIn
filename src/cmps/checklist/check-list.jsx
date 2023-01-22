@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { addChecklist } from "../../store/actions/task.actions";
 
-export function CheckList() {
+export function CheckList({task, groupId, board, setTaskDetailsModal}) {
   const [title, setTitle] = useState("Checklist");
   const [isAdding, setIsAdding] = useState(false);
 
@@ -11,6 +12,8 @@ function handleChange({target}) {
 
 function onAddChecklist(ev) {
     ev.preventDefault()
+    addChecklist(title, task._id, groupId, board)
+    setTaskDetailsModal(null)
 }
 
   return (

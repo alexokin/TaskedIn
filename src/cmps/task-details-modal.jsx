@@ -2,7 +2,7 @@ import React from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import { CheckList } from './checklist/check-list';
 
-export function TaskDetailsModal({task, groupId, setTaskDetailsModal, data}) {
+export function TaskDetailsModal({task, groupId, setTaskDetailsModal, data, board}) {
 
 
 
@@ -29,7 +29,7 @@ export function TaskDetailsModal({task, groupId, setTaskDetailsModal, data}) {
             />
           </span>
       </div>
-      <CheckList setTaskDetailsModal={setTaskDetailsModal}/>
+      <CheckList board={board} task={task} groupId={groupId} setTaskDetailsModal={setTaskDetailsModal}/>
     </section>
   )
 }

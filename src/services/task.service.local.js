@@ -10,7 +10,8 @@ export const taskService = {
   add,
   remove,
   update,
-  save
+  save,
+  addChecklist
 }
 
 async function query(boardId, groupId, filter ) {
@@ -65,4 +66,15 @@ async function save(boardId, groupId, title) {
   }
 }
 
+function addChecklist(title, taskId, groupId, board) {
+  const checklist = {
+    _id: utilService.makeId(),
+    todos: [],
+    title
+  }
+  const group = board.groups.find(group => group._id === groupId)
+  const task = group.tasks.find(task => task._id === taskId)
+  if (task.checklists) task.checklists.push(checklist)
+  else task.checklists = [checklist]
+}
 
