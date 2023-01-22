@@ -6,4 +6,25 @@
     position: relative;
     overflow-anchor: none;
     margin-bottom: 4px;
+    padding: 0 8px;
+    max-height: 60vh;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        
+        background-color: rgba(191, 196, 206, 0.5);
+        border-radius: 0.5em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(191, 196, 206);
+        border-radius: 0.3em;
+    }
 }

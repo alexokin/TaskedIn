@@ -36,14 +36,15 @@ export function BoardDetails() {
 
       <div className="board-content">
         {board && <GroupList board={board} groups={board.groups} />}
-        <div
-          className="btn-open-addGroup"
-          onClick={(event) => onToggleAddModal(event)}
-        >
-          <FiPlus />
-          Add another list
-        </div>
+
         <div className="group-add-container">
+          {!isAddModalOpen && <div
+            className="btn-open-addGroup"
+            onClick={(event) => onToggleAddModal(event)}
+          >
+            <FiPlus />
+            Add another list
+          </div>}
           {isAddModalOpen && (
             <GroupAdd
               board={board}
