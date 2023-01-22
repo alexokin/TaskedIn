@@ -9,7 +9,6 @@ export function TaskDetailsModal({
   data,
   board,
 }) {
-  const modalRef = useRef()
   const { type, pos } = data;
   const modalStyle = { left: pos.left + "px", top: pos.bottom + "px" };
   if (pos.right) {
@@ -28,35 +27,37 @@ export function TaskDetailsModal({
             setTaskDetailsModal={setTaskDetailsModal}
           />
         );
-        default:
-          return
-    }
-  }
-
-  function getModalTitle(type) {
-    switch (type) {
-      case 'Checklist':
-        return 'Add checklist'
       default:
-        return type
+        return;
     }
   }
 
-  const title = getModalTitle()
+  function getModalTitle() {
+    switch (type) {
+      case "Checklist":
+        return "Add checklist";
+      default:
+        return type;
+    }
+  }
+
+  const title = getModalTitle();
 
   return (
     <section className="task-details-modal" style={modalStyle}>
-      <div className="task-modal-title">
-        <p>{title}</p>
-        <span>
-          <IoCloseOutline
-            onClick={(ev) => {
-              ev.preventDefault();
-              setTaskDetailsModal(null);
-            }}
-          />
-        </span>
-      </div>
+      {title && (
+        <div className="task-modal-title">
+          <p>{title}</p>
+          <span>
+            <IoCloseOutline
+              onClick={(ev) => {
+                ev.preventDefault();
+                setTaskDetailsModal(null);
+              }}
+            />
+          </span>
+        </div>
+      )}
       {getDynModal(type)}
     </section>
   );

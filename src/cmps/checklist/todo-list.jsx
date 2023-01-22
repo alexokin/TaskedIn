@@ -8,7 +8,7 @@ export function TodoList({todos, checkListId, updateTodo, removeTodo}) {
     <section className="todo-list">
       {todos.map((todo) => (
         <TodoPreview
-          key={todo.id}
+          key={todo._id}
           todo={todo}
           checkListId={checkListId}
           updateTodo={updateTodo}

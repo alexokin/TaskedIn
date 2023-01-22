@@ -37,7 +37,7 @@
   }
 
   button {
-    
+
     margin: 0;
     height: 32px;
     padding: 6px 24px;
@@ -49,30 +49,113 @@
   display: flex;
   justify-content: space-between;
 
-  .header-left {
+  .left {
     display: flex;
-    gap: 1rem;
-    margin-left: 0.4rem;
+    padding-left: 7px;
+    gap: 15px;
+    justify-content: center;
+    height: 100%;
+
     h3 {
       font-size: 16px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
-    .checklist-icon {
+
+    svg {
+      display: flex;
+      flex-direction: column;
       align-self: center;
+      bottom: 33px;
+      font-size: 18px;
+      font-weight: 600;
     }
   }
 
-  .header-right{
+  .right {
     display: flex;
     flex-direction: column;
     align-self: center;
+
     button {
       background-color: #ebecef;
       border: none;
       border-radius: 3px;
       color: #1c2a4b
     }
-    button:hover{
+
+    button:hover {
       background-color: #e1e4e9;
+    }
+  }
+}
+
+.checklist-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline-start: 8px;
+
+  p {
+    padding-left: 1px;
+    font-size: 10px;
+  }
+
+  .completion-bar {
+    width: 290px;
+    height: 8px;
+    background-color: #091e4214;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .percentage-bar {
+      background-color: #5ba4cf;
+      height: 100%;
+      width: 0%;
+      transition-delay: 0.2s;
+      transition-duration: 0.14s;
+      transition-property: width;
+      transition-timing-function: ease-in;
+
+      &.done {
+        background-color: #61bd4f;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 480px) {
+  .checklist-preview {
+    width: 416px;
+
+    .checklist-status .completion-bar {
+      width: 376px;
+    }
+  }
+
+}
+
+@media (min-width: 560px) {
+  .checklist-preview {
+    width: 496px;
+
+    .checklist-status .completion-bar {
+      width: 456px;
+    }
+  }
+
+
+}
+
+@include for-narrow-layout {
+  .checklist-preview {
+    width: 552px;
+
+    .checklist-status .completion-bar {
+      width: 512px;
     }
   }
 }
