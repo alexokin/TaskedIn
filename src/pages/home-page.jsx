@@ -10,17 +10,11 @@ export function HomePage() {
       <section className="signup-main-section">
         <section className="signup-sub-section">
           <div className="left-signup-sub">
-            <h1 className="left-signup-h1">Trello brings all your tasks, teammates, and tools together</h1>
+            <h1 className="left-signup-h1">TaskedIn brings all your tasks, teammates, and tools together</h1>
             <p className="left-signup-p">Keep everything in the same place—even if your team isn't.</p>
             <div className="left-signup-div">
               <input className="signin-input" type="text" placeHolder="Email" />
-              <button className="signin-btn">Sign up - it's free!</button>
-            </div>
-            <div className="left-signup-video">
-              <span className="signup-wv">Watch video</span>
-              <span class="material-symbols-outlined">
-                play_circle
-              </span>
+              <button className="signin-btn"><a href="/workspace" className="signin-a">Let's Tasked it Now!</a></button>
             </div>
           </div>
           <div className="right-signup-sub-section">
@@ -44,13 +38,13 @@ export function HomePage() {
               <button className="left-card-button">
                 <div className="left-button-div">
                   <h3 className="left-button-h3">Boards</h3>
-                  <p className="left-button-p">Trello boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>
+                  <p className="left-button-p">TaskedIn boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to “aww yeah, we did it!”</p>
                 </div>
               </button>
               <button className="ui-button">
                 <div className="left-ui-div">
                   <h3 className="left-button-h3">Lists</h3>
-                  <p className="left-button-p">The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your team’s needs. There’s no wrong way to Trello.</p>
+                  <p className="left-button-p">The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your team’s needs. There’s no wrong way to TaskedIn.</p>
                 </div>
               </button>
               <button className="ui-button cards">
@@ -63,7 +57,7 @@ export function HomePage() {
           </section>
         </section>
         <section className="right-sub-section">
-          <img className="ui-img" src={require(`../assets/img/trello-ui-boards-lists-cards.webp`)} alt="trello-ui-boards-lists-cards img" />
+          <img className="ui-img" src={require(`../assets/img/trello-ui-boards-lists-cards.jpg`)} alt="trello-ui-boards-lists-cards img" />
         </section>
       </section>
 
@@ -90,7 +84,7 @@ export function HomePage() {
             </div>
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Project Management  <br></br>Tamplate</h3>
-              <span className="carousel-square-span">by Trello Marketing Team</span>
+              <span className="carousel-square-span">by TaskedIn Marketing Team</span>
               <p className="carousel-square-p">Big dreams turn into bigger results with a project plan. Use this template to build your team's ideal workflow, for projects big or small.</p>
             </div>
           </div>
@@ -101,8 +95,8 @@ export function HomePage() {
             </div>
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Product Roadmap Template</h3>
-              <span className="carousel-square-span">by Trello Marketing Team</span>
-              <p className="carousel-square-p">Use the Trello product roadmap template to track product development and feature requests, and collaborate on development processes."</p>
+              <span className="carousel-square-span">by TaskedIn Marketing Team</span>
+              <p className="carousel-square-p">Use the TaskedIn product roadmap template to track product development and feature requests, and collaborate on development processes."</p>
             </div>
           </div>
 
@@ -113,7 +107,7 @@ export function HomePage() {
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Task Management Template</h3>
               <span className="carousel-square-span">by Mitchell Fry, Engineer @ Oliver <br></br>Wyman</span>
-              <p className="carousel-square-p">Easily keep track of what you’ve done, what you have to do, and when you have to do it with this Trello task management template.</p>
+              <p className="carousel-square-p">Easily keep track of what you’ve done, what you have to do, and when you have to do it with this TaskedIn task management template.</p>
             </div>
           </div>
 
@@ -124,7 +118,7 @@ export function HomePage() {
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Meeting Agenda Template</h3>
               <span className="carousel-square-span">by Darren Chait, Co-Founder @ Hugo</span>
-              <p className="carousel-square-p">Great meetings require planning. Use this Trello template as the framework for more effective, collaborative team meetings.</p>
+              <p className="carousel-square-p">Great meetings require planning. Use this TaskedIn template as the framework for more effective, collaborative team meetings.</p>
             </div>
           </div>
 
@@ -135,7 +129,7 @@ export function HomePage() {
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Social Media Marketing<br></br>Tamplate</h3>
               <span className="carousel-square-span">by Moisson Marketing</span>
-              <p className="carousel-square-p">From generating ideas to planning your release schedule, use this Trello social media template to manage everything in one place.</p>
+              <p className="carousel-square-p">From generating ideas to planning your release schedule, use this TaskedIn social media template to manage everything in one place.</p>
             </div>
           </div>
 
@@ -145,7 +139,7 @@ export function HomePage() {
             </div>
             <div className="bottom-carousel-square">
               <h3 className="carousel-square-h3">Kanban Template</h3>
-              <span className="carousel-square-span">by Trello Engineering Team</span>
+              <span className="carousel-square-span">by TaskedIn Engineering Team</span>
               <p className="carousel-square-p">Use this simple Kanban template to improve the productivity of your engineering team and help them build better products, faster.</p>
             </div>
           </div>
@@ -166,12 +160,12 @@ export function HomePage() {
         <div className="see-sub-section">
           <h2 className="see-sub-h2">See work in a whole new way</h2>
           <p className="see-sub-p">View your teams projects from every angle and bring a fresh perspective to the task at hand.</p>
-          <a href="" className="discover-btn"><span>Discover all Trello views</span></a>
+          <a href="" className="discover-btn"><span>Discover all TaskedIn views</span></a>
         </div>
 
         <section className="centered-main">
           <div className="img-div">
-            <img className="left-img-section" src={require(`../assets/img/trello hit deadlines.webp`)} alt="left-img-section" />
+            <img className="left-img-section" src={require(`../assets/img/trello hit deadlines.jpg`)} alt="left-img-section" />
           </div>
           <section className="right-first-centered">
             <img className="svg-lines" src={require(`../assets/img/hit-logo.jpg`)} alt="svg lines" />
@@ -189,7 +183,7 @@ export function HomePage() {
             <a href="" className="a-left">Learn more about Calendar view</a>
           </section>
           <div className="img-div">
-            <img className="right-img-section" src={require(`../assets/img/trello-stay-on-top-of-tasks.webp`)} alt="right-img-second-centered-sub-section" />
+            <img className="right-img-section" src={require(`../assets/img/trello-stay-on-top-of-tasks.jpg`)} alt="right-img-second-centered-sub-section" />
           </div>
         </section>
       </section>
@@ -201,8 +195,8 @@ export function HomePage() {
       <section className="do-more-with-trello-section">
         <div className="left-do-more-with-trello-section">
           <p className="first-p-left-do-more-with-trello-section">Powerful ways to grow</p>
-          <h2 className="h2-left-do-more-with-trello-section">Do more with Trello</h2>
-          <p className="second-p-left-do-more-with-trello-section">Trello’s intuitive features give any team the ability to quickly set up and customize workflows for just about anything.</p>
+          <h2 className="h2-left-do-more-with-trello-section">Do more with TaskedIn</h2>
+          <p className="second-p-left-do-more-with-trello-section">TaskedIn’s intuitive features give any team the ability to quickly set up and customize workflows for just about anything.</p>
         </div>
       </section>
 
@@ -211,7 +205,7 @@ export function HomePage() {
           <div className="trello-enterprise-sub-div">
             <div className="trello-enterprise-small-div">
               <img src="../assets/img/Search_Value.svg" alt="trello-enterprise-img" />
-              <h3>Trello Enterprise</h3>
+              <h3>TaskedIn Enterprise</h3>
               <p>The productivity tool teams love, paired with the features and security needed for scale.</p>
               <div>
                 <a href=""><span>Explore Enterprise</span></a>
@@ -224,7 +218,7 @@ export function HomePage() {
             <div className="butler-automation-small-div">
               <img src="../assets/img/Search_Value.svg" alt="butler-automation-img" />
               <h3>Butler Automation</h3>
-              <p>No-code automation is built into every Trello board. Focus on the work that matters most and let the robots do the rest.</p>
+              <p>No-code automation is built into every TaskedIn board. Focus on the work that matters most and let the robots do the rest.</p>
               <div>
                 <a href="../assets/img/butler-automation.svg"><span>Get to know Automation</span></a>
               </div>
@@ -236,7 +230,7 @@ export function HomePage() {
             <div className="integrations-small-div">
               <img src="../assets/img/Search_Value.svg" alt="integrations-img" />
               <h3>Integrations</h3>
-              <p>Connect the apps your team already uses into your Trello workflow or add a Power-Up to fine-tune your specific needs.</p>
+              <p>Connect the apps your team already uses into your TaskedIn workflow or add a Power-Up to fine-tune your specific needs.</p>
               <div>
                 <a href="../assets/img/Integrations_Puzzle.svg"><span>Browse Integrations</span></a>
               </div>
@@ -257,7 +251,7 @@ export function HomePage() {
         </div>
         <div className="thoughtworks-nav-div-bottom-main-div">
           <div className="left-thoughtworks-nav-div-bottom-main">
-            <p>[Trello is] great for simplifying complex processes. As a manager, I can chunk [processes] down into bite-sized pieces for my team and then delegate that out, but still keep a bird's-eye view.</p>
+            <p>[TaskedIn is] great for simplifying complex processes. As a manager, I can chunk [processes] down into bite-sized pieces for my team and then delegate that out, but still keep a bird's-eye view.</p>
             <div>
               <p>Joey Rosenberg</p>
               <p>Global Leadership Director at Women Who Code</p>
@@ -268,22 +262,22 @@ export function HomePage() {
             </div>
           </div>
           <div className="right-thoughtworks-nav-div-bottom-main">
-            <h3>75% of organizations report that Trello delivers value to their business within 30 days.</h3>
-            <a href="">Trello TechValidate Survey</a>
+            <h3>75% of organizations report that TaskedIn delivers value to their business within 30 days.</h3>
+            <a href="">TaskedIn TechValidate Survey</a>
           </div>
         </div>
       </section>
 
       <section className="teams-worldwide-main-section">
         <section className="teams-worldwide-centered-sub-section">
-          <p>Join over 2,000,000 teams worldwide that are using Trello to get more done.</p>
+          <p>Join over 2,000,000 teams worldwide that are using TaskedIn to get more done.</p>
           <img src="../assets/img/logos.svd" alt="logos" />
         </section>
       </section>
 
       <section className="get-started-with-trello-main-section">
         <section className="get-started-with-trello-centered-sub-section">
-          <h2>Get started with Trello today</h2>
+          <h2>Get started with TaskedIn today</h2>
           <form action="" className="form-signup">
             <input type="text" placeHolder="Email" />
             <button>Sign up - it’s free!</button>
