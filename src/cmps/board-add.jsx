@@ -33,7 +33,7 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
     }
 
     return (
-        <div style={addModalLoc} className="board-add">
+        <div style={addModalLoc} className="board-add" onBlur={onToggleAddBoardModal}>
             <h3>Create board</h3>
             <hr />
 
@@ -71,7 +71,8 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
                     name="title"
                     value={boardToAdd.title}
                     onChange={handleChange}
-                    required />
+                    required
+                    autoFocus />
                 {!boardToAdd.title && <div>👋 Board title is required</div>}
                 <button className="btn-create" disabled={boardToAdd.title === ''} >Create</button>
             </form>

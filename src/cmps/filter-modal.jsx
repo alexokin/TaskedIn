@@ -22,7 +22,7 @@ export function FilterModal({ onToggleFilterModal, board }) {
     }
 
     return (
-        <div className="filter-modal">
+        <div className="filter-modal" onBlur={onToggleFilterModal}>
             <div className="modal-header">
                 <span>Filter</span>
                 <button className="btn-close-modal" onClick={onToggleFilterModal}><GrFormClose /></button>
@@ -35,7 +35,8 @@ export function FilterModal({ onToggleFilterModal, board }) {
                     name="keyword"
                     placeholder="Enter a keyword..."
                     value={taskFilter?.keyword}
-                    onChange={hanleChange} />
+                    onChange={hanleChange}
+                    autoFocus />
             </form>
         </div>
     )

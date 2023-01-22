@@ -28,13 +28,15 @@ export function BoardSearchList({ modalLoc, toggleSearchList }) {
     }
 
     return (
-        <div style={modalLoc} className="board-search-list">
+        <div style={modalLoc} className="board-search-list" >
 
             <div className="list-header">
-                <BiSearch onClick={toggleSearchList} />
+                <BiSearch />
                 <input type="text"
                     value={filterbyStr}
-                    onChange={handleChange} />
+                    onChange={handleChange} 
+                    onBlur={toggleSearchList}
+                    autoFocus/>
 
             </div>
 

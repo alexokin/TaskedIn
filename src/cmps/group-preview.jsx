@@ -8,24 +8,18 @@ import { TaskList } from "./task-list.jsx";
 export function GroupPreview({ group, board }) {
 
   const filter = useSelector((storeState) => storeState.systemModule.filter)
-  const [tasksToDisplay, setTasksToDisplay] = useState(null)
+  const [isFiltered, setIsFiltered] = useState(false)
 
   useEffect(() => {
-    ; (async () => {
-      try {
-        const tasksToSet = await taskService.query(board._id, group._id, filter)
-        setTasksToDisplay(tasksToSet)
-        
-      } catch (err) {
-        showErrorMsg("Cannot load tasks", err)
-      }
-    })()
+    const regex = new RegExp(filter.keyword, 'i')
+    group.tasks.filter(task => regex.test(task.title))
+    setIsFiltered(true)
   }, [filter])
 
   return (
     <div className="group-preview">
       <GroupTitle group={group} board={board} />
-      {tasksToDisplay &&<TaskList groupTasks={tasksToDisplay} board={board} groupId={group._id} />}
+      {isFiltered && <TaskList groupTasks={group.tasks} board={board} groupId={group._id} />}
     </div>
   )
 }

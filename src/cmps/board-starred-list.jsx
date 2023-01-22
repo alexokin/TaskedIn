@@ -3,14 +3,23 @@ import { useSelector } from "react-redux"
 import { AiOutlineStar, AiFillStar } from "react-icons/ai"
 import { boardService } from "../services/board.service.local"
 import { useNavigate } from "react-router"
+import { useRef } from "react"
+import { setBoard } from "../store/board.actions"
 
 
-export function BoardStarredList({ modalLoc }) {
+export function BoardStarredList({ modalLoc, toggleStarredList }) {
 
     const boards = useSelector((storeState) => storeState.boardModule.boards)
     const [starredBoards, setStarredBoards] = useState(null)
+    const listRef = useRef(null)
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        
+    },[])
+
     useEffect(() => {
+        listRef.current.focus()
         const starredBoardsToSet = boards.filter(board => board.isStarred)
         setStarredBoards(starredBoardsToSet)
     }, [boards])
@@ -21,11 +30,12 @@ export function BoardStarredList({ modalLoc }) {
     }
 
     function onBoardSelect(boardId) {
+        setBoard(boardId)
         navigate(`/board/${boardId}`)
     }
 
     return (
-        <ul style={modalLoc} className="board-starred-list">
+        <ul style={modalLoc} className="board-starred-list" onBlur={toggleStarredList} ref={listRef}>
             {starredBoards && starredBoards.map(board => {
                 return (
                     <li onClick={() => onBoardSelect(board._id)} key={board._id}>
