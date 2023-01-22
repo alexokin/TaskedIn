@@ -49,4 +49,16 @@ export async function addChecklist(title, taskId, groupId, board) {
     }
 }
 
+//TODOS IN CHECKLIST//
+export async function addTodo(title, checkListId, taskId, groupId, board) {
+    try {
+        await taskService.addTodo(title,checkListId, groupId, taskId, board)
+        updateBoard(board)
+        
+    } catch (err) {
+        console.log('Cannot add task', err)
+        throw err
+    }
+}
+
 
