@@ -69,7 +69,7 @@ export function MainHeader() {
           <div className='search-container' onClick={(event) => toggleSearchList(event)}>
             <BiSearch /> Search
           </div>
-          <img width='30px' src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" />
+          <img width='24px' src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" />
         </div>
 
         {isStarredListOpen && <BoardStarredList toggleStarredList={toggleStarredList} modalLoc={modalLoc} />}

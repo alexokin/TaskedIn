@@ -29,7 +29,7 @@ export function BoardHeader({ board }) {
     <div className="board-header">
       <div className="board-status">
         <span className="board-title">{board.title}</span>
-        <button onClick={onToggleStar} className={`btn-star ${board.isStarred ? 'starred' : ''}`}>{board.isStarred ? <AiFillStar /> : <AiOutlineStar />}</button>
+        <span onClick={onToggleStar} className={`btn-star ${board.isStarred ? 'starred' : ''}`}>{board.isStarred ? <AiFillStar /> : <AiOutlineStar />}</span>
       </div>
       <div className="board-action">
         <button onClick={onToggleFilterModal} className={`btn-filter ${filter.keyword ? 'active' : ''}`} ><IoFilterSharp /> Filter</button>
