@@ -6,10 +6,12 @@ import { BoardStarredList } from './board-starred-list'
 import { BoardAdd } from './board-add'
 import { BoardSearchList } from './board-search-list'
 import { useEffect } from 'react'
+import { BoardRecentList } from './board-recent-list'
 
 export function MainHeader() {
   const [isStarredListOpen, setIsStarredListOpen] = useState(false)
   const [isSearchListOpen, setIsSearchListOpen] = useState(false)
+  const [isRecentListOpen, setIsRecentListOpen] = useState(false)
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [modalLoc, setmodalLoc] = useState(null)
   const [hideHeader, setHideHeader] = useState(false)
@@ -41,6 +43,16 @@ export function MainHeader() {
     setmodalLoc(modalLocToSet)
   }
 
+  function toggleRecentList(ev) {
+    const BoundingClientRect = ev?.target.getBoundingClientRect()
+    const modalLocToSet = {
+      left: `${BoundingClientRect?.left}px`,
+      top: `${BoundingClientRect?.bottom}px`
+    }
+    setIsRecentListOpen(prevState => !prevState)
+    setmodalLoc(modalLocToSet)
+  }
+  
   function onToggleCreateBoardModal(ev) {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
     const modalLocToSet = {
@@ -57,7 +69,7 @@ export function MainHeader() {
         <div className='left-container'>
         <SiTrello />
           <a className='logo' href="/workspace">Trello</a>
-          <div className='btn-recent'>
+          <div className='btn-recent' onClick={(event) => toggleRecentList(event)}>
             Recent
             <AiOutlineDown />
           </div>
@@ -75,6 +87,7 @@ export function MainHeader() {
         </div>
 
         {isStarredListOpen && <BoardStarredList toggleStarredList={toggleStarredList} modalLoc={modalLoc} />}
+        {isRecentListOpen && <BoardRecentList toggleRecentList={toggleRecentList} modalLoc={modalLoc} />}
         {isCreateModalOpen && <BoardAdd addModalLoc={modalLoc} onToggleAddBoardModal={onToggleCreateBoardModal} fromHeader={true} />}
         {isSearchListOpen && <BoardSearchList toggleSearchList={toggleSearchList} modalLoc={modalLoc} />}
       </div>}

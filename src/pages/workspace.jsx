@@ -6,17 +6,21 @@ import { BoardAdd } from "../cmps/board-add.jsx";
 import { loadBoards } from "../store/board.actions.js";
 import { useSelector } from "react-redux";
 import { AiOutlineStar } from "react-icons/ai";
+import { FiClock } from "react-icons/fi";
 
 export function Workspace() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [isBoardModalOpen, setIsBoardModalOpen] = useState(false)
   const [addModalLoc, setAddModalLoc] = useState(null)
   const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
+  const [recentBoards, setRecentBoards] = useState(null)
 
   useEffect(() => {
     ; (async () => {
       try {
         await loadBoards(filterBy)
+        const recentBoardsToSet = await boardService.getLastviewedBoards(4)
+        setRecentBoards(recentBoardsToSet)
       } catch (error) {
         console.log('Cannot load boards')
       }
@@ -30,18 +34,13 @@ export function Workspace() {
   function onToggleAddBoardModal(ev) {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
     const addModalLocToSet = {
-      left: `${BoundingClientRect?.left + BoundingClientRect?.width + 5}px`
+      left: `${BoundingClientRect?.left + BoundingClientRect?.width + 5}px`,
+      bottom: '8px'
+
     }
+    if (window.innerWidth < BoundingClientRect?.left + BoundingClientRect?.width + 285) addModalLocToSet.left = `${window.innerWidth - 300}px`
     setIsBoardModalOpen(prevState => !prevState)
     setAddModalLoc(addModalLocToSet)
-  }
-
-  function getLastviewedBoards() {
-    let sortedBoards = JSON.parse(JSON.stringify(boards))
-    sortedBoards = sortedBoards.filter(board => board.lastViewed)
-    sortedBoards.sort((board1, board2) => board2.lastViewed - board1.lastViewed)
-    return sortedBoards.slice(0, 4)
-
   }
 
   return (
@@ -52,7 +51,7 @@ export function Workspace() {
       {boards.filter(board => board.isStarred).length !== 0 && <div className="starred-boards">
 
         <div className="starred-boards-title">
-          <span className="star"><AiOutlineStar /></span>
+          <span className="star-icon"><AiOutlineStar /></span>
           <span className="title">Starred boards</span>
         </div>
 
@@ -62,15 +61,15 @@ export function Workspace() {
 
       <div className="recent-boards">
         <div className="recent-boards-title">
-          <span className="recent-icon"><AiOutlineStar /></span>
-          <span className="title">Recent boards</span>
+          <span className="recent-icon"><FiClock /></span>
+          <span className="title">Recently viewed</span>
         </div>
 
-        <BoardList isAddable={false} boards={getLastviewedBoards()} onToggleAddBoardModal={onToggleAddBoardModal} />
+        {recentBoards && <BoardList isAddable={false} boards={recentBoards} onToggleAddBoardModal={onToggleAddBoardModal} />}
 
       </div>
       <div className="all-boards">
-        <span>YOUR BOARDS</span>
+        <span className="your-boards-title">YOUR BOARDS</span>
         {boards && <BoardList isAddable={true} boards={boards} onToggleAddBoardModal={onToggleAddBoardModal} />}
       </div>
       {isBoardModalOpen && <BoardAdd addModalLoc={addModalLoc} onToggleAddBoardModal={onToggleAddBoardModal} />}

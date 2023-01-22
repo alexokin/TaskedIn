@@ -14,9 +14,9 @@ export function BoardStarredList({ modalLoc, toggleStarredList }) {
     const listRef = useRef(null)
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        
-    },[])
+    useEffect(() => {
+        listRef.current.focus()
+    }, [])
 
     useEffect(() => {
         listRef.current.focus()
@@ -35,7 +35,7 @@ export function BoardStarredList({ modalLoc, toggleStarredList }) {
     }
 
     return (
-        <ul style={modalLoc} className="board-starred-list" onBlur={toggleStarredList} ref={listRef}>
+        <ul tabIndex="0" style={modalLoc} className="board-starred-list" onBlur={toggleStarredList} ref={listRef}>
             {starredBoards && starredBoards.map(board => {
                 return (
                     <li onClick={() => onBoardSelect(board._id)} key={board._id}>

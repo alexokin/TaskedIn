@@ -5,7 +5,7 @@ export function BoardPreview({board}) {
 
   return (
     <div className='board-preview' style={board.style}>
-      <span>{board.title}</span>
+      <span className='board-title'>{board.title}</span>
 
     </div>
   )

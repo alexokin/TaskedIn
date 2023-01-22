@@ -1,6 +1,11 @@
 .board-preview{
     height: 100%;
-    border-radius: 0.3em;
-    padding: 0.3em;
+    border-radius: 1px;
+    padding: 8px;
     color: $clr6;
+
+    .board-title{
+        font-weight: 700;
+        line-height: 20px;
+    }
 }
