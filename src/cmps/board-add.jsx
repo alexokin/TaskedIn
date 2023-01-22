@@ -33,7 +33,7 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
     }
 
     return (
-        <div style={addModalLoc} className="board-add" onBlur={onToggleAddBoardModal}>
+        <div style={addModalLoc} className="board-add" >
             <h3>Create board</h3>
             <hr />
 
