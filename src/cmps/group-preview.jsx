@@ -7,24 +7,25 @@ import { TaskList } from "./task-list.jsx";
 
 export function GroupPreview({ group, board }) {
 
-  // const filter = useSelector((storeState) => storeState.systemModule.filter)
-  // const [tasksToDisplay, setTasksToDisplay] = useState(null)
+  const filter = useSelector((storeState) => storeState.systemModule.filter)
+  const [tasksToDisplay, setTasksToDisplay] = useState(null)
 
-  // useEffect(() => {
-  //   ; (async () => {
-  //     try {
-  //       const tasksToSet = await taskService.query(board._id, group._id, filter)
-  //       setTasksToDisplay(tasksToSet)
-  //     } catch (err) {
-  //       showErrorMsg("Cannot load tasks", err)
-  //     }
-  //   })()
-  // }, [filter])
+  useEffect(() => {
+    ; (async () => {
+      try {
+        const tasksToSet = await taskService.query(board._id, group._id, filter)
+        setTasksToDisplay(tasksToSet)
+        
+      } catch (err) {
+        showErrorMsg("Cannot load tasks", err)
+      }
+    })()
+  }, [filter])
 
   return (
     <div className="group-preview">
       <GroupTitle group={group} board={board} />
-      <TaskList groupTasks={group.tasks} board={board} groupId={group._id} />
+      {tasksToDisplay &&<TaskList groupTasks={tasksToDisplay} board={board} groupId={group._id} />}
     </div>
   )
 }
