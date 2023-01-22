@@ -12,13 +12,14 @@
 
     .a-logo {
         width: 140px;
-        margin-left: 110px;
+        margin-left: 300px;
     }
 
     .header-nav-logo {
         display: block;
         max-width: 100%;
-        height: 70px;
+        height: 40px;
+        margin-top: 10px;
     }
 
     .header-nav-btns {
@@ -31,14 +32,15 @@
         padding: 1rem 1.5rem;
         width: 120px;
         position: absolute;
-        right: 300px;
+        right: 485px;
+        color: $clr31;
     }
 
     .a-try {
         background-color: $clr32;
         color: $clr30;
         padding: 1rem 1.5rem;
-        width: 200px;
+        width: 210px;
         height: 60px;
         position: absolute;
         margin-left: 450px;

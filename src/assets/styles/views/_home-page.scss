@@ -15,10 +15,11 @@
         text-align: left;
         display: block;
         flex: 0 0 auto;
-        width: 65%;
+        width: 55%;
         margin-bottom: 0;
-        margin-left: 220px;
+        margin-left: 385px;
         margin-top: 0px;
+        letter-spacing: 2px;
     }
 
     .left-signup-h1 {
@@ -39,7 +40,7 @@
     .ui-img {
         height: 54%;
         margin-top: 40px;
-        margin-left: 40px;
+        margin-left: 12px;
     }
 
     .signin-input {
@@ -52,6 +53,10 @@
         color: $clr43;
     }
 
+    .signin-a {
+        color: $clr34;
+    }
+
     .signin-btn {
         border-radius: 0.3rem;
         cursor: pointer;
@@ -60,45 +65,27 @@
         border-radius: 5px;
         font-size: rem(15px);
         padding: 0.7rem 0.8rem 0.5rem;
-        color: $clr34;
         margin-left: 20px;
         width: 170px;
         height: 50px;
     }
 
-    .left-signup-video {
-        margin-top: 15px;
-        font-size: rem(16px);
-        text-decoration: underline;
-        color: $clr48;
-    }
-
-    .left-signup-video {
-        padding-bottom: 5px;
-    }
-
-    .signup-wv {
-        top: 0;
-    }
-
-    .material-symbols-outlined {
-        margin-left: 10px;
-    }
-
 }
 
 .productivity-powerhouse-section {
-    margin-left: 230px;
+    margin-left: 390px;
     display: grid;
     grid-template-rows: 1fr 1fr;
 
     .powerhouse-div-p {
-        font-size: rem(16px);
+        font-size: rem(17px);
+        margin-bottom: 0;
     }
 
     .powerhouse-div-h2 {
-        font-size: rem(36px);
+        font-size: rem(35px);
         margin-top: 0;
+        margin-bottom: 17px;
     }
 
     .powerhouse-div-p2 {
@@ -123,7 +110,7 @@
 
     .left-center-sub {
         display: grid;
-        margin-left: 220px;
+        margin-left: 390px;
 
         .left-button-h3 {
             margin-top: 0;
@@ -327,7 +314,7 @@
     .right-explore-section {
         margin-left: 130px;
         margin-top: 10px;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
         width: 200px;
         height: 50px;
         align-items: center;
@@ -349,12 +336,12 @@
     height: 1050px;
 
     .see-sub-section {
-        margin-left: 320px;
+        margin-left: 490px;
         width: 950px;
         text-align: center;
 
         .see-sub-h2 {
-            padding-top: 60px;
+            padding-top: 10px;
             font-size: rem(35px);
             margin-bottom: 0;
             margin-right: 30px;
