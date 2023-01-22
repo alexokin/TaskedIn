@@ -3,7 +3,9 @@
     padding: 0 12px 12px;
     font-size: 12px;
     width: 304px;
-  
+    border: none;
+    border-radius: 3px;
+    outline: none;
     label {
       color: #5e6c84;
       font-size: 0.75rem;
@@ -28,7 +30,7 @@
   
       input:focus {
         background-color: white;
-        box-shadow: inset 0 0 0 2px lightskyblue;
+        box-shadow: inset 0 0 0 2px #0079bf;
   
       }
     }
@@ -39,3 +41,15 @@
       padding: 6px 24px;
     }
   }
+
+.checklist-header {
+  display: flex;
+  justify-content: space-between;
+  .header-left {
+    display: flex;
+    gap: 1rem;
+    .checklist-icon{
+      align-self: center;
+    }
+  }
+}

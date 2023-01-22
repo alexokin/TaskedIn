@@ -6,7 +6,7 @@ export function ChecklistPreview({checkList, removeChecklist}) {
     <section className="checklist-preview">
       <section className="checklist-header">
         <section className="header-left">
-          <BsCheck2Square />
+          <BsCheck2Square className="checklist-icon"/>
           <h3 >{checkList.title}</h3>
         </section>
         <section className="header-right">
