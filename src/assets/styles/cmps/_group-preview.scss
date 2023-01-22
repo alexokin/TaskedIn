@@ -1,19 +1,91 @@
 .group-preview {
     border: none;
     background-color: $clr9;
-    padding: 1em;
     border-radius: 0.1875rem;
     display: flex;
     flex-direction: column;
     font-size: .875rem;
-    margin-inline-end: 8px;
+    margin: 0 4px;
+    padding: 0 8px;
     max-height: 98%;
     min-width: 230px;
-    width: 247.4px;
+    width: 272px;
+
+    .add-container {
+        min-height: 38px;
+        height: fit-content;
+        margin-top: 4px;
+
+        .btn-open-add-task {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            height: 28px;
+            padding: 4px 4px;
+            margin: 2px 0 8px 8px;
+            border-radius: 0.2em;
+            font-size: 1.1em;
+            color: gray;
+
+            .plus {
+                display: flex;
+                align-items: center;
+                margin-right: 4px;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+
+            }
+        }
+
+        .add-task {
+
+            form {
+                display: flex;
+                flex-wrap: wrap;
+
+                textarea {
+
+                    box-shadow: 0 1px 0 rgba(54, 54, 54, 0.25);
+                    border-radius: 3px;
+                    border: none;
+                    resize: none;
+                    width: 100%;
+                    height: 66px;
+                    padding-left: 1em;
+                    padding-top: 0.5em;
+                    margin-bottom: 4px;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                .btn-add-task {
+                    border-radius: 0.3em;
+                    width: 80px;
+                    height: 32px;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-bottom: 8px;
+                }
+
+                .btn-close-modal {
+                    background: none;
+                    color: black;
+                    font-size: 1.3em;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 
     .group-title {
         display: flex;
         justify-content: space-between;
+
         .grp-action-btn {
             align-items: flex-start;
             background-color: transparent;

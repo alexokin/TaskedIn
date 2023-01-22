@@ -1,11 +1,16 @@
 .group-title {
     display: flex;
+    width: 100%;
+    height: 40px;
+    padding-top: 8px;
 
     input {
         background: none;
         border: none;
-        width: 100%;
+        width: 228px;
+        height: 28px;
         font-size: 1em;
+        padding: 4px 8px;
 
         &:focus {
             background-color: $clr6;
@@ -17,7 +22,9 @@
         background: none;
         color: gray;
         font-size: 0.9em;
-        padding: 0;
+        height: 32px;
+        width: 32px;
+        padding: 6px;
         margin: 0;
         margin-left: 0.5em;
     }

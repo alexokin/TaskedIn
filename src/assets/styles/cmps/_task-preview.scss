@@ -1,18 +1,22 @@
-.task-preview{
+.task-preview {
     text-decoration: none;
-    color: inherit; 
-    .task-title{
-        background-color: $clr6;
-        padding: 0.5em;
-        border-radius: 0.3em ;
-        box-shadow: 0 1px 0 rgb(54 54 54 / 25%);
-        min-height: 30px;
-        cursor: pointer;
+    color: inherit;
 
-        &:hover{
+    .task-title {
+        background-color: $clr6;
+        // padding: 0.5em;
+        border-radius: 0.3em;
+        box-shadow: 0 1px 0 rgb(54 54 54 / 25%);
+        height: 32px;
+        width: 256px;
+        cursor: pointer;
+        padding-left: 8px;
+        padding-top: 4px;
+
+        &:hover {
             background-color: #f4f4f8;
         }
     }
-    
+
 
 }
