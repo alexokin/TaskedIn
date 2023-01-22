@@ -13,11 +13,14 @@ export function Workspace() {
   const [isBoardModalOpen, setIsBoardModalOpen] = useState(false)
   const [addModalLoc, setAddModalLoc] = useState(null)
   const [filterBy, setFilterBy] = useState(boardService.getDefaultFilter())
+  const [recentBoards, setRecentBoards] = useState(null)
 
   useEffect(() => {
     ; (async () => {
       try {
         await loadBoards(filterBy)
+        const recentBoardsToSet = await boardService.getLastviewedBoards(4)
+        setRecentBoards(recentBoardsToSet)
       } catch (error) {
         console.log('Cannot load boards')
       }
@@ -31,18 +34,13 @@ export function Workspace() {
   function onToggleAddBoardModal(ev) {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
     const addModalLocToSet = {
-      left: `${BoundingClientRect?.left + BoundingClientRect?.width + 5}px`
+      left: `${BoundingClientRect?.left + BoundingClientRect?.width + 5}px`,
+      bottom: '8px'
+
     }
+    if (window.innerWidth < BoundingClientRect?.left + BoundingClientRect?.width + 285) addModalLocToSet.left = `${window.innerWidth - 300}px`
     setIsBoardModalOpen(prevState => !prevState)
     setAddModalLoc(addModalLocToSet)
-  }
-
-  function getLastviewedBoards() {
-    let sortedBoards = JSON.parse(JSON.stringify(boards))
-    sortedBoards = sortedBoards.filter(board => board.lastViewed)
-    sortedBoards.sort((board1, board2) => board2.lastViewed - board1.lastViewed)
-    return sortedBoards.slice(0, 4)
-
   }
 
   return (
@@ -67,7 +65,7 @@ export function Workspace() {
           <span className="title">Recently viewed</span>
         </div>
 
-        <BoardList isAddable={false} boards={getLastviewedBoards()} onToggleAddBoardModal={onToggleAddBoardModal} />
+        {recentBoards && <BoardList isAddable={false} boards={recentBoards} onToggleAddBoardModal={onToggleAddBoardModal} />}
 
       </div>
       <div className="all-boards">

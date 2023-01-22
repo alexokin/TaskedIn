@@ -32,8 +32,12 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
         }
     }
 
+    function handleBlur({ relatedTarget }){
+        if(!relatedTarget) onToggleAddBoardModal()
+      }
+
     return (
-        <div style={addModalLoc} className="board-add" >
+        <div tabIndex="0" style={addModalLoc} className="board-add" onBlur={handleBlur} >
             <h3>Create board</h3>
             <hr />
 

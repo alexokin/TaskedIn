@@ -1,10 +1,17 @@
+import { useRef } from "react"
+import { useEffect } from "react"
 import { GrFormClose } from "react-icons/gr"
 
 export function GroupActions({ onToggleModal,onRemoveGroup, group, onCopyGroup }) {
+    const ElRef = useRef(null)
+
+    useEffect(() => {
+        ElRef.current.focus()
+    }, [])
 
 
     return (
-        <div className="group-actions">
+        <div className="group-actions" onBlur={onToggleModal} ref={ElRef} tabIndex="0">
             <button onClick={onToggleModal} className="btn-close-actions"><GrFormClose /></button>
             <div className="actions-title">List actions</div>
             <hr />

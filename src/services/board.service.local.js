@@ -45,6 +45,7 @@ export const boardService = {
     getEmptyBoard,
     getDefaultFilter,
     toggleStar,
+    getLastviewedBoards,
     boardStyles,
     boardStylesImg
 }
@@ -108,6 +109,13 @@ async function toggleStar(boardId) {
         console.log('Cannot change board starred status')
     }
 }
+
+ async function getLastviewedBoards(numOfBaords) {
+    let sortedBoards = JSON.parse(JSON.stringify(await query()))
+    sortedBoards = sortedBoards.filter(board => board.lastViewed)
+    sortedBoards.sort((board1, board2) => board2.lastViewed - board1.lastViewed)
+    return sortedBoards.slice(0, numOfBaords)
+  }
 
 function getEmptyBoard() {
     return {

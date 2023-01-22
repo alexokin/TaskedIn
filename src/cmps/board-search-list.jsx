@@ -14,39 +14,44 @@ export function BoardSearchList({ modalLoc, toggleSearchList }) {
     useEffect(() => {
         const regex = new RegExp(filterbyStr, 'i')
         let BoardsToSet = boards.filter(board => regex.test(board.title))
-        if(BoardsToSet.length > 8){
-            BoardsToSet= BoardsToSet.slice(0,8)
+        if (BoardsToSet.length > 8) {
+            BoardsToSet = BoardsToSet.slice(0, 8)
         }
         setBoardsToDisplay(BoardsToSet)
     }, [filterbyStr])
 
-    function onBoardSelect(boardId) {
-        console.log('testtttt')
-        updateBoard(boardId)
+    function onBoardSelect(ev, boardId) {
+        //ev.preventDefault()
+        setBoard(boardId)
         navigate(`/board/${boardId}`)
+        toggleSearchList()
     }
 
     function handleChange({ target }) {
         setFilterByStr(target.value)
     }
 
+    function handleBlur({ relatedTarget }){
+      if(!relatedTarget) toggleSearchList()
+    }
+
     return (
-        <div style={modalLoc} className="board-search-list" >
+        <div style={modalLoc} className="board-search-list" onBlur={handleBlur}  >
 
             <div className="list-header">
                 <BiSearch />
                 <input type="text"
                     value={filterbyStr}
-                    onChange={handleChange} 
-                    onBlur={toggleSearchList}
-                    autoFocus/>
+                    onChange={handleChange}
+                    autoFocus
+                />
 
             </div>
 
-            <ul className="search-list">
+            <ul tabIndex="0" className="search-list">
                 {boardsToDisplay && boardsToDisplay.map(board => {
                     return (
-                        <li onClick={() => onBoardSelect(board._id)} key={board._id}>
+                        <li onClick={(event) => onBoardSelect(event, board._id)} key={board._id}>
                             <div className="board-display" style={board.style}></div>
                             <div className="board-title">{board.title}</div>
                         </li>
