@@ -18,7 +18,7 @@ export const groupService = {
 
 window.cs = groupService
 
-async function query(boardId ) {
+async function query(boardId) {
     try {
         const board = await storageService.get(STORAGE_KEY, boardId)
         return board.groups
@@ -53,7 +53,15 @@ async function save(boardId, group) {
     try {
         const board = await boardService.getById(boardId)
         if (group._id) {
-            board.groups = board.groups.map(currGroup => (currGroup._id === group._id) ? group : currGroup)
+            board.groups = board.groups.map(currGroup => {
+                if (currGroup._id !== group._id){
+                   return currGroup
+                }
+                else{
+                    group.tasks = currGroup.tasks
+                    return group
+                }
+            })
         } else {
             // Later, owner is set by the backend
             //group.createdBy = userService.getLoggedinUser()

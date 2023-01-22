@@ -1,4 +1,4 @@
-.board-header{
+.board-header {
     width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -6,83 +6,96 @@
     position: fixed;
     z-index: 1;
 
-    button{
+    button {
         background-color: rgba(255, 255, 255, 0.2);
         border-radius: 0.3em;
     }
 
-    .board-status{
+    .board-status {
         display: flex;
         align-items: center;
-        .board-title{
+
+        .board-title {
             font-size: 1.125rem;
             color: $clr6;
             height: min-content;
         }
 
-        .btn-star{
-            font-size: 1.5em;
-            padding: 5px;
-            height: 34px;
-    
-            &:hover{
+        .btn-star {
+            // font-size: 1.5em;
+            padding: 6px;
+            height: 32px;
+            width: 32px;
+            margin-left: 16px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 0.3em;
+            color: $clr6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            &:hover {
                 color: $clr10;
             }
-    
-            &.starred{
+
+            &.starred {
                 color: $clr10;
-    
-                &:hover{
+
+                &:hover {
                     color: $clr6;
                 }
             }
         }
     }
 
-    .board-action{
+    .board-action {
         display: flex;
 
-        .btn-menu{
-            &:hover{
-                background-color:rgba(255, 255, 255, 0.3) ;
+        .btn-menu {
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.3);
             }
         }
 
-        .btn-filter{
+        .btn-filter {
             margin-right: 0;
-            &:hover{
-                background-color:rgba(255, 255, 255, 0.3) ;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.3);
             }
 
-            &.active{
+            &.active {
                 background-color: $clr6 ;
                 color: black;
             }
         }
 
-        .btn-clear-filter{
+        .btn-clear-filter {
             margin-left: 0;
             color: black;
 
-            &:hover{
+            &:hover {
                 background-color: $clr6;
             }
         }
-    
-        .members-container{
+
+        .members-container {
             width: 100px;
             margin-left: 0.5em;
             position: relative;
             overflow-x: hidden;
             display: flex;
             align-items: center;
-            img{
+
+            img {
                 position: absolute;
                 border-radius: 50%;
                 width: 28px;
                 height: 28px;
                 cursor: pointer;
-                &:hover{
+
+                &:hover {
                     z-index: 999;
                 }
             }

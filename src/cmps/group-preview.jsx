@@ -11,15 +11,17 @@ export function GroupPreview({ group, board }) {
   const [isFiltered, setIsFiltered] = useState(false)
 
   useEffect(() => {
-    const regex = new RegExp(filter.keyword, 'i')
-    group.tasks.filter(task => regex.test(task.title))
-    setIsFiltered(true)
+
+    // const regex = new RegExp(filter.keyword, 'i')
+    // group.tasks = group.tasks.filter(task => regex.test(task.title))
+    // console.log(group.tasks)
+    // setIsFiltered(true)
   }, [filter])
 
   return (
     <div className="group-preview">
       <GroupTitle group={group} board={board} />
-      {isFiltered && <TaskList groupTasks={group.tasks} board={board} groupId={group._id} />}
+      {!isFiltered && <TaskList groupTasks={group.tasks} board={board} groupId={group._id} />}
     </div>
   )
 }
