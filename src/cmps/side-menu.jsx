@@ -82,7 +82,7 @@ export function SideMenu({ board, isSideMenuOpen, setIsSideMenuOpen }) {
                         {!isUploading && <label className="btn-custom" ><FiPlus />
                             <input type="file" onChange={uploadImg} accept="img/*" className="img-upload" />
                         </label>}
-                        {isUploading && <span>loading...</span>}
+                        {isUploading && <img width='100px' src={require(`../assets/img/recent-loader.webp`)} />}
                     </div>
                 </div>
                 <BoardImgPicker board={board} isBgImgPickerMenuOpen={isBgImgPickerMenuOpen} />
