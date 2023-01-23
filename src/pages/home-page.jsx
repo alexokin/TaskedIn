@@ -13,7 +13,7 @@ export function HomePage() {
             <h1 className="left-signup-h1">TaskedIn brings all your tasks, teammates, and tools together</h1>
             <p className="left-signup-p">Keep everything in the same place—even if your team isn't.</p>
             <div className="left-signup-div">
-              <input className="signin-input" type="text" placeHolder="Email" />
+              <input className="signin-input" type="text" placeholder="Email" />
               <button className="signin-btn"><a href="/workspace" className="signin-a">Let's Tasked it Now!</a></button>
             </div>
           </div>

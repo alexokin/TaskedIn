@@ -10,6 +10,7 @@ import { TaskDetailsModal } from "./task-details-modal";
 import { groupService } from "../services/group.service.local";
 import { utilService } from "../services/util.service";
 import { TaskCheckList } from "./checklist/task-checklist";
+import { TaskDetailsSubheader } from "./task-details-subheader";
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
@@ -51,7 +52,7 @@ export function TaskDetails() {
             />
             <div className="task-body">
               <section className="task-content">
-                {/* <TaskDetailsOverview /> */}
+                <TaskDetailsSubheader onOpenModal={onOpenModal} board={board} task={task} groupId={groupId} />
                 <TaskDescription board={board} task={task} groupId={groupId} />
                 {task.checklists?.length > 0 && <TaskCheckList board={board} task={task} groupId={groupId}/> }
                 <TaskDetailsActivities />
