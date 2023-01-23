@@ -12,6 +12,8 @@ import { removeTask } from "../store/actions/task.actions.js";
 export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
   const navigate = useNavigate()
   const checklistBtnRef = useRef()
+  const membersBtnRef = useRef()
+
 
   function onRemoveTask(ev) {
     ev.preventDefault()
@@ -23,7 +25,7 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
     <section className="task-sidebar">
       <h3 className="sidebar-title">Add to card</h3>
       <div className="btn-container">
-        <button>
+        <button ref={membersBtnRef} onClick={()=> onOpenModal('Members', membersBtnRef)}>
           <BsPerson className="icon" />
           Members
         </button>

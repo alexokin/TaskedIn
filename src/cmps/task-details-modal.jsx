@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { CheckList } from "./checklist/check-list";
+import { TaskMembers } from "./members/task-members";
 
 export function TaskDetailsModal({
   task,
@@ -27,6 +28,16 @@ export function TaskDetailsModal({
             setTaskDetailsModal={setTaskDetailsModal}
           />
         );
+      case "Members":
+        return (
+          <TaskMembers
+            board={board}
+            task={task}
+            groupId={groupId}
+            setTaskDetailsModal={setTaskDetailsModal}
+          />
+        );
+
       default:
         return;
     }
@@ -36,6 +47,8 @@ export function TaskDetailsModal({
     switch (type) {
       case "Checklist":
         return "Add checklist";
+        case "Members":
+          return "Members";
       default:
         return type;
     }
