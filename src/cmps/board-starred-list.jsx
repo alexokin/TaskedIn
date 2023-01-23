@@ -26,7 +26,7 @@ export function BoardStarredList({ modalLoc, toggleStarredList }) {
 
     function onToggleStar(ev, boardId) {
         ev.stopPropagation()
-        boardService.toggleStar(boardId)
+        boardService.toggleStar(boardId,false)
     }
 
     function onBoardSelect(boardId) {
@@ -35,13 +35,14 @@ export function BoardStarredList({ modalLoc, toggleStarredList }) {
     }
 
     return (
-        <ul tabIndex="0" style={modalLoc} className="board-starred-list" onBlur={toggleStarredList} ref={listRef}>
+        <ul tabIndex="0" style={modalLoc} className={`board-starred-list ${starredBoards?.length === 0 ? 'empty-list' : ''}`} onBlur={toggleStarredList} ref={listRef}>
+            {starredBoards?.length === 0 && <img src={require(`../assets/img/no-starred-boards.png`)} />}
             {starredBoards && starredBoards.map(board => {
                 return (
                     <li onClick={() => onBoardSelect(board._id)} key={board._id}>
                         <div className="board-display" style={board.style}></div>
                         <div className="board-title">{board.title}</div>
-                        <div onClick={(event) => onToggleStar(event, board._id)} className='btn-star'>
+                        <div onClick={(event) => onToggleStar(event, board._id)} id='btn-star' className='btn-star'>
                             <div className="filled-star"><AiFillStar /></div>
                             <div className="outline-star"><AiOutlineStar /></div>
                         </div>

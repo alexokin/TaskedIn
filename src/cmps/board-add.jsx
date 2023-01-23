@@ -57,7 +57,7 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
                 })}
             </div>
             <div className="styles">
-                {boardService.boardStyles.map((style, idx) => {
+                {boardService.boardStyles.slice(0,6).map((style, idx) => {
                     return (
                         <div onClick={() => onStyleChange(style)}
                             key={style.backgroundColor}

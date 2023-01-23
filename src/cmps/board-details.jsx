@@ -5,7 +5,7 @@ import { GroupList } from "./group-list.jsx";
 import { FiPlus } from "react-icons/fi";
 import { GroupAdd } from "./group-add.jsx";
 import { useSelector } from "react-redux";
-import { setBoard } from "../store/board.actions.js";
+import { loadBoards, setBoard } from "../store/board.actions.js";
 import { TaskDetails } from "./task-details";
 import { BoardHeader } from "./board-header.jsx";
 
@@ -19,6 +19,7 @@ export function BoardDetails() {
     ; (async () => {
       try {
         setBoard(boardId)
+        loadBoards()
       } catch (err) {
         showErrorMsg("Cannot load board", err)
       }
