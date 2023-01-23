@@ -52,8 +52,18 @@
         }
     }
 
+
     .board-action {
         display: flex;
+
+        &.menu-open {
+
+            .btn-filter,
+            .btn-clear-filter,
+            .members-container {
+                translate: -340px;
+            }
+        }
 
         .btn-menu {
             width: 32px;
@@ -64,6 +74,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
             &:hover {
                 background-color: rgba(255, 255, 255, 0.3);
             }
@@ -73,6 +84,7 @@
             margin-right: 0;
             height: 32px;
             width: 78px;
+            transition: translate 0.3s;
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.3);
@@ -87,6 +99,7 @@
         .btn-clear-filter {
             margin-left: 0;
             color: black;
+            transition: translate 0.3s;
 
             &:hover {
                 background-color: $clr6;
@@ -100,6 +113,7 @@
             overflow-x: hidden;
             display: flex;
             align-items: center;
+            transition: translate 0.3s;
 
             img {
                 position: absolute;

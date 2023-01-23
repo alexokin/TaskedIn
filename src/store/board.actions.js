@@ -43,6 +43,7 @@ export async function setBoard(boardId) {
     try {
         let board = await boardService.getById(boardId)
         board.lastViewed = Date.now()
+        board.headerStyle = board.headerStyle ? board.headerStyle : { backgroundColor: '#026aa7' }
         board = await boardService.save(board)
         console.log('Board from DB:', board)
         store.dispatch({
