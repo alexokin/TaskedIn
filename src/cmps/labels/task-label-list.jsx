@@ -10,10 +10,9 @@ export function TaskLabelsList({ labelIds, board }) {
 
   function toggleLabelSize(ev) {
     ev.preventDefault();
-    updateBoard({
-      ...board,
-      style: { ...board.style, largeLabels: !board.style.largeLabels },
-    });
+    const boardToSet = JSON.parse(JSON.stringify(board))
+    boardToSet.style.largeLabels = board.style.largeLabels ? false : true;
+    updateBoard(boardToSet);
   }
 
   const labelsSize = largeLabels ? "large" : "";
