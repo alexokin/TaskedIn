@@ -34,7 +34,6 @@ export function TaskMembers({task, groupId, board}) {
       <div className="">
         <input
           onChange={handleChange}
-          autoFocus={window.innerWidth >= 1200}
           className="search-member"
           type="text"
           placeholder="Search Members"
