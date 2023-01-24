@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { CheckList } from "./checklist/check-list";
+import { Labels } from "./labels/labels";
 import { TaskMembers } from "./members/task-members";
 
 export function TaskDetailsModal({
@@ -10,6 +11,12 @@ export function TaskDetailsModal({
   data,
   board,
 }) {
+  const [isEditLabels, setIsEditLabels] = useState(null)
+
+  function onToggleLabelEdit (){
+    setIsEditLabels((prevState) => !prevState);
+  };
+
   const { type, pos } = data;
   const modalStyle = { left: pos.left + "px", top: pos.bottom + "px" };
   if (pos.right) {
@@ -37,6 +44,17 @@ export function TaskDetailsModal({
             setTaskDetailsModal={setTaskDetailsModal}
           />
         );
+      case "Labels":
+        return (
+          <Labels
+            task={task}
+            groupId={groupId}
+            board={board}
+            onToggleLabelEdit={onToggleLabelEdit}
+            isEditLabels={isEditLabels}
+          
+          />
+        );
 
       default:
         return;
@@ -47,8 +65,10 @@ export function TaskDetailsModal({
     switch (type) {
       case "Checklist":
         return "Add checklist";
-        case "Members":
-          return "Members";
+      case "Members":
+        return "Members";
+      case "Labels":
+        return "Labels";
       default:
         return type;
     }

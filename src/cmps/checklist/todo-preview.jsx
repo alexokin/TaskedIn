@@ -21,13 +21,13 @@ export function TodoPreview({ todo, checkListId, updateTodo, removeTodo }) {
 
   function onRemoveTodo (ev) {
     ev.stopPropagation()
-    removeTodo(todo.id, checkListId)
+    removeTodo(todo._id, checkListId)
   }
 
   return (
     <section className="todo-preview">
-    <label htmlFor={todo.id} className="checkbox-container">
-      <input className='checkbox' id={todo.id} type="checkbox" checked={todo.isDone} onChange={onChangeTodoDone} />
+    <label htmlFor={todo._id} className="checkbox-container">
+      <input className='checkbox' id={todo._id} type="checkbox" checked={todo.isDone} onChange={onChangeTodoDone} />
       <span className="checkmark"></span>
     </label>
 

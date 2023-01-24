@@ -13,6 +13,7 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
   const navigate = useNavigate()
   const checklistBtnRef = useRef()
   const membersBtnRef = useRef()
+  const labelsBtnRef = useRef()
 
 
   function onRemoveTask(ev) {
@@ -29,7 +30,7 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
           <BsPerson className="icon" />
           Members
         </button>
-        <button>
+        <button ref={labelsBtnRef} onClick={()=> onOpenModal('Labels', labelsBtnRef)}>
           <AiOutlineTag className="icon" />
           Labels
         </button>

@@ -22,7 +22,6 @@ function onAddChecklist(ev) {
         <form onSubmit={onAddChecklist}>
           <label htmlFor="addTitle">Title</label>
           <input
-            autoFocus={window.innerWidth >= 1200}
             id="addTitle"
             type="text"
             value={title}

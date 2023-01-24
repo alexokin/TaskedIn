@@ -7,7 +7,7 @@ export function TaskPreview({ task, groupId, board, onRemoveTask }) {
   console.log(taskId);
 
   return (
-    <div>
+    <div className="task-preview-container">
       <Link to={`${groupId}/${task._id}`} className="task-preview">
         <div className="task-title">{task.title}</div>
       </Link>
