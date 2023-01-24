@@ -69,8 +69,9 @@ export function MainHeader() {
     <div>
       {!hideHeader && <div style={board.headerStyle} className='main-header'>
         <div className='left-container'>
-        <SiTrello />
-          <a className='logo' href="/workspace">Trello</a>
+        
+          <a className='logo' href="/workspace">
+          <SiTrello />TaskedIn</a>
           <div className='btn-recent' onClick={(event) => toggleRecentList(event)}>
             Recent
             <AiOutlineDown />

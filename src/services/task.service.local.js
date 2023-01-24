@@ -12,7 +12,8 @@ export const taskService = {
   update,
   save,
   addChecklist,
-  addTodo
+  addTodo,
+  cleanTasksLabelIds
 }
 
 async function query(boardId, groupId, filter ) {

@@ -1,4 +1,8 @@
 import React, { useRef } from "react";
+import { useSelector } from "react-redux";
+import { AiOutlinePlus } from "react-icons/ai"
+
+
 
 export function TaskLabelsSubheader({ labelIds, onOpenModal }) {
   const addLabelBtnRef = useRef();
@@ -19,7 +23,7 @@ export function TaskLabelsSubheader({ labelIds, onOpenModal }) {
           <button
          
             onClick={() => {
-              onOpenActionModal("Labels", labelsContainerRef);
+              onOpenModal("Labels", labelsContainerRef);
             }}
             key={label._id}
             className={`btn-label ${label.class}`}
@@ -30,9 +34,9 @@ export function TaskLabelsSubheader({ labelIds, onOpenModal }) {
         ))}
         <button
           onClick={() => {
-            onOpenActionModal("Labels", addLabelBtnRef);
+            onOpenModal("Labels", addLabelBtnRef);
           }}
-          ref={btnAddLabelRef}
+          ref={addLabelBtnRef}
           className="btn-add-label"
         >
           <AiOutlinePlus />

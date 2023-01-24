@@ -25,7 +25,7 @@ export function AppFooter() {
                 <div className="footer-grid-links">
                     <a href="">
                         <div className="footer-grid-links-p-div">
-                            <p className="footer-grid-links-p-head">About Trello</p>
+                            <p className="footer-grid-links-p-head">About TaskedIn</p>
                         </div>
                         <p className="footer-grid-links-p">Whats behind the boards</p>
                     </a>
@@ -33,13 +33,13 @@ export function AppFooter() {
                         <div className="footer-grid-links-p-div">
                             <p className="footer-grid-links-p-head">Jobs</p>
                         </div>
-                        <p className="footer-grid-links-p">Learn about open roles on the Trello team</p>
+                        <p className="footer-grid-links-p">Learn about open roles on the TaskedIn team</p>
                     </a>
                     <a href="">
                         <div className="footer-grid-links-p-div">
                             <p className="footer-grid-links-p-head">Apps</p>
                         </div>
-                        <p className="footer-grid-links-p">Download the Trello App for your Desktop or Mobile devices</p>
+                        <p className="footer-grid-links-p">Download the TaskedIn App for your Desktop or Mobile devices</p>
                     </a>
                     <a href="">
                         <div className="footer-grid-links-p-div">

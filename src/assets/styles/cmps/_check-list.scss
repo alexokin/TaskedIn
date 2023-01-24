@@ -6,7 +6,7 @@
   border: none;
   border-radius: 3px;
   outline: none;
-  
+
 
   label {
     color: #172a4d;
@@ -36,9 +36,9 @@
     }
 
     input:focus {
-      
+
       border: none;
-      
+
       background-color: white;
       box-shadow: inset 0 0 0 2px #0079bf;
 
@@ -51,7 +51,8 @@
     height: 32px;
     padding: 6px 24px;
     border-radius: 3px;
-    &:hover{
+
+    &:hover {
       background-color: #026aa7;
     }
   }
@@ -136,6 +137,24 @@
         background-color: #61bd4f;
       }
     }
+  }
+}
+
+.add-todo-button {
+  margin-left: 40px;
+  margin-top: 20px;
+  align-items: center;
+  background-color: #ebecef;
+  border: none;
+  border-radius: 3px;
+  color: #1c2a4b;
+  display: flex;
+  line-height: 20px;
+  margin-top: 0;
+  padding: 6px 12px;
+  text-align: left;
+  &:hover{
+    background-color: #e1e4e9;
   }
 }
 

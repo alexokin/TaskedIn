@@ -8,7 +8,7 @@ const routes = [
     {
         path: '/',
         component: <HomePage />,
-        label: 'Trello',
+        label: 'TaskedIn',
     },
     {
         path: '/workspace',
