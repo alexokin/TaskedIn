@@ -4,12 +4,14 @@ import { boardService } from "../services/board.service.local";
 import { utilService } from "../services/util.service";
 import { BiSearch } from "react-icons/bi"
 import { updateBoard } from "../store/board.actions";
+import { FastAverageColor } from 'fast-average-color';
 
 
 export function BoardImgPicker({ board, isBgImgPickerMenuOpen }) {
 
     const [imgs, setImgs] = useState(null)
     const [searchTxt, setSearchTxt] = useState('')
+    const getAverageColor = new FastAverageColor()
 
     useEffect(() => {
         setImgs(utilService.getbgImgs())
@@ -41,12 +43,14 @@ export function BoardImgPicker({ board, isBgImgPickerMenuOpen }) {
         }
     }
 
-    function onSetStyle(imgUrl) {
+    async function onSetStyle(imgUrl) {
         let boardToSet = JSON.parse(JSON.stringify(board))
         boardToSet.style = {
             backgroundImage: `url('${imgUrl}')`,
             backgroundSize: 'cover',
         }
+        const headerColor = await getAverageColor.getColorAsync(imgUrl)
+        boardToSet.headerStyle = { backgroundColor: headerColor.rgba }
         updateBoard(boardToSet)
     }
 

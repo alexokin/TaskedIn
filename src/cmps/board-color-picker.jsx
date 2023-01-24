@@ -6,6 +6,7 @@ export function BoardColorPicker({ isBgColorPickerMenuOpen, board }) {
     function handleChange(style) {
         let boardToSet = JSON.parse(JSON.stringify(board))
         boardToSet.style = style
+        boardToSet.headerStyle = style
         updateBoard(boardToSet)
     }
 
