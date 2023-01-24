@@ -24,7 +24,7 @@ export function SideMenu({ board, isSideMenuOpen, setIsSideMenuOpen }) {
     useEffect(() => {
         if (!isBgColorPickerOpen && !isBgColorPickerMenuOpen && !isBgImgPickerMenuOpen) setTitle('Menu')
         if (isBgColorPickerOpen) setTitle('Change background')
-        if (isBgColorPickerMenuOpen) setTitle('board colors')
+        if (isBgColorPickerMenuOpen) setTitle('Board colors')
 
     }, [ isBgColorPickerOpen, isBgColorPickerMenuOpen, isBgImgPickerMenuOpen])
 

@@ -33,12 +33,14 @@ export function BoardCustomImg({ board }) {
         setIsUploading(false)
     }
 
-    function onSetStyle(imgUrl) {
+    async function onSetStyle(imgUrl) {
         let boardToSet = JSON.parse(JSON.stringify(board))
         boardToSet.style = {
             backgroundImage: `url('${imgUrl}')`,
             backgroundSize: 'cover',
         }
+        // const headerColor = await getAverageColor(imgUrl)
+        // boardToSet.headerStyle = { backgroundColor: headerColor }
         updateBoard(boardToSet)
     }
 
