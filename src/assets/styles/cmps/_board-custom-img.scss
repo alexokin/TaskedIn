@@ -5,9 +5,8 @@
     }
 
     .content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         margin-top: 16px;
         margin-left: 6px;
         gap: 8px;
