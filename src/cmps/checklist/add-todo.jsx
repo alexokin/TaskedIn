@@ -28,6 +28,7 @@ export function AddTodo({addNewTodo, checkListId, closeModal}) {
           placeholder="Add an item"
           value={title}
           onChange={handleChange}
+          onBlur={closeModal}
           ref={inputRef}
         />
         <section className="options">

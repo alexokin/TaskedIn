@@ -88,36 +88,39 @@
         margin: 0 8px 4px 0;
         width: 100%;
     }
-}
 
-.members-container {
-    display: flex;
-    gap:0.2rem;
-    img {
-        width: 32px;
-        border-radius: 50%;
-    }
-
-    .member-img {
+    .members-container {
         display: flex;
-        flex-direction: column;
-        align-self: center;
-    }
-
-    .btn-add-member {
-        margin-left: 0;
-        align-items: center;
-        border-radius: 100%;
-        background-color: #ebecef;
-        color: #42526e;
-        display: flex;
-        font-size: 17px;
+        gap:0.2rem;
         height: 32px;
-        justify-content: center;
-        width: 32px;
-
-        &:hover {
-            background-color: #e1e4e9
+        align-items: center;
+        margin-right: 12px;
+        img {
+            width: 32px;
+            border-radius: 50%;
+        }
+    
+        .member-img {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+        }
+    
+        .btn-add-member {
+            margin: 0;
+            align-items: center;
+            border-radius: 100%;
+            background-color: #ebecef;
+            color: #42526e;
+            display: flex;
+            font-size: 17px;
+            height: 32px;
+            justify-content: center;
+            width: 32px;
+    
+            &:hover {
+                background-color: #e1e4e9
+            }
         }
     }
 }

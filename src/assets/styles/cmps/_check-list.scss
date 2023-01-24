@@ -140,21 +140,39 @@
   }
 }
 
-.add-todo-button {
+.add-todo-option {
+  margin-top: 8px;
+  .add-todo-button {
+    margin-left: 40px;
+    margin-top: 20px;
+    align-items: center;
+    background-color: #ebecef;
+    border: none;
+    border-radius: 3px;
+    color: #1c2a4b;
+    display: flex;
+    line-height: 20px;
+    margin-top: 0;
+    padding: 6px 12px;
+    text-align: left;
+
+    &:hover {
+      background-color: #e1e4e9;
+    }
+  }
+}
+
+.add-todo{
   margin-left: 40px;
-  margin-top: 20px;
-  align-items: center;
-  background-color: #ebecef;
-  border: none;
-  border-radius: 3px;
-  color: #1c2a4b;
-  display: flex;
-  line-height: 20px;
-  margin-top: 0;
-  padding: 6px 12px;
-  text-align: left;
-  &:hover{
-    background-color: #e1e4e9;
+
+  .input{
+    height: 37px;
+    width: 100%;
+    padding-left: 8px;
+
+    &:focus{
+      outline-color: $clr1;
+    }
   }
 }
 
