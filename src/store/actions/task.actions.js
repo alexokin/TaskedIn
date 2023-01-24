@@ -1,8 +1,5 @@
 import { taskService } from '../../services/task.service.local'
-import { boardService } from "../../services/board.service.local";
-import { store } from "../store.js"
-
-import {loadBoards, getActionUpdateBoard, updateBoard } from "../board.actions";
+import {updateBoard } from "../board.actions";
 
 export async function addTask(title, groupId, board) {
     try {

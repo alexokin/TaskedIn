@@ -1,0 +1,27 @@
+.task-preview-icons {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    gap: 3px;
+    justify-content: space-between;
+    width: 100%;
+
+    .members-img {
+        display: flex;
+        flex: 1 1;
+        justify-content: flex-end;
+
+        .member-img {
+            height: 28px;
+            margin: 4px 0 0 4px;
+            width: 28px;
+
+            
+        }
+        img {
+            border-radius: 25em;
+            width: 100%;
+        }
+    }
+    
+}

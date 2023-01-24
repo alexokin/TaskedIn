@@ -16,7 +16,7 @@ export function TaskMembersSubheader({ memberIds, onOpenModal }) {
       <div className="members-container">
         {membersToShow.map((member) => (
           <div className="member-img" key={member._id}>
-            <img src={member.imgUrl} alt="" referrerPolicy="no-referrer" />
+            <img src={member.imgUrl} alt="member-img" />
           </div>
         ))}
         <button

@@ -52,7 +52,7 @@ export function TaskMembers({task, groupId, board}) {
                   <img
                     src={member.imgUrl}
                     alt=""
-                    referrerPolicy="no-referrer"
+                   
                   />
                 </div>
                 <span className="member-fullname">{member.fullname}</span>
