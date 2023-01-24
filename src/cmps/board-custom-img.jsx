@@ -82,7 +82,7 @@ export function BoardCustomImg({ board }) {
                     return (
                         <div className="custom-img-item" key={img._id} onClick={() => onSetStyle(img.secure_url)}>
                             <img src={img.secure_url} />
-                            <a onClick={(event) => onSetSelectedImg(event, img)}>options</a>
+                            <a onClick={(event) => onSetSelectedImg(event, img)}>Remove</a>
 
                             {selectedImg?._id === img._id && <div className="remove-modal">
                                 <div className="modal-header">
