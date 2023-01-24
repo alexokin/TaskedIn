@@ -4,6 +4,7 @@ import { updateBoard } from "../store/board.actions"
 import { FiPlus } from "react-icons/fi";
 import { useEffect } from "react";
 import { GrFormClose } from "react-icons/gr"
+import { FastAverageColor } from 'fast-average-color'
 const STORAGE_KEY = 'customBgDB'
 
 
@@ -11,7 +12,7 @@ export function BoardCustomImg({ board }) {
     const [isUploading, setIsUploading] = useState(false)
     let [imgsToDisplay, setImgsToDisplay] = useState(null)
     const [selectedImg, setSelectedImg] = useState(null)
-    const [modalLoc, setModalLoc] = useState(null)
+    const getAverageColor = new FastAverageColor()
 
     useEffect(() => {
         ; (async () => {
@@ -27,9 +28,7 @@ export function BoardCustomImg({ board }) {
         const imgToSave = await uploadService.saveUploadedCollection(STORAGE_KEY, img)
         imgsToDisplay.push(imgToSave)
         setImgsToDisplay(prevImgs => prevImgs)
-
         onSetStyle(img.secure_url)
-
         setIsUploading(false)
     }
 
@@ -39,14 +38,13 @@ export function BoardCustomImg({ board }) {
             backgroundImage: `url('${imgUrl}')`,
             backgroundSize: 'cover',
         }
-        // const headerColor = await getAverageColor(imgUrl)
-        // boardToSet.headerStyle = { backgroundColor: headerColor }
+        const headerColor = await getAverageColor.getColorAsync(imgUrl)
+        boardToSet.headerStyle = { backgroundColor: headerColor.rgba }
         updateBoard(boardToSet)
     }
 
     async function onRemoveImg() {
         await uploadService.removeFromUploadedCollection(STORAGE_KEY, selectedImg._id)
-
         const imgsToSet = imgsToDisplay.filter(img => img._id !== selectedImg._id)
         setImgsToDisplay(imgsToSet)
         setSelectedImg(null)
@@ -54,14 +52,6 @@ export function BoardCustomImg({ board }) {
 
     function onSetSelectedImg(ev, img) {
         ev.stopPropagation()
-        const BoundingClientRect = ev.target.getBoundingClientRect()
-        console.log(BoundingClientRect)
-        const modalLocToSet = {
-            // right: `${BoundingClientRect?.right}px`,
-            // right:'0px',
-            // top: `${BoundingClientRect?.height}px`
-        }
-        setModalLoc(modalLocToSet)
         setSelectedImg(img)
     }
 

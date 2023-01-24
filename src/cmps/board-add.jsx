@@ -3,19 +3,30 @@ import { boardService } from "../services/board.service.local"
 import { addBoard, setBoard } from "../store/board.actions"
 import { GrFormClose } from "react-icons/gr"
 import { useNavigate } from "react-router"
+import { FastAverageColor } from 'fast-average-color'
 
 
 export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
     const [boardToAdd, setBoardToAdd] = useState(boardService.getEmptyBoard())
     const navigate = useNavigate()
+    const getAverageColor = new FastAverageColor()
 
     function handleChange({ target }) {
         const { value, name: field } = target
         setBoardToAdd(prevBoard => ({ ...prevBoard, [field]: value }))
     }
 
-    function onStyleChange(style) {
-        setBoardToAdd(prevBoard => ({ ...prevBoard, style }))
+    async function onStyleChange(style) {
+        let headerStyle
+        if (style.backgroundColor) {
+            headerStyle = style
+        } else {
+            const headerColor = await getAverageColor.getColorAsync(style.backgroundImage.substring(5, style.backgroundImage.length - 3))
+            headerStyle = {
+                backgroundColor: headerColor.rgba
+            }
+        }
+        setBoardToAdd(prevBoard => ({ ...prevBoard, style, headerStyle }))
     }
 
     async function onAddBoard(ev) {
@@ -32,9 +43,9 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
         }
     }
 
-    function handleBlur({ relatedTarget }){
-        if(!relatedTarget) onToggleAddBoardModal()
-      }
+    function handleBlur({ relatedTarget }) {
+        if (!relatedTarget) onToggleAddBoardModal()
+    }
 
     return (
         <div tabIndex="0" style={addModalLoc} className="board-add" onBlur={handleBlur} >
@@ -57,7 +68,7 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
                 })}
             </div>
             <div className="styles">
-                {boardService.boardStyles.slice(0,6).map((style, idx) => {
+                {boardService.boardStyles.slice(0, 6).map((style, idx) => {
                     return (
                         <div onClick={() => onStyleChange(style)}
                             key={style.backgroundColor}
