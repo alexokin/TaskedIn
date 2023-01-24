@@ -1,4 +1,5 @@
 import { boardService } from "../services/board.service.local.js";
+import { groupService } from "../services/group.service.local.js"
 import { store } from '../store/store.js'
 import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, UPDATE_BOARD, SET_BOARD, UPDATE_BOARD_NO_SET } from "./board.reducer.js";
 
@@ -101,4 +102,11 @@ export async function updateBoardNoSet(board) {
         console.log('Cannot save board', err)
         throw err
     }
+}
+
+export async function updateDrag({ source, destination, type, board }) {
+    const boardToUpdate = board
+    const update = type === 'TASK' ? groupService.reorderTasks : groupService.reorderGroups
+    const groupsToSave = update(source, destination, boardToUpdate.groups)
+    updateBoard({...boardToUpdate, groups: groupsToSave})
 }

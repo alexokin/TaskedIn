@@ -14,6 +14,8 @@ export const groupService = {
     remove,
     getEmptyGroup,
     getGroupTitle,
+    reorderGroups,
+    reorderTasks,
 }
 
 window.cs = groupService
@@ -92,6 +94,18 @@ function getEmptyGroup() {
     }
 }
 
+function reorderTasks(source, destination, groups) {
+    const sourceGroup = groups.find(group => group._id === source.droppableId)
+    const [task] = sourceGroup.tasks.splice(source.index, 1)
+    const destinationGroup = groups.find(group => group._id === destination.droppableId)
+    destinationGroup.tasks.splice(destination.index, 0, task)
+    return groups
+}
+function reorderGroups(source, destination, groups) {
+    const [group] = groups.splice(source.index, 1)
+    groups.splice(destination.index, 0, group)
+    return groups
+}
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
