@@ -1,9 +1,15 @@
+import { storageService } from "./async-storage.service"
+
 export const uploadService = {
-  uploadImg
+  uploadImg,
+  getUploadedCollection,
+  removeFromUploadedCollection,
+  saveUploadedCollection
 }
-function uploadImg(ev) {
-  const CLOUD_NAME = "dcwibf9o5"
-  const UPLOAD_PRESET = "vt0iqgff"
+
+function uploadImg(ev, collection = '') {
+  const CLOUD_NAME = "dlhh3aon3"
+  const UPLOAD_PRESET = "TaskedIn"
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
   const formData = new FormData()
@@ -19,4 +25,16 @@ function uploadImg(ev) {
       return res
     })
     .catch(err => console.error(err))
+}
+
+async function saveUploadedCollection(collection, data) {
+  return await storageService.post(collection, data)
+}
+
+async function getUploadedCollection(collection) {
+  return await storageService.query(collection)
+}
+
+async function removeFromUploadedCollection(collection, dataId) {
+  await storageService.remove(collection, dataId)
 }

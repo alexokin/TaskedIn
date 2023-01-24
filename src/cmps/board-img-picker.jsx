@@ -65,7 +65,9 @@ export function BoardImgPicker({ board, isBgImgPickerMenuOpen }) {
                     return (
                         <div className="img-item" key={img.id} onClick={() => onSetStyle(img.url)}>
                             <img src={img.url} />
-                            <a href={`https://unsplash.com/@${img.user}`} target="_blank">{img.user}</a>
+                            <div onClick={(event) => event.stopPropagation()}>
+                                <a href={`https://unsplash.com/@${img.user}`} target="_blank">{img.user}</a>
+                            </div>
                         </div>
                     )
                 })}
