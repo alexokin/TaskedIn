@@ -7,8 +7,10 @@ import { BoardAdd } from './board-add'
 import { BoardSearchList } from './board-search-list'
 import { useEffect } from 'react'
 import { BoardRecentList } from './board-recent-list'
+import { useSelector } from 'react-redux'
 
 export function MainHeader() {
+  const board = useSelector((storeState) => storeState.boardModule.currBoard)
   const [isStarredListOpen, setIsStarredListOpen] = useState(false)
   const [isSearchListOpen, setIsSearchListOpen] = useState(false)
   const [isRecentListOpen, setIsRecentListOpen] = useState(false)
@@ -65,7 +67,7 @@ export function MainHeader() {
 
   return (
     <div>
-      {!hideHeader && <div className='main-header'>
+      {!hideHeader && <div style={board.headerStyle} className='main-header'>
         <div className='left-container'>
         <SiTrello />
           <a className='logo' href="/workspace">Trello</a>

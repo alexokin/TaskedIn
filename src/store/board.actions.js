@@ -2,7 +2,7 @@ import { boardService } from "../services/board.service.local.js";
 import { userService } from "../services/user.service.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, UPDATE_BOARD, SET_BOARD } from "./board.reducer.js";
+import { SET_BOARDS, ADD_BOARD, REMOVE_BOARD, UPDATE_BOARD, SET_BOARD, UPDATE_BOARD_NO_SET } from "./board.reducer.js";
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -43,6 +43,7 @@ export async function setBoard(boardId) {
     try {
         let board = await boardService.getById(boardId)
         board.lastViewed = Date.now()
+        board.headerStyle = board.headerStyle ? board.headerStyle : { backgroundColor: '#026aa7' }
         board = await boardService.save(board)
         console.log('Board from DB:', board)
         store.dispatch({
@@ -82,6 +83,21 @@ export async function updateBoard(board) {
         const savedBoard = await boardService.save(board)
         console.log('Updated Board:', savedBoard)
         store.dispatch(getActionUpdateBoard(savedBoard))
+        return savedBoard
+    } catch (err) {
+        console.log('Cannot save board', err)
+        throw err
+    }
+}
+
+export async function updateBoardNoSet(board) {
+    try {
+        const savedBoard = await boardService.save(board)
+        console.log('Updated Board:', savedBoard)
+        store.dispatch({
+            type: UPDATE_BOARD_NO_SET,
+            board
+        })
         return savedBoard
     } catch (err) {
         console.log('Cannot save board', err)

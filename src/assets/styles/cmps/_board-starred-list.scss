@@ -8,6 +8,10 @@
     border: 1px solid $clr9;
     border-radius: 0.2em;
 
+    &.empty-list {
+        display: flex;
+        justify-content: center;
+    }
 
     li {
         display: flex;

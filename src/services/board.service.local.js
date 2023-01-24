@@ -2,8 +2,9 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { updateBoard } from '../store/board.actions.js'
+import { updateBoard, updateBoardNoSet } from '../store/board.actions.js'
 import { FaUserCircle } from "react-icons/fa";
+import { createApi } from "unsplash-js";
 
 const STORAGE_KEY = 'board'
 const boardStyles = [
@@ -12,7 +13,10 @@ const boardStyles = [
     { backgroundColor: '#519839' },
     { backgroundColor: '#b04632' },
     { backgroundColor: '#89609e' },
-    { backgroundColor: '#cd5a91' }
+    { backgroundColor: '#cd5a91' },
+    { backgroundColor: '#4bbf6b' },
+    { backgroundColor: '#00aecc' },
+    { backgroundColor: '#838c91' }
 ]
 const boardStylesImg = [
     {
@@ -46,6 +50,7 @@ export const boardService = {
     getDefaultFilter,
     toggleStar,
     getLastviewedBoards,
+    getUnsplashApi,
     boardStyles,
     boardStylesImg
 }
@@ -100,22 +105,33 @@ async function save(board) {
     return savedBoard
 }
 
-async function toggleStar(boardId) {
+async function toggleStar(boardId, isSet = true) {
     try {
         const board = await boardService.getById(boardId)
         board.isStarred = !board.isStarred
-        await updateBoard(board)
+        if (isSet) {
+            await updateBoard(board)
+        } else {
+            await updateBoardNoSet(board)
+        }
+
     } catch (error) {
         console.log('Cannot change board starred status')
     }
 }
 
- async function getLastviewedBoards(numOfBaords) {
+async function getLastviewedBoards(numOfBaords) {
     let sortedBoards = JSON.parse(JSON.stringify(await query()))
     sortedBoards = sortedBoards.filter(board => board.lastViewed)
     sortedBoards.sort((board1, board2) => board2.lastViewed - board1.lastViewed)
     return sortedBoards.slice(0, numOfBaords)
-  }
+}
+
+function getUnsplashApi() {
+    return createApi({
+        accessKey: "FZWFlSNRE6IRuFz6Pm9cPqQjUoa5egxHDuU_fyh5UYQ"
+    })
+}
 
 function getEmptyBoard() {
     return {
