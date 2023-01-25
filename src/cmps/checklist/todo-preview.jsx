@@ -25,7 +25,7 @@ export function TodoPreview({ todo, checkListId, updateTodo, removeTodo }) {
   }
 
   return (
-    <section className="todo-preview">
+    <section className={`todo-preview ${isEditTitleOpen? 'edit-open':''}`}>
     <label htmlFor={todo._id} className="checkbox-container">
       <input className='checkbox' id={todo._id} type="checkbox" checked={todo.isDone} onChange={onChangeTodoDone} />
       <span className="checkmark"></span>
@@ -36,7 +36,7 @@ export function TodoPreview({ todo, checkListId, updateTodo, removeTodo }) {
     ) : (
       <section className="title" onClick={toggleTitleEdit}>
         <p className={todo.isDone ? 'crossed-out' : ''}>{todo.title}</p>
-        <button className="close-btn" onClick={onRemoveTodo}>
+        <button className="btn-close" onClick={onRemoveTodo}>
           <BsThreeDots />
         </button>
       </section>

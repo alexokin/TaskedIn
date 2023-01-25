@@ -7,14 +7,9 @@ import { TaskDetailsSidebar } from "./task-details-sidebar";
 import { TaskDescription } from "./task-description";
 import { TaskDetailsActivities } from "./task-details-activity";
 import { TaskDetailsModal } from "./task-details-modal";
-import { groupService } from "../services/group.service.local";
 import { utilService } from "../services/util.service";
 import { TaskCheckList } from "./checklist/task-checklist";
 import { TaskDetailsSubheader } from "./task-details-subheader";
-import { useEffect } from "react";
-import { setBoard } from "../store/board.actions";
-import { boardService } from "../services/board.service.local";
-import { taskService } from "../services/task.service.local";
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);

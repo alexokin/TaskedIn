@@ -24,7 +24,7 @@ export function BoardCustomImg({ board }) {
 
     async function uploadImg(ev) {
         setIsUploading(true)
-        const img = await uploadService.uploadImg(ev, STORAGE_KEY)
+        const img = await uploadService.uploadImg(ev)
         const imgToSave = await uploadService.saveUploadedCollection(STORAGE_KEY, img)
         imgsToDisplay.push(imgToSave)
         setImgsToDisplay(prevImgs => prevImgs)
