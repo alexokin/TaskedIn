@@ -16,11 +16,6 @@ export function HomePage() {
                 Keep everything in the same place—even if your team isn't.
               </p>
               <div className="left-signup-div">
-                <input
-                  className="signin-input"
-                  type="text"
-                  placeholder="Email"
-                />
                 <button className="signin-btn">
                   <a href="/workspace" className="signin-a">
                     Let's start Tasked it!
@@ -196,27 +191,6 @@ export function HomePage() {
                 </p>
               </div>
             </div>
-
-            <div className="carousel-square">
-              <div className="header-carousel-square">
-                <img
-                  className="header-carousel-square"
-                  src={require(`../assets/img/background4.jpeg`)}
-                  alt="trello-ui-boards-lists-cards img"
-                />
-                <div className="logo-carousel hugo"></div>
-              </div>
-              <div className="bottom-carousel-square">
-                <h3 className="carousel-square-h3">Meeting Agenda Template</h3>
-                <span className="carousel-square-span">
-                  by Darren Chait, Co-Founder @ Hugo
-                </span>
-                <p className="carousel-square-p">
-                  Great meetings require planning. Use this TaskedIn template as
-                  the framework for more effective, collaborative team meetings.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -300,105 +274,7 @@ export function HomePage() {
             </div>
           </section>
         </section>
-
-        {/* 
-      <section className="home-page-empty-space-section"></section>
-      <section className="home-page-empty-space-section"></section>
-
-      <section className="do-more-with-trello-section">
-        <div className="left-do-more-with-trello-section">
-          <p className="first-p-left-do-more-with-trello-section">Powerful ways to grow</p>
-          <h2 className="h2-left-do-more-with-trello-section">Do more with TaskedIn</h2>
-          <p className="second-p-left-do-more-with-trello-section">TaskedIn’s intuitive features give any team the ability to quickly set up and customize workflows for just about anything.</p>
-        </div>
-      </section>
-
-      <section className="integrations-butler-enterprise-main-section">
-        <div className="trello-enterprise-main-div">
-          <div className="trello-enterprise-sub-div">
-            <div className="trello-enterprise-small-div">
-              <img src="../assets/img/Search_Value.svg" alt="trello-enterprise-img" />
-              <h3>TaskedIn Enterprise</h3>
-              <p>The productivity tool teams love, paired with the features and security needed for scale.</p>
-              <div>
-                <a href=""><span>Explore Enterprise</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="butler-automation-main-div">
-          <div className="butler-automation-sub-div">
-            <div className="butler-automation-small-div">
-              <img src="../assets/img/Search_Value.svg" alt="butler-automation-img" />
-              <h3>Butler Automation</h3>
-              <p>No-code automation is built into every TaskedIn board. Focus on the work that matters most and let the robots do the rest.</p>
-              <div>
-                <a href="../assets/img/butler-automation.svg"><span>Get to know Automation</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="integrations-main-div">
-          <div className="integrations-sub-div">
-            <div className="integrations-small-div">
-              <img src="../assets/img/Search_Value.svg" alt="integrations-img" />
-              <h3>Integrations</h3>
-              <p>Connect the apps your team already uses into your TaskedIn workflow or add a Power-Up to fine-tune your specific needs.</p>
-              <div>
-                <a href="../assets/img/Integrations_Puzzle.svg"><span>Browse Integrations</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="thoughtworks-main-section">
-        <div className="thoughtworks-nav-div">
-          <div className="thoughtworks-nav-div-internal-indicator">
-            <button className="nav-btn-thoughtworks"></button>
-            <button className="nav-btn-thoughtworks"></button>
-            <button className="nav-btn-thoughtworks"></button>
-          </div>
-          <button className="thoughtworks-nav-div-prev"></button>
-          <button className="thoughtworks-nav-div-forward"></button>
-        </div>
-        <div className="thoughtworks-nav-div-bottom-main-div">
-          <div className="left-thoughtworks-nav-div-bottom-main">
-            <p>[TaskedIn is] great for simplifying complex processes. As a manager, I can chunk [processes] down into bite-sized pieces for my team and then delegate that out, but still keep a bird's-eye view.</p>
-            <div>
-              <p>Joey Rosenberg</p>
-              <p>Global Leadership Director at Women Who Code</p>
-              <div>
-                <img src="../assets/img/WomenWhoCode_logo.svg" alt="Women who code logo" />
-                <a href="">Read the story</a>
-              </div>
-            </div>
-          </div>
-          <div className="right-thoughtworks-nav-div-bottom-main">
-            <h3>75% of organizations report that TaskedIn delivers value to their business within 30 days.</h3>
-            <a href="">TaskedIn TechValidate Survey</a>
-          </div>
-        </div>
-      </section>
-
-      <section className="teams-worldwide-main-section">
-        <section className="teams-worldwide-centered-sub-section">
-          <p>Join over 2,000,000 teams worldwide that are using TaskedIn to get more done.</p>
-          <img src="../assets/img/logos.svd" alt="logos" />
-        </section>
-      </section>
-
-      <section className="get-started-with-trello-main-section">
-        <section className="get-started-with-trello-centered-sub-section">
-          <h2>Get started with TaskedIn today</h2>
-          <form action="" className="form-signup">
-            <input type="text" placeHolder="Email" />
-            <button>Sign up - it’s free!</button>
-          </form>
-        </section>
-      </section> */}
       </main>
-      {/* <AppFooter /> */}
     </section>
   );
 }

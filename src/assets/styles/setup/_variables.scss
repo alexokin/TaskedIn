@@ -47,8 +47,9 @@ $clr26: #cd5a91;
 $clr27: #4bbf6b;
 $clr28: #00aecc;
 $clr29: #838c91;
+$clr331:#f5dd29;
 
-$board-colors-hover: (darken($clr21,5),darken($clr22,5),darken($clr23,5),darken($clr24,5),darken($clr25,5),darken($clr26,5),darken($clr27,5),darken($clr28,5),darken($clr29,5)); 
+$board-colors-hover: (darken($clr21,5),darken($clr22,5),darken($clr23,5),darken($clr24,5),darken($clr25,5),darken($clr26,5),darken($clr27,5),darken($clr28,5),darken($clr29,5),darken($clr331,5)); 
 
 // Breakpoints
 $mobile-breakpoint: 460px;

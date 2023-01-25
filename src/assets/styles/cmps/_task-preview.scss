@@ -1,6 +1,7 @@
 .task-preview {
     text-decoration: none;
     color: inherit;
+    background-color: aqua;
 
     .task-title {
         background-color: $clr6;
@@ -18,6 +19,15 @@
             background-color: #f4f4f8;
         }
     }
+    .task-list-cover {
+        height: 32px;
+        border-top-left-radius: 0.3em;
+        border-top-right-radius: 0.3em;
 
+        &.img {
+            height: 138px;
+            background-size: cover;
+        }
+    }
 
 }

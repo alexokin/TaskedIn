@@ -14,16 +14,26 @@ export const taskService = {
   addChecklist,
   addTodo,
   cleanTasksLabelIds,
+  getById,
   addImg
-};
+}
 
 async function query(boardId, groupId, filter) {
   try {
-    const group = await groupService.getById(boardId, groupId);
-    const regex = new RegExp(filter.keyword, "i");
-    return group.tasks.filter((task) => regex.test(task.title));
+    const group = await groupService.getById(boardId, groupId)
+    const regex = new RegExp(filter.keyword, 'i')
+    return group.tasks.filter(task => regex.test(task.title))
   } catch (err) {
-    throw err;
+    throw err
+  }
+}
+
+async function getById(boardId, groupId, taskId) {
+  try {
+    const group = await groupService.getById(boardId, groupId)
+    return group.tasks.filter(task => task._Id === taskId)
+  } catch (err) {
+    throw err
   }
 }
 

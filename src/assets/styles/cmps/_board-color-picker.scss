@@ -19,7 +19,7 @@
         border-radius: 10px;
         cursor: pointer;
 
-        @for $i from 1 through 9 {
+        @for $i from 1 through 10 {
             &.item#{$i}:hover {
                 background-color: nth($board-colors-hover, $i) !important;
             }

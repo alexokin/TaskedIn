@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { Attachment } from "./attachments/attachment";
 import { CheckList } from "./checklist/check-list";
+import { TaskCover } from "./cover/task-cover";
 import { Labels } from "./labels/labels";
 import { TaskMembers } from "./members/task-members";
 
@@ -62,6 +63,16 @@ export function TaskDetailsModal({
             setTaskDetailsModal={setTaskDetailsModal}
             groupId={groupId}
             board={board}
+
+          />
+        );
+      case "Cover":
+        return (
+          <TaskCover
+            board={board}
+            task={task}
+            groupId={groupId}
+            setTaskDetailsModal={setTaskDetailsModal}
           />
         );
 
@@ -78,6 +89,8 @@ export function TaskDetailsModal({
         return "Members";
       case "Labels":
         return "Labels";
+      case "Cover":
+        return "Cover";
       default:
         return type;
     }

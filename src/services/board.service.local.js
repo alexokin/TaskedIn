@@ -16,7 +16,8 @@ const boardStyles = [
     { backgroundColor: '#cd5a91' },
     { backgroundColor: '#4bbf6b' },
     { backgroundColor: '#00aecc' },
-    { backgroundColor: '#838c91' }
+    { backgroundColor: '#838c91' },
+    { backgroundColor: '#f5dd29' }
 ]
 const boardStylesImg = [
     {

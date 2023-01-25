@@ -1,0 +1,17 @@
+.task-cover{
+    padding: 0 12px;
+    
+    .btn-remove-cover{
+        height: 32px;
+        width: 100%;
+        margin: 0;
+        margin-bottom: 12px;
+        background-color: $clr9;
+        color: $clr45;
+        border-radius: 3px;
+
+        &:hover{
+            background-color: darken($clr9, 5) ;
+        }
+    }
+}
