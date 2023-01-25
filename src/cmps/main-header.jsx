@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BiSearch } from "react-icons/bi"
 import { SiTrello } from 'react-icons/si'
-import { AiOutlineDown } from "react-icons/ai"
+import { AiOutlineDown, AiOutlineHome } from "react-icons/ai"
 import { BoardStarredList } from './board-starred-list'
 import { BoardAdd } from './board-add'
 import { BoardSearchList } from './board-search-list'
@@ -70,8 +70,9 @@ export function MainHeader() {
       {!hideHeader && <div style={board.headerStyle} className='main-header'>
         <div className='left-container'>
         
-          <a className='logo' href="/workspace">
-          <SiTrello />TaskedIn</a>
+          <a className='logo' href="/">
+          <AiOutlineHome /></a>
+          <a className='logo' href="/workspace">TaskedIn</a>
           <div className='btn-recent' onClick={(event) => toggleRecentList(event)}>
             Recent
             <AiOutlineDown />
