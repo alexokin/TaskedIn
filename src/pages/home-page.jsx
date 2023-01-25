@@ -23,7 +23,7 @@ export function HomePage() {
                 />
                 <button className="signin-btn">
                   <a href="/workspace" className="signin-a">
-                    Let's Tasked it Now!
+                    Let's start Tasked it!
                   </a>
                 </button>
               </div>
@@ -217,52 +217,6 @@ export function HomePage() {
                 </p>
               </div>
             </div>
-
-            <div className="carousel-square">
-              <div className="header-carousel-square">
-                <img
-                  className="header-carousel-square"
-                  src={require(`../assets/img/background4.jpg`)}
-                  alt="trello-ui-boards-lists-cards img"
-                />
-                <div className="logo-carousel moisson"></div>
-              </div>
-              <div className="bottom-carousel-square">
-                <h3 className="carousel-square-h3">
-                  Social Media Marketing<br></br>Tamplate
-                </h3>
-                <span className="carousel-square-span">
-                  by Moisson Marketing
-                </span>
-                <p className="carousel-square-p">
-                  From generating ideas to planning your release schedule, use
-                  this TaskedIn social media template to manage everything in
-                  one place.
-                </p>
-              </div>
-            </div>
-
-            <div className="carousel-square">
-              <div className="header-carousel-square">
-                <img
-                  className="header-carousel-square"
-                  src={require(`../assets/img/rainbow.jpg`)}
-                  alt="trello-ui-boards-lists-cards img"
-                />
-                <div className="logo-carousel square"></div>
-              </div>
-              <div className="bottom-carousel-square">
-                <h3 className="carousel-square-h3">Kanban Template</h3>
-                <span className="carousel-square-span">
-                  by TaskedIn Engineering Team
-                </span>
-                <p className="carousel-square-p">
-                  Use this simple Kanban template to improve the productivity of
-                  your engineering team and help them build better products,
-                  faster.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -288,7 +242,7 @@ export function HomePage() {
               perspective to the task at hand.
             </p>
             <a href="" className="discover-btn">
-              <span>Discover all TaskedIn views</span>
+              <span>Discover TaskedIn views</span>
             </a>
           </div>
 
