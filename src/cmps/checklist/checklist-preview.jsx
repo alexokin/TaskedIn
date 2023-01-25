@@ -43,18 +43,15 @@ export function ChecklistPreview({
   return (
     <section className="checklist-preview">
       <section className="checklist-header">
-        <section className="left">
+        <section className={`left ${isEditTitleOpen ? 'edit-open' : ''}`}>
           <BsCheck2Square />
-
-          {isEditTitleOpen ? (
+          {isEditTitleOpen &&
             <EditTitle
               editTitle={editTitle}
               itemTitle={checkList.title}
               toggleTitleEdit={toggleTitleEdit}
-            />
-          ) : (
-            <h3 onClick={toggleTitleEdit}>{checkList.title}</h3>
-          )}
+            />}
+          {!isEditTitleOpen && <h3 onClick={toggleTitleEdit}>{checkList.title}</h3>}
         </section>
         {!isEditTitleOpen && (
           <section className="right">
@@ -71,9 +68,8 @@ export function ChecklistPreview({
         <p>{`${completionPercentage}%`}</p>
         <div className="completion-bar">
           <div
-            className={`percentage-bar ${
-              completionPercentage === "100" ? "done" : ""
-            }`}
+            className={`percentage-bar ${completionPercentage === "100" ? "done" : ""
+              }`}
             style={{ width: `${completionPercentage}%` }}
           ></div>
         </div>

@@ -6,6 +6,9 @@ import { utilService } from "../../services/util.service";
 import { updateTask } from "../../store/actions/task.actions";
 import { updateBoard } from "../../store/board.actions";
 import { CreateLabel } from "./create-label";
+import { BsCheck } from "react-icons/bs";
+
+
 
 export function Labels({
   task,
@@ -90,7 +93,7 @@ export function Labels({
     <section className="labels">
       {isEditLabels ? (
         <CreateLabel
-    
+
           label={selectedLabel}
           onToggleLabelEdit={onToggleLabelEdit}
           onRemoveLabel={onRemoveLabel}
@@ -123,7 +126,7 @@ export function Labels({
                     type="checkbox"
                     id={label._id}
                   />
-                  <span className="checkmark"></span>
+                  <span className={`checkmark ${task.labelIds?.includes(label._id) ? 'checked' : ''}`}> {task.labelIds?.includes(label._id) && <BsCheck />}</span>
                   <div className="label-container">
                     <div className={`label-color ${label.class}`}>
                       <div

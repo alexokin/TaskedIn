@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 
-export function AddTodo({addNewTodo, checkListId, closeModal}) {
+export function AddTodo({ addNewTodo, checkListId, closeModal }) {
   const [title, setTitle] = useState("");
   const inputRef = useRef();
 
@@ -20,8 +20,12 @@ export function AddTodo({addNewTodo, checkListId, closeModal}) {
     inputRef.current.focus();
   }
 
+  function handleBlur({ relatedTarget }) {
+    if (!relatedTarget) closeModal()
+  }
+
   return (
-    <section className="add-todo ">
+    <section className="add-todo " onBlur={handleBlur}>
       <form onSubmit={onAddTodo}>
         <input
           className="input"
@@ -31,10 +35,10 @@ export function AddTodo({addNewTodo, checkListId, closeModal}) {
           ref={inputRef}
         />
         <section className="options">
-          <button className="btn blue" type="submit">
+          <button tabIndex='0' className="btn-add-todo" type="submit">
             Add
           </button>
-          <button className="btn" onClick={closeModal}>
+          <button className="btn-close" onClick={closeModal}>
             Cancel
           </button>
         </section>

@@ -24,20 +24,24 @@ export function EditTitle({ editTitle, itemTitle, toggleTitleEdit }) {
     }
   }
 
+  function handleBlur({ relatedTarget }) {
+    if (!relatedTarget) toggleTitleEdit()
+  }
+
   return (
     <section className="edit-title">
       <textarea
         className="input"
         onKeyDown={handleUserKeyPress}
-        onBlur={onEditTitle}
+        onBlur={handleBlur}
         value={title}
         onChange={handleChange}
         ref={inputRef}
         spellCheck={false}
       ></textarea>
       <section className="options">
-        <button className="btn blue">Save</button>
-        <GrClose />
+        <button tabIndex='0' onClick={onEditTitle} className="btn-save">Save</button>
+        <button onClick={toggleTitleEdit} className="btn-close"><GrClose /></button>
       </section>
     </section>
   );

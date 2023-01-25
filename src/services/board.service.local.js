@@ -138,7 +138,7 @@ function getEmptyBoard() {
         title: '',
         isStarred: false,
         archivedAt: '',
-        style: { backgroundColor: 'lightgray' },
+        style: { backgroundColor: 'lightgray', largeLabels: false},
         headerStyle: { backgroundColor: 'lightgray' },
         labels: [],
         members: [],
