@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import { CheckList } from "./checklist/check-list";
+import { TaskCover } from "./cover/task-cover";
 import { Labels } from "./labels/labels";
 import { TaskMembers } from "./members/task-members";
 
@@ -13,7 +14,7 @@ export function TaskDetailsModal({
 }) {
   const [isEditLabels, setIsEditLabels] = useState(null)
 
-  function onToggleLabelEdit (){
+  function onToggleLabelEdit() {
     setIsEditLabels((prevState) => !prevState);
   };
 
@@ -52,7 +53,16 @@ export function TaskDetailsModal({
             board={board}
             onToggleLabelEdit={onToggleLabelEdit}
             isEditLabels={isEditLabels}
-          
+
+          />
+        );
+      case "Cover":
+        return (
+          <TaskCover
+            board={board}
+            task={task}
+            groupId={groupId}
+            setTaskDetailsModal={setTaskDetailsModal}
           />
         );
 
@@ -69,6 +79,8 @@ export function TaskDetailsModal({
         return "Members";
       case "Labels":
         return "Labels";
+      case "Cover":
+        return "Cover";
       default:
         return type;
     }

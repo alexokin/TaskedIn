@@ -7,14 +7,15 @@ import { ImAttachment } from "react-icons/im";
 import { GoArchive } from "react-icons/go";
 import { IoLocationSharp } from "react-icons/io5";
 import { removeTask } from "../store/actions/task.actions.js";
+import { taskService } from "../services/task.service.local.js";
 
 
-export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
+export function TaskDetailsSidebar({ task,taskId, groupId, board, onOpenModal }) {
   const navigate = useNavigate()
   const checklistBtnRef = useRef()
   const membersBtnRef = useRef()
   const labelsBtnRef = useRef()
-
+  const coverBtnRef = useRef()
 
   function onRemoveTask(ev) {
     ev.preventDefault()
@@ -26,15 +27,15 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
     <section className="task-sidebar">
       <h3 className="sidebar-title">Add to card</h3>
       <div className="btn-container">
-        <button ref={membersBtnRef} onClick={()=> onOpenModal('Members', membersBtnRef)}>
+        <button ref={membersBtnRef} onClick={() => onOpenModal('Members', membersBtnRef)}>
           <BsPerson className="icon" />
           Members
         </button>
-        <button ref={labelsBtnRef} onClick={()=> onOpenModal('Labels', labelsBtnRef)}>
+        <button ref={labelsBtnRef} onClick={() => onOpenModal('Labels', labelsBtnRef)}>
           <AiOutlineTag className="icon" />
           Labels
         </button>
-        <button ref={checklistBtnRef} onClick={()=> onOpenModal('Checklist', checklistBtnRef)}>
+        <button ref={checklistBtnRef} onClick={() => onOpenModal('Checklist', checklistBtnRef)}>
           <BsCheck2Square className="icon" />
           Checklist
         </button>
@@ -50,7 +51,7 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
           <IoLocationSharp className="icon" />
           Location
         </button>
-        <button >
+        {!task?.cover && <button ref={coverBtnRef} onClick={() => onOpenModal('Cover', coverBtnRef)} >
           <BsSquareHalf
             className="icon"
             style={{
@@ -58,7 +59,7 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
             }}
           />
           Cover
-        </button>
+        </button>}
 
         <button onClick={onRemoveTask} className="btn-sidebar">
           <GoArchive className="icon" />

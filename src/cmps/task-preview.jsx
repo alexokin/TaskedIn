@@ -20,6 +20,7 @@ export function TaskPreview({ task, groupId, board, onRemoveTask, index }) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}>
           <Link to={`${groupId}/${task._id}`} className="task-preview">
+            {task.cover && <div style={task.cover} className={`task-list-cover ${task.cover.backgroundImage ? 'img' : ''}`}></div>}
             <div className="task-title">
               {isShowLabels() && <TaskLabelsList labelIds={task.labelIds} board={board} />}
               {task.title}

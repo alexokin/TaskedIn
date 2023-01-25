@@ -10,15 +10,18 @@ import { TaskDetailsModal } from "./task-details-modal";
 import { utilService } from "../services/util.service";
 import { TaskCheckList } from "./checklist/task-checklist";
 import { TaskDetailsSubheader } from "./task-details-subheader";
+import {  BsSquareHalf } from "react-icons/bs";
+import { useRef } from "react";
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
   const navigate = useNavigate();
   const { boardId, groupId, taskId } = useParams();
   const [taskDetailsModal, setTaskDetailsModal] = useState(null);
+  const coverBtnRef = useRef()
 
 
-  const {groups} = board
+  const { groups } = board
   const group = groups.find((group) => group._id === groupId)
   let task = group?.tasks?.find((task) => task._id === taskId);
 
@@ -40,6 +43,17 @@ export function TaskDetails() {
             className="task-details"
             onClick={(ev) => ev.stopPropagation()}
           >
+            {task.cover && <div style={task.cover} className={`cover-display ${task.cover.backgroundImage ? 'img' : ''}`}>
+              <button className="cover-btn" ref={coverBtnRef} onClick={() => onOpenModal('Cover', coverBtnRef)} >
+                <BsSquareHalf
+                  className="icon"
+                  style={{
+                    transform: "rotate(0.75turn) translateY(-20%) translateX(22%)",
+                  }}
+                />
+                Cover
+              </button>
+            </div>}
             <button className="close-task-details" onClick={backToBoard}>
               <IoCloseOutline />
             </button>
@@ -67,6 +81,7 @@ export function TaskDetails() {
               <TaskDetailsSidebar
                 onOpenModal={onOpenModal}
                 taskId={taskId}
+                task={task}
                 groupId={groupId}
                 board={board}
               />

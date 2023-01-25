@@ -18,6 +18,15 @@
             background-color: #f4f4f8;
         }
     }
+    .task-list-cover {
+        height: 32px;
+        border-top-left-radius: 0.3em;
+        border-top-right-radius: 0.3em;
 
+        &.img {
+            height: 138px;
+            background-size: cover;
+        }
+    }
 
 }
