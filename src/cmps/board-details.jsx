@@ -10,26 +10,20 @@ import { TaskDetails } from "./task-details";
 import { BoardHeader } from "./board-header.jsx";
 
 export function BoardDetails() {
-  const board = useSelector((storeState) => storeState.boardModule.currBoard)
-  const filter = useSelector((storeState) => storeState.systemModule.filter)
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
-  const { boardId, taskId } = useParams()
+  const board = useSelector((storeState) => storeState.boardModule.currBoard);
+  const filter = useSelector((storeState) => storeState.systemModule.filter);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const { boardId, taskId } = useParams();
 
   useEffect(() => {
-    ; (async () => {
-      try {
-        setBoard(boardId)
-        loadBoards()
-      } catch (err) {
-        showErrorMsg("Cannot load board", err)
-      }
-    })()
-  }, [])
+    setBoard(boardId);
+    loadBoards();
+  }, []);
 
   function onToggleAddModal() {
-    setIsAddModalOpen((prevState) => !prevState)
+    setIsAddModalOpen((prevState) => !prevState);
   }
-
+  if(!board.groups) return
   return (
     <div style={board?.style} className="board-details">
       <BoardHeader board={board} />
@@ -39,25 +33,22 @@ export function BoardDetails() {
         {board && <GroupList board={board} groups={board.groups} />}
 
         <div className="group-add-container">
-          {!isAddModalOpen && <div
-            className="btn-open-addGroup"
-            onClick={(event) => onToggleAddModal(event)}
-          >
-            <FiPlus />
-            Add another list
-          </div>}
-          {isAddModalOpen && (
-            <GroupAdd
-              board={board}
-              onToggleAddModal={onToggleAddModal}
-            />
+          {!isAddModalOpen && (
+            <div
+              className="btn-open-addGroup"
+              onClick={(event) => onToggleAddModal(event)}
+            >
+              <FiPlus />
+              Add another list
+            </div>
           )}
-
+          {isAddModalOpen && (
+            <GroupAdd board={board} onToggleAddModal={onToggleAddModal} />
+          )}
         </div>
-
       </div>
 
       {taskId && <TaskDetails />}
     </div>
-  )
+  );
 }

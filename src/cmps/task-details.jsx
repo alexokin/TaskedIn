@@ -22,14 +22,10 @@ export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams();
   const [taskDetailsModal, setTaskDetailsModal] = useState(null);
 
-  let group = groupService.getById(boardId, groupId)
-  let task = taskService.getById(boardId, groupId, taskId)
 
-  useEffect(() => {
-    console.log('testtttttt', board)
-    setBoard(boardId)
-
-  }, [])
+  const {groups} = board
+  const group = groups.find((group) => group._id === groupId)
+  let task = group?.tasks?.find((task) => task._id === taskId);
 
   function backToBoard(ev) {
     ev.stopPropagation();
@@ -37,10 +33,9 @@ export function TaskDetails() {
   }
 
   function onOpenModal(type, ref) {
-    const pos = utilService.getModalPosition(type, ref)
-    setTaskDetailsModal({ type, pos })
+    const pos = utilService.getModalPosition(type, ref);
+    setTaskDetailsModal({ type, pos });
   }
-
   return (
     <Fragment>
       {task && <section className="screen">
@@ -62,9 +57,16 @@ export function TaskDetails() {
             />
             <div className="task-body">
               <section className="task-content">
-                <TaskDetailsSubheader onOpenModal={onOpenModal} board={board} task={task} groupId={groupId} />
+                <TaskDetailsSubheader
+                  onOpenModal={onOpenModal}
+                  board={board}
+                  task={task}
+                  groupId={groupId}
+                />
                 <TaskDescription board={board} task={task} groupId={groupId} />
-                {task.checklists?.length > 0 && <TaskCheckList board={board} task={task} groupId={groupId} />}
+                {task.checklists?.length > 0 && (
+                  <TaskCheckList board={board} task={task} groupId={groupId} />
+                )}
                 <TaskDetailsActivities />
               </section>
               <TaskDetailsSidebar
