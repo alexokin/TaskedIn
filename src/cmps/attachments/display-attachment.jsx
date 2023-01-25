@@ -19,8 +19,8 @@ export function DisplayAttachment({ task, attachment, groupId, board }) {
     <section className="display-attachment">
       <a
         className="display-attachment-img"
-        style={{ backgroundImage: `url(${attachment.url.url})` }}
-        href={attachment.url.url}
+        style={{ backgroundImage: `url(${attachment.url})` }}
+        href={attachment.url}
         target={"_blank"}
         rel="noreferrer"
       >

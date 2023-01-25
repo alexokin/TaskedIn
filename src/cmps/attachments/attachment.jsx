@@ -20,7 +20,7 @@ export function Attachment({ task, groupId, board, setTaskDetailsModal }) {
     try {
       setIsAdding(true);
       const url = await uploadService.uploadImg(ev);
-      onAddImg(url);
+      onAddImg(url.url);
     } catch (err) {
       console.log("Error on upload file to Cloudinary", err);
     }

@@ -7,11 +7,10 @@ import { ImAttachment } from "react-icons/im";
 import { GoArchive } from "react-icons/go";
 import { IoLocationSharp } from "react-icons/io5";
 import { removeTask } from "../store/actions/task.actions.js";
-import { taskService } from "../services/task.service.local.js";
-import { taskService } from "../services/task.service.local.js";
 
 
-export function TaskDetailsSidebar({ task, task,taskId, groupId, board, onOpenModal  }) {
+
+export function TaskDetailsSidebar({ task, taskId, groupId, board, onOpenModal  }) {
   const navigate = useNavigate()
   const checklistBtnRef = useRef()
   const membersBtnRef = useRef()
