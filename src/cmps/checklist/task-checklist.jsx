@@ -42,7 +42,7 @@ export function TaskCheckList({ task, groupId, board }) {
   return (
     <section className="task-checklist">
       {task.checklists.map((checkList) => (
-        <div>
+        <div key={checkList._id}>
           <ChecklistPreview
             removeChecklist={removeChecklist}
             updateChecklist={updateChecklist}
@@ -50,7 +50,7 @@ export function TaskCheckList({ task, groupId, board }) {
             removeTodo={removeTodo}
             updateTodo={updateTodo}
             checkList={checkList}
-            key={checkList._id}
+            
           />
         </div>
       ))}

@@ -26,93 +26,96 @@
     flex-direction: column;
     margin-top: 8px;
 
-    .input-container {
-      &:focus-within {
-        border: 2px solid #0079bf;
-        height: 150px;
-        background-color: $clr6;
-        justify-content: space-between;
-      }
-    }
-
-    input {
-      background: none;
-      border: transparent;
-      cursor: pointer;
-      font-size: 14px;
-      height: fit-content;
-      margin-bottom: 4px;
-      transition: box-shadow .3s;
-      width: 100%;
-      border-radius: 3px;
-
-      &.empty {
-        background-color: #ebecef;
-
-        &:hover {
-          background-color: #e1e4e9;
-        }
-      }
-
-      &:focus {
-        outline: none;
-        background-color: white;
-        padding: 8px 12px;
-        height: 56px;
-
-        &:hover {
-          background: none;
-        }
-      }
-
-      &:hover:focus {
-        cursor: text;
-      }
-    }
-
-    ::placeholder {
-      color: #091e42;
-    }
 
   }
 
-  .btns-container {
+  .input-container {
+    &:focus-within {
+      border: 2px solid #0079bf;
+      height: 150px;
+      background-color: $clr6;
+      justify-content: space-between;
+    }
+  }
+
+  input {
+    background: none;
+    border: transparent;
+    cursor: pointer;
     font-size: 14px;
+    height: 48px;
+    padding-left: 8px;
+    margin-bottom: 4px;
+    transition: box-shadow .3s;
+    width: 100%;
+    border-radius: 3px;
 
-    &.open {
-      button {
-        display: inline;
+    &.empty {
+      background-color: #ebecef;
+
+      &:hover {
+        background-color: #e1e4e9;
       }
     }
 
-    button {
-      margin-top: 8px;
-      height: 32px;
-      display: none;
+    &:focus {
+      outline: none;
+      background-color: white;
       padding: 8px 12px;
-      margin-right: 4px;
-      border-radius: 3px;
-      transition: background-color 0.1s;
-      margin-left: 0;
-
-    }
-
-    .btn-save {
-      background-color: $clr1;
-      color: white;
+      height: 56px;
 
       &:hover {
-        box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.15);
+        background: none;
       }
     }
 
-    .btn-cancel {
-      background: none;
-      color: $clr45;
+    &:hover:focus {
+      cursor: text;
+    }
+  }
 
-      &:hover {
-        background-color: rgba(128, 128, 128, 0.1);
-      }
+  ::placeholder {
+    color: #091e42;
+  }
+
+}
+
+.btns-container {
+  font-size: 14px;
+
+  &.open {
+    button {
+      display: inline;
+    }
+  }
+
+  button {
+    margin-top: 8px;
+    height: 32px;
+    display: none;
+    padding: 8px 12px;
+    margin-right: 4px;
+    border-radius: 3px;
+    transition: background-color 0.1s;
+    margin-left: 0;
+
+  }
+
+  .btn-save {
+    background-color: $clr1;
+    color: white;
+
+    &:hover {
+      box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .btn-cancel {
+    background: none;
+    color: $clr45;
+
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.1);
     }
   }
 }

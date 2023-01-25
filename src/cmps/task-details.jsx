@@ -7,7 +7,6 @@ import { TaskDetailsSidebar } from "./task-details-sidebar";
 import { TaskDescription } from "./task-description";
 import { TaskDetailsActivities } from "./task-details-activity";
 import { TaskDetailsModal } from "./task-details-modal";
-import { groupService } from "../services/group.service.local";
 import { utilService } from "../services/util.service";
 import { TaskCheckList } from "./checklist/task-checklist";
 import { TaskDetailsSubheader } from "./task-details-subheader";
@@ -18,8 +17,10 @@ export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams();
   const [taskDetailsModal, setTaskDetailsModal] = useState(null);
 
-  const group = board.groups?.find((group) => group._id === groupId);
-  let task = group.tasks?.find((task) => task._id === taskId);
+
+  const {groups} = board
+  const group = groups.find((group) => group._id === groupId)
+  let task = group?.tasks?.find((task) => task._id === taskId);
 
   function backToBoard(ev) {
     ev.stopPropagation();
@@ -27,13 +28,12 @@ export function TaskDetails() {
   }
 
   function onOpenModal(type, ref) {
-    const pos = utilService.getModalPosition(type, ref)
-    setTaskDetailsModal({type, pos})
+    const pos = utilService.getModalPosition(type, ref);
+    setTaskDetailsModal({ type, pos });
   }
-
   return (
     <Fragment>
-      <section className="screen">
+      {task && <section className="screen">
         <div onClick={backToBoard} className="backdrop"></div>
         <section className="task-details-container">
           <section
@@ -48,13 +48,20 @@ export function TaskDetails() {
               board={board}
               task={task}
               groupId={groupId}
-              groupTitle={group.title}
+              groupTitle={group?.title}
             />
             <div className="task-body">
               <section className="task-content">
-                <TaskDetailsSubheader onOpenModal={onOpenModal} board={board} task={task} groupId={groupId} />
+                <TaskDetailsSubheader
+                  onOpenModal={onOpenModal}
+                  board={board}
+                  task={task}
+                  groupId={groupId}
+                />
                 <TaskDescription board={board} task={task} groupId={groupId} />
-                {task.checklists?.length > 0 && <TaskCheckList board={board} task={task} groupId={groupId}/> }
+                {task.checklists?.length > 0 && (
+                  <TaskCheckList board={board} task={task} groupId={groupId} />
+                )}
                 <TaskDetailsActivities />
               </section>
               <TaskDetailsSidebar
@@ -68,14 +75,14 @@ export function TaskDetails() {
         </section>
         {taskDetailsModal && (
           <TaskDetailsModal
-          board={board}
+            board={board}
             setTaskDetailsModal={setTaskDetailsModal}
             task={task}
             data={taskDetailsModal}
             groupId={groupId}
           />
         )}
-      </section>
+      </section>}
     </Fragment>
   );
 }

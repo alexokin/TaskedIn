@@ -7,7 +7,7 @@ export const uploadService = {
   saveUploadedCollection
 }
 
-function uploadImg(ev, collection = '') {
+function uploadImg(ev) {
   const CLOUD_NAME = "dlhh3aon3"
   const UPLOAD_PRESET = "TaskedIn"
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`

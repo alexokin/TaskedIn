@@ -13,22 +13,32 @@ export const taskService = {
   save,
   addChecklist,
   addTodo,
-  cleanTasksLabelIds
+  cleanTasksLabelIds,
+  getById
 }
 
-async function query(boardId, groupId, filter ) {
+async function query(boardId, groupId, filter) {
   try {
-      const group = await groupService.getById(boardId,groupId)
-      const regex = new RegExp(filter.keyword, 'i')
-      return group.tasks.filter(task => regex.test(task.title))
+    const group = await groupService.getById(boardId, groupId)
+    const regex = new RegExp(filter.keyword, 'i')
+    return group.tasks.filter(task => regex.test(task.title))
   } catch (err) {
-      throw err
+    throw err
+  }
+}
+
+async function getById(boardId, groupId, taskId) {
+  try {
+    const group = await groupService.getById(boardId, groupId)
+    return group.tasks.filter(task => task._Id === taskId)
+  } catch (err) {
+    throw err
   }
 }
 
 function add(title, groupId, board) {
   const group = board.groups.find((group) => group._id === groupId);
-  const savedTask = { title, _id: utilService.makeId() , description: ''};
+  const savedTask = { title, _id: utilService.makeId(), description: '' };
   group.tasks.push(savedTask);
   return Promise.resolve(savedTask);
 }
@@ -62,7 +72,7 @@ async function save(boardId, groupId, title) {
     group.tasks.push({ title, id: utilService.makeId() });
     await storageService.put(STORAGE_KEY, board);
     return group;
-    
+
   } catch (err) {
     throw err;
   }
