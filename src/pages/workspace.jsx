@@ -45,8 +45,6 @@ export function Workspace() {
 
   return (
     <div className="workspace">
-      {/* <h1>Boards</h1>
-      <BoardFilter onSetFilter={onSetFilter} /> */}
 
       {boards.filter(board => board.isStarred).length !== 0 && <div className="starred-boards">
 
