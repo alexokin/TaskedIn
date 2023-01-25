@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { utilService } from "../../services/util.service";
 import { addImg } from "../../store/actions/task.actions";
 import { uploadService } from "../../services/upload.service";
+import { FastAverageColor } from 'fast-average-color'
 
 export function Attachment({ task, groupId, board, setTaskDetailsModal }) {
   const [attachedLink, setAttachedLink] = useState("");
   const [isAdding, setIsAdding] = useState(false);
+  const getAverageColor = new FastAverageColor()
 
   function onAttachLink() {
     const url = attachedLink;
@@ -26,32 +28,43 @@ export function Attachment({ task, groupId, board, setTaskDetailsModal }) {
     }
   }
 
-  function onAddImg(imgUrl) {
+  async function onAddImg(imgUrl) {
+    if (!task.cover) {
+      const bgColor = await getAverageColor.getColorAsync(imgUrl)
+      task.cover = {
+        backgroundImage: `url('${imgUrl}')`,
+        backgroundColor: bgColor.rgba
+      }
+      task.coverSize = 'half'
+    }
     addImg(imgUrl, task, groupId, board);
     setTaskDetailsModal(null);
   }
 
   return (
     <section className="attachment">
-      
-       
-          <input type="file" accept="image/*" onChange={onUploadImg} />
-          <p>Computer</p>
 
-          <div className="seperator"></div>
-          <div className="input-container">
-            <label htmlFor="addLink">Attach a link</label>
-            <input
-            className="add-link"
-              id="addLink"
-              onChange={(ev) => setAttachedLink(ev.target.value)}
-              type="text"
-              placeholder="Paste any link here..."
-            />
-          </div>
-          <button onClick={onAttachLink}>Attach</button>
-        
-      
+
+      <label className="file-input">
+        Computer
+        <input type="file" accept="image/*" onChange={onUploadImg} />
+      </label>
+
+      <div className="seperator"></div>
+      <div className="input-container">
+        <label htmlFor="addLink">Attach a link</label>
+        <input
+          className="add-link"
+          id="addLink"
+          onChange={(ev) => setAttachedLink(ev.target.value)}
+          type="text"
+          placeholder="Paste any link here..."
+          autoFocus
+        />
+      </div>
+      <button onClick={onAttachLink}>Attach</button>
+
+
     </section>
   );
 }

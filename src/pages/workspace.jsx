@@ -35,7 +35,7 @@ export function Workspace() {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
     const addModalLocToSet = {
       left: `${BoundingClientRect?.left + BoundingClientRect?.width + 5}px`,
-      bottom: '8px'
+      bottom: `200px`
 
     }
     if (window.innerWidth < BoundingClientRect?.left + BoundingClientRect?.width + 285) addModalLocToSet.left = `${window.innerWidth - 300}px`

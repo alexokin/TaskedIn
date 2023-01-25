@@ -18,19 +18,7 @@
                 width: 136px;
                 border-radius: 3px;
                 cursor: pointer;
-                // &.selected {
-                //     border: 2px solid $clr6;
-                //     box-shadow: 0 0 0 2px $clr1;
-    
-                //     &:hover{
-                //         box-shadow: 0 0 0 2px lighten($clr1, 20) ;
-                //     }
-                // }
-    
-                // &:not(.selected):hover {
-                //     box-shadow: inset 0 0 0 40px rgba(0, 0, 0, 0.15);
-                // }
-                
+                background-size: cover;
             }
 
             .half-size-img {

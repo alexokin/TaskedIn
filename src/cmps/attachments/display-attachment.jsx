@@ -2,8 +2,11 @@ import React from "react";
 import { updateTask } from "../../store/actions/task.actions";
 import { BsSquareHalf } from "react-icons/bs";
 import { utilService } from "../../services/util.service";
+import { FastAverageColor } from 'fast-average-color'
 
 export function DisplayAttachment({ task, attachment, groupId, board }) {
+  const getAverageColor = new FastAverageColor()
+
   function onDeleteAttachment() {
     const { _id } = attachment;
     const taskToUpdate = {
@@ -13,6 +16,22 @@ export function DisplayAttachment({ task, attachment, groupId, board }) {
       ),
     };
     updateTask(taskToUpdate, groupId, board);
+  }
+
+  async function onToggleCover() {
+    if (task.cover?.backgroundImage && task.cover.backgroundImage.substring(5, task.cover.backgroundImage.length - 2) === attachment.url) {
+      task.cover = null
+      task.coverSize = null
+    } else {
+      const bgColor = await getAverageColor.getColorAsync(attachment.url)
+      task.cover = {
+        backgroundImage: `url('${attachment.url}')`,
+        backgroundColor: bgColor.rgba
+      }
+      task.coverSize = 'half'
+    }
+
+    updateTask(task, groupId, board)
   }
 
   return (
@@ -36,7 +55,7 @@ export function DisplayAttachment({ task, attachment, groupId, board }) {
           </span>
         </section>
         <span className="attachment-options">
-          <span className="make-attachment-cover">
+          <span onClick={onToggleCover} className="make-attachment-cover">
             <section className="svg-holder">
               <BsSquareHalf
                 className="icon"
@@ -46,6 +65,7 @@ export function DisplayAttachment({ task, attachment, groupId, board }) {
                 }}
               />
             </section>
+            {task.cover?.backgroundImage && task.cover.backgroundImage.substring(5, task.cover.backgroundImage.length - 2) === attachment.url ? 'Remove cover' : 'Make cover'}
           </span>
         </span>
       </section>

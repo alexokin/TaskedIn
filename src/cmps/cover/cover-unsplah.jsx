@@ -34,7 +34,6 @@ export function CoverUnsplah({ board, task, groupId }) {
                     return (
                         <div className={`img-item ${((task?.cover?.backgroundImage) && (task?.cover?.backgroundImage.substring(5, task?.cover?.backgroundImage.length - 2) === img.url)) ? 'selected' : ''} `} key={img.id} onClick={() => onSetStyle(img.url)}>
                             <img src={img.url} />
-                            {/* <img className={`${((task?.cover?.backgroundImage) && (task?.cover?.backgroundImage.substring(5, task?.cover?.backgroundImage.length - 3) === img.url)) ? 'selected' : ''}`} src={img.url} /> */}
                             <div onClick={(event) => event.stopPropagation()}>
                                 <a href={`https://unsplash.com/@${img.user}`} target="_blank">{img.user}</a>
                             </div>
