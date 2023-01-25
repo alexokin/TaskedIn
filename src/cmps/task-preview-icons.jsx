@@ -1,6 +1,7 @@
 import React from "react";
 import { GrTextAlignFull } from "react-icons/gr";
 import { BsCheck2Square } from "react-icons/bs";
+import { FiPaperclip } from 'react-icons/fi'
 
 export function TaskPreviewIcons({ task, groupId, board }) {
   const boardMembers = board.members;
@@ -26,6 +27,12 @@ export function TaskPreviewIcons({ task, groupId, board }) {
         {task.description && (
           <section className="attachments-icon">
             <GrTextAlignFull />
+          </section>
+        )}
+        {task.attachments && task.attachments.length !== 0 && (
+          <section className="attachments-icon">
+            <FiPaperclip />
+            {task.attachments.length}
           </section>
         )}
         {task.checklists &&

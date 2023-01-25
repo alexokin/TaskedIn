@@ -7,7 +7,9 @@ export const utilService = {
     getModalPosition,
     saveToStorage,
     loadFromStorage,
-    getbgImgs
+    getbgImgs,
+    checkIfImg,
+    timePassed
 }
 
 function makeId(length = 6) {
@@ -78,6 +80,59 @@ function loadFromStorage(key) {
 function getbgImgs() {
     return bgImgs
 }
+
+function checkIfImg(url) {
+    return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url)
+}
+
+function timePassed(timestamp) {
+    var currentTime = new Date().getTime();
+    var timePassed = currentTime - timestamp;
+    var seconds = Math.floor(timePassed / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var hours = Math.floor(minutes / 60);
+    var days = Math.floor(hours / 24);
+    var weeks = Math.floor(days / 7);
+    var months = Math.floor(days / 30);
+    if (months > 0) {
+      if (months == 1) {
+        return months + " month " + (days % 30) + " days ago";
+      } else {
+        return months + " months " + (days % 30) + " days ago";
+      }
+    } else if (weeks > 0) {
+      if (weeks == 1) {
+        return weeks + " week " + (days % 7) + " days ago";
+      } else {
+        return weeks + " weeks " + (days % 7) + " days ago";
+      }
+    } else if (days > 0) {
+      if (days == 1) {
+        return days + " day " + (hours % 24) + " hours ago";
+      } else {
+        return days + " days " + (hours % 24) + " hours ago";
+      }
+    } else if (hours > 0) {
+      if (hours == 1) {
+        return hours + " hour " + (minutes % 60) + " minutes ago";
+      } else {
+        return hours + " hours " + (minutes % 60) + " minutes ago";
+      }
+    } else if (minutes > 0) {
+      if (minutes == 1) {
+        return minutes + " minute ago";
+      } else {
+        return minutes + " minutes ago";
+      }
+    } else {
+      if (seconds == 1) {
+        return seconds + " second ago";
+      } else {
+        return seconds + " seconds ago";
+      }
+    }
+  }
+  
 
 const bgImgs = [
     {

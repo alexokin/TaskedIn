@@ -7,10 +7,10 @@ import { TaskDetailsSidebar } from "./task-details-sidebar";
 import { TaskDescription } from "./task-description";
 import { TaskDetailsActivities } from "./task-details-activity";
 import { TaskDetailsModal } from "./task-details-modal";
-import { groupService } from "../services/group.service.local";
 import { utilService } from "../services/util.service";
 import { TaskCheckList } from "./checklist/task-checklist";
 import { TaskDetailsSubheader } from "./task-details-subheader";
+import { TaskAttachments } from "./attachments/task-attachments";
 
 export function TaskDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
@@ -18,9 +18,8 @@ export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams();
   const [taskDetailsModal, setTaskDetailsModal] = useState(null);
 
-
-  const {groups} = board
-  const group = groups.find((group) => group._id === groupId)
+  const { groups } = board;
+  const group = groups.find((group) => group._id === groupId);
   let task = group?.tasks?.find((task) => task._id === taskId);
 
   function backToBoard(ev) {
@@ -60,6 +59,7 @@ export function TaskDetails() {
                   groupId={groupId}
                 />
                 <TaskDescription board={board} task={task} groupId={groupId} />
+                {task.attachments?.length > 0 && <TaskAttachments task={task} groupId={groupId} board={board}/>}
                 {task.checklists?.length > 0 && (
                   <TaskCheckList board={board} task={task} groupId={groupId} />
                 )}

@@ -14,6 +14,8 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
   const checklistBtnRef = useRef()
   const membersBtnRef = useRef()
   const labelsBtnRef = useRef()
+  const attachmentBtnRef = useRef()
+
 
 
   function onRemoveTask(ev) {
@@ -42,7 +44,7 @@ export function TaskDetailsSidebar({taskId, groupId, board, onOpenModal}) {
           <AiOutlineClockCircle className="icon" />
           Dates
         </button>
-        <button>
+        <button ref={attachmentBtnRef} onClick={()=> onOpenModal('Attachment', attachmentBtnRef)}>
           <ImAttachment className="icon" />
           Attachment
         </button>
