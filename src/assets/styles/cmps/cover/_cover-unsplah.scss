@@ -12,6 +12,7 @@
         display: grid;
         grid-template-columns: repeat(3, 88px);
         gap: 8px;
+        margin-top: 8px;
 
         .img-item {
             position: relative;

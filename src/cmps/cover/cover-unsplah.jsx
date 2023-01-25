@@ -21,9 +21,7 @@ export function CoverUnsplah({ board, task, groupId }) {
             backgroundColor: bgColor.rgba
         }
 
-        console.log('imgUrl', imgUrl)
-        console.log('coverImg', task.cover.backgroundImage.substring(5, task?.cover?.backgroundImage.length - 2))
-
+        if(!task.coverSize) task.coverSize = 'half'
         updateTask(task, groupId, board)
     }
 

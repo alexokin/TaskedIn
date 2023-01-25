@@ -5,7 +5,6 @@
 
     .task-title {
         background-color: $clr6;
-        // padding: 0.5em;
         border-radius: 0.3em;
         box-shadow: 0 1px 0 rgb(54 54 54 / 25%);
         min-height: 32px;
@@ -14,11 +13,26 @@
         width: 256px;
         cursor: pointer;
         padding: 4px 8px;
+        color: $clr45;
 
         &:hover {
             background-color: #f4f4f8;
         }
+
+        &.full {
+            font-size: 18px;
+            font-weight: 700;
+
+            &.img {
+                height: 163px;
+                background-size: cover;
+                display: flex;
+                align-items: flex-end;
+                color: $clr6;
+            }
+        }
     }
+
     .task-list-cover {
         height: 32px;
         border-top-left-radius: 0.3em;

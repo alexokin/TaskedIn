@@ -7,6 +7,7 @@ export function CoverColors({ board, task, groupId }) {
 
     function handleChange(style) {
         task.cover = style
+        if(!task.coverSize) task.coverSize = 'half'
         updateTask(task, groupId, board)
     }
 
