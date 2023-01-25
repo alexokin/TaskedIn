@@ -40,7 +40,7 @@ export function EditTitle({ editTitle, itemTitle, toggleTitleEdit }) {
         spellCheck={false}
       ></textarea>
       <section className="options">
-        <button tabIndex='0' onClick={onEditTitle} className="btn-save">Save</button>
+        <button onClick={onEditTitle} className="btn-save">Save</button>
         <button onClick={toggleTitleEdit} className="btn-close"><GrClose /></button>
       </section>
     </section>

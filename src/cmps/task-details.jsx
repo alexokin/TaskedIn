@@ -10,6 +10,7 @@ import { TaskDetailsModal } from "./task-details-modal";
 import { utilService } from "../services/util.service";
 import { TaskCheckList } from "./checklist/task-checklist";
 import { TaskDetailsSubheader } from "./task-details-subheader";
+import { TaskAttachments } from "./attachments/task-attachments";
 import {  BsSquareHalf } from "react-icons/bs";
 import { useRef } from "react";
 
@@ -73,6 +74,7 @@ export function TaskDetails() {
                   groupId={groupId}
                 />
                 <TaskDescription board={board} task={task} groupId={groupId} />
+                {task.attachments?.length > 0 && <TaskAttachments task={task} groupId={groupId} board={board}/>}
                 {task.checklists?.length > 0 && (
                   <TaskCheckList board={board} task={task} groupId={groupId} />
                 )}

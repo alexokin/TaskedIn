@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import { Attachment } from "./attachments/attachment";
 import { CheckList } from "./checklist/check-list";
 import { TaskCover } from "./cover/task-cover";
 import { Labels } from "./labels/labels";
@@ -12,11 +13,11 @@ export function TaskDetailsModal({
   data,
   board,
 }) {
-  const [isEditLabels, setIsEditLabels] = useState(null)
+  const [isEditLabels, setIsEditLabels] = useState(null);
 
   function onToggleLabelEdit() {
     setIsEditLabels((prevState) => !prevState);
-  };
+  }
 
   const { type, pos } = data;
   const modalStyle = { left: pos.left + "px", top: pos.bottom + "px" };
@@ -53,6 +54,15 @@ export function TaskDetailsModal({
             board={board}
             onToggleLabelEdit={onToggleLabelEdit}
             isEditLabels={isEditLabels}
+          />
+        );
+      case "Attachment":
+        return (
+          <Attachment
+            task={task}
+            setTaskDetailsModal={setTaskDetailsModal}
+            groupId={groupId}
+            board={board}
 
           />
         );
