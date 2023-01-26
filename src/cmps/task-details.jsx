@@ -78,7 +78,7 @@ export function TaskDetails() {
                 {task.checklists?.length > 0 && (
                   <TaskCheckList board={board} task={task} groupId={groupId} />
                 )}
-                <TaskDetailsActivities />
+                {/* <TaskDetailsActivities /> */}
               </section>
               <TaskDetailsSidebar
                 onOpenModal={onOpenModal}

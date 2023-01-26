@@ -112,7 +112,7 @@
     top: -1.3px;
     background-color: transparent;
     border: none;
-    color: lightgray;
+    color: $clr45;
     font-size: 27px;
     padding: 6px 6px 2px;
     margin: 4px;
@@ -120,7 +120,7 @@
     transition: all 0.3s;
 
     &:hover {
-      background-color: #e1e4e9;
+      background-color: rgba(0, 0, 0, 0.1);
     }
   }
 
