@@ -50,7 +50,6 @@ export function CoverAttachments({ board, task, groupId }) {
                 <input type="file" accept="image/*" onChange={onUploadImg} />
                 Upload a cover image
             </label>
-            {/* <button className="btn-upload-attach">Upload a cover image</button> */}
         </div>
     )
 }

@@ -30,6 +30,7 @@ export function Attachment({ task, groupId, board, setTaskDetailsModal }) {
 
   async function onAddImg(imgUrl) {
     if (!task.cover) {
+
       const bgColor = await getAverageColor.getColorAsync(imgUrl)
       task.cover = {
         backgroundImage: `url('${imgUrl}')`,
