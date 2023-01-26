@@ -25,7 +25,8 @@ export function BoardImgPicker({ board, isBgImgPickerMenuOpen }) {
                 return {
                     id: item.id,
                     user: item.user.username,
-                    url: item.urls.regular
+                    // url: item.urls.regular
+                    url: item.urls.raw + "&w=1920&dpr=2"
                 }
             })
         } catch (error) {
