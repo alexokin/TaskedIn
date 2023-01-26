@@ -36,6 +36,7 @@ export function BoardHeader({ board }) {
       <div className={`board-action ${isSideMenuOpen ? 'menu-open' : ''}`}>
         <button onClick={onToggleFilterModal} className={`btn-filter ${filter.keyword ? 'active' : ''}`} ><IoFilterSharp /> Filter</button>
         {filter.keyword && <button className="btn-clear-filter" onClick={() => setFilter({ keyword: '' })} title="Clear filter">X</button>}
+        <span className="divider"></span>
         <div className="members-container">
           {board.members?.map((member, idx) => {
             return (
@@ -44,6 +45,7 @@ export function BoardHeader({ board }) {
           })}
 
         </div>
+        <span className="divider"></span>
         {!isSideMenuOpen && <button className="btn-menu" onClick={() => setIsSideMenuOpen(true)}><HiDotsHorizontal /></button>}
 
         <SideMenu board={board} isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen} />
