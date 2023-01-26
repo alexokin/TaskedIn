@@ -39,13 +39,13 @@ export function CoverAttachments({ board, task, groupId }) {
     return (
         <div className="cover-attachments">
             <span className="title">Attachments</span>
-            <div className="attach-container">
+            {task.attachments && <div className="attach-container">
                 {task.attachments.map(item => {
                     return (
                         <img className={`${((task?.cover?.backgroundImage) && (task?.cover?.backgroundImage.substring(5, task?.cover?.backgroundImage.length - 2) === item.url)) ? 'selected' : ''}`} onClick={() => onSetCover(item.url)} src={item.url} alt="" />
                     )
                 })}
-            </div>
+            </div>}
             <label className="btn-upload-attach">
                 <input type="file" accept="image/*" onChange={onUploadImg} />
                 Upload a cover image
