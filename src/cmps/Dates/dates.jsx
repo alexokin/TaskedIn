@@ -38,10 +38,10 @@ export function Dates({ board, task, groupId, setTaskDetailsModal }) {
         />
       </LocalizationProvider>
 
-      <button onClick={onAddDueDate} className="action-btn save-btn">
+      <button onClick={onAddDueDate} className="date-save-btn">
         Save
       </button>
-      <button onClick={onRemoveDueDate} className="action-btn remove-btn">
+      <button onClick={onRemoveDueDate} className="action-btn date-remove-btn">
         Remove
       </button>
     </section>

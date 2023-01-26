@@ -1,0 +1,21 @@
+.date-save-btn {
+    width: 90%;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0 1rem 0.5rem 1rem;
+    &:hover {
+        background-color: #026aa7;
+    }
+}
+
+.date-remove-btn {
+    width: 90%;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0 1rem 1rem 1rem;
+    background-color: rgba(9,30,66,.04);
+    color: #172b4d;
+    &:hover {
+        background-color: rgba(9,30,66,.08);
+    }
+}
