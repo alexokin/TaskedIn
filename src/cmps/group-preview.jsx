@@ -27,7 +27,7 @@ export function GroupPreview({ group, board }) {
   return (
     <div className="group-preview">
       <GroupTitle group={group} board={board} />
-      {group.tasks.length!==0 && <TaskList groupTasks={group.tasks} board={board} groupId={group._id} />}
+     <TaskList groupTasks={group.tasks} board={board} groupId={group._id}/>
       <div className="add-container">
         {!isAddModalOpen && <div onClick={onToggleAddModal} className="btn-open-add-task"><div className="plus"><FiPlus /></div>Add a card</div>}
         {isAddModalOpen && <AddTask onToggleAddModal={onToggleAddModal} tasks={group.tasks} board={board} groupId={group._id} />}

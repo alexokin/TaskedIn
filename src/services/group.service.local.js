@@ -14,8 +14,8 @@ export const groupService = {
     remove,
     getEmptyGroup,
     getGroupTitle,
-    reorderGroups,
-    reorderTasks,
+    relocateGroups,
+    relocateTasks
 }
 
 window.cs = groupService
@@ -94,14 +94,14 @@ function getEmptyGroup() {
     }
 }
 
-function reorderTasks(source, destination, groups) {
+function relocateTasks(source, destination, groups) {
     const sourceGroup = groups.find(group => group._id === source.droppableId)
     const [task] = sourceGroup.tasks.splice(source.index, 1)
     const destinationGroup = groups.find(group => group._id === destination.droppableId)
     destinationGroup.tasks.splice(destination.index, 0, task)
     return groups
 }
-function reorderGroups(source, destination, groups) {
+function relocateGroups(source, destination, groups) {
     const [group] = groups.splice(source.index, 1)
     groups.splice(destination.index, 0, group)
     return groups
