@@ -16,6 +16,7 @@ export function TaskDetailsSidebar({ task, taskId, groupId, board, onOpenModal  
   const membersBtnRef = useRef()
   const labelsBtnRef = useRef()
   const attachmentBtnRef = useRef()
+  const datesBtnRef = useRef()
 
 
   const coverBtnRef = useRef()
@@ -45,7 +46,7 @@ export function TaskDetailsSidebar({ task, taskId, groupId, board, onOpenModal  
           <BsCheck2Square className="icon" />
           Checklist
         </button>
-        <button>
+        <button ref={datesBtnRef} onClick={() => onOpenModal('Dates', datesBtnRef)}>
           <AiOutlineClockCircle className="icon" />
           Dates
         </button>

@@ -3,6 +3,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { Attachment } from "./attachments/attachment";
 import { CheckList } from "./checklist/check-list";
 import { TaskCover } from "./cover/task-cover";
+import { Dates } from "./Dates/dates";
 import { Labels } from "./labels/labels";
 import { TaskMembers } from "./members/task-members";
 
@@ -75,6 +76,15 @@ export function TaskDetailsModal({
             setTaskDetailsModal={setTaskDetailsModal}
           />
         );
+        case "Dates":
+          return (
+            <Dates
+            board={board}
+            task={task}
+            groupId={groupId}
+            setTaskDetailsModal={setTaskDetailsModal}
+            />
+          )
 
       default:
         return;
@@ -91,6 +101,8 @@ export function TaskDetailsModal({
         return "Labels";
       case "Cover":
         return "Cover";
+        case "Attachment":
+          return "Attach from...";
       default:
         return type;
     }
