@@ -106,7 +106,7 @@ export async function updateBoardNoSet(board) {
 
 export async function updateDrag({ source, destination, type, board }) {
     const boardToUpdate = board
-    const update = type === 'TASK' ? groupService.reorderTasks : groupService.reorderGroups
+    const update = type === 'TASK' ? groupService.relocateTasks : groupService.relocateGroups
     const groupsToSave = update(source, destination, boardToUpdate.groups)
     updateBoard({...boardToUpdate, groups: groupsToSave})
 }
