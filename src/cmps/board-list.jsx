@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { boardService } from "../services/board.service.local.js";
 import { removeBoard, updateBoard } from "../store/board.actions.js";
-import { AiOutlineClose } from "react-icons/ai";
+import { useRef } from "react";
 
 export function BoardList({ boards, onToggleAddBoardModal, isAddable }) {
   const navigate = useNavigate()
+
+  const btnRef = useRef()
 
   async function onStarredChange(ev, boardId) {
     ev.stopPropagation()
@@ -18,15 +20,6 @@ export function BoardList({ boards, onToggleAddBoardModal, isAddable }) {
     navigate(`/board/${boardId}`)
   }
 
-  async function onRemoveBoard(ev,boardId){
-    ev.stopPropagation()
-    try {
-      await removeBoard(boardId)
-    } catch (error) {
-      console.log('Cannot remove board')
-    }
-  }
-
   return (
     <ul className="board-list">
       {boards.map(board => {
@@ -34,11 +27,10 @@ export function BoardList({ boards, onToggleAddBoardModal, isAddable }) {
           <li onClick={() => onBoardSelect(board._id)} key={board._id}>
             <BoardPreview board={board} />
             <button onClick={(event) => onStarredChange(event, board._id)} className={`btn-starred ${board.isStarred ? 'starred' : ''}`}>{board.isStarred ? <AiFillStar /> : <AiOutlineStar />}</button>
-            <button onClick={(event) => onRemoveBoard(event, board._id)} className="btn-remove-board"><AiOutlineClose /></button>
           </li>
         )
       })}
-       {isAddable && <li className="btn-board-add" onClick={(event) => onToggleAddBoardModal(event)}>Create new board</li>}
+       {isAddable && <li ref={btnRef} className="btn-board-add" onClick={(event) => onToggleAddBoardModal(event,btnRef)}>Create new board</li>}
     </ul>
   )
 }

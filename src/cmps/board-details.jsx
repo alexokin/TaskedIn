@@ -27,7 +27,6 @@ export function BoardDetails() {
   return (
     <div style={board?.style} className="board-details">
       <BoardHeader board={board} />
-      {/* <SideNavBar /> */}
 
       <div className="board-content">
         {board && <GroupList board={board} groups={board.groups} />}

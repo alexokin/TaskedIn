@@ -7,6 +7,7 @@ import { loadBoards } from "../store/board.actions.js";
 import { useSelector } from "react-redux";
 import { AiOutlineStar } from "react-icons/ai";
 import { FiClock } from "react-icons/fi";
+import { utilService } from "../services/util.service.js";
 
 export function Workspace() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -31,16 +32,21 @@ export function Workspace() {
     setFilterBy(filterBy)
   }
 
-  function onToggleAddBoardModal(ev) {
-    const BoundingClientRect = ev?.target.getBoundingClientRect()
-    const addModalLocToSet = {
-      left: `${BoundingClientRect?.left + BoundingClientRect?.width + 5}px`,
-      bottom: `200px`
-
+  function onToggleAddBoardModal(ev, ref) {
+    if (ref) {
+      let pos = utilService.getModalPosition('', ref);
+      pos.left += 200
+      if (pos.left + 350 > window.innerWidth) pos.left = window.innerWidth-300
+      let modalStyle = { left: pos.left + "px", top: pos.bottom + "px" };
+      if (pos.right) {
+        delete modalStyle.left;
+        modalStyle.right = pos.right;
+      }
+      setAddModalLoc(modalStyle)
     }
-    if (window.innerWidth < BoundingClientRect?.left + BoundingClientRect?.width + 285) addModalLocToSet.left = `${window.innerWidth - 300}px`
+
     setIsBoardModalOpen(prevState => !prevState)
-    setAddModalLoc(addModalLocToSet)
+
   }
 
   return (

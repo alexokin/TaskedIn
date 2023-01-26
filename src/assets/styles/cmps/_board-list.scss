@@ -28,8 +28,7 @@
 
         &:hover {
 
-            .btn-starred,
-            .btn-remove-board {
+            .btn-starred {
                 translate: 0;
             }
         }
@@ -52,20 +51,6 @@
             &.starred {
                 color: $clr10;
                 translate: 0;
-            }
-        }
-
-        .btn-remove-board {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: none;
-            color: $clr9;
-            translate: 150%;
-            transition: translate 0.5s;
-
-            &:hover {
-                color: black;
             }
         }
     }

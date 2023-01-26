@@ -45,6 +45,7 @@ export function CreateLabel({
         className="label-title"
         onChange={handleChange}
         type="text"
+        autoFocus
         onClick={(ev) => {
           ev.preventDefault();
         }}

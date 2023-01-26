@@ -34,9 +34,11 @@ export function TaskMembers({task, groupId, board}) {
       <div className="">
         <input
           onChange={handleChange}
+          id='members-input'
           className="search-member"
           type="text"
           placeholder="Search Members"
+          autoFocus
         />
       </div>
       <p className="sub-header">Board members</p>
