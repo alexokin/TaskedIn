@@ -2,7 +2,7 @@
     position: absolute;
     border: 1px solid lightgray;
     z-index: 1;
-    background-color: lighten($clr8,5);
+    background-color: lighten($clr8, 5);
     left: 80%;
     top: 3em;
     width: 280px;
@@ -17,7 +17,7 @@
     .actions-title {
         text-align: center;
         color: #5e6c84;
-        height: 41px ;
+        height: 41px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -45,5 +45,13 @@
         top: 10px;
         right: 10px;
         font-size: 24px;
+    }
+}
+
+@media (max-width:500px) {
+    .group-actions {
+        position: fixed;
+        top: 130px;
+        left: 50px;
     }
 }

@@ -11,7 +11,6 @@
     .divider {
         border-left: 1px solid lightgray;
         margin: 12px 8px 8px 8px;
-        // float: left;
         max-height: 16px;
     }
 
@@ -33,9 +32,9 @@
             height: 32px;
             border: none;
             width: 150px;
+            padding-left: 4px;
             border-radius: 3px;
             cursor: pointer;
-            padding-left: 4px;
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.2);
@@ -49,12 +48,9 @@
                     background-color: rgba(255, 255, 255, 0.4);
                 }
             }
-
-
         }
 
         .btn-star {
-            // font-size: 1.5em;
             padding: 6px;
             height: 32px;
             width: 32px;
@@ -80,7 +76,6 @@
             }
         }
     }
-
 
     .board-action {
         display: flex;
@@ -164,4 +159,22 @@
         }
     }
 
+    @media (max-width:500px) {
+        padding-left: 4px;
+        gap: 4px;
+        .board-status {
+            .board-title {
+                width: 80px;
+                padding-left: 0;
+            }
+        }
+
+        .board-action {
+            .btn-filter {
+                padding: 0;
+                margin-left: 0;
+            }
+        }
+
+    }
 }

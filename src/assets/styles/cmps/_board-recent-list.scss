@@ -40,4 +40,8 @@
             color: black;
         }
     }
+
+    @media (max-width:500px) {
+        left: 32px !important;
+    }
 }
