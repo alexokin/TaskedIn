@@ -14,7 +14,8 @@ export const taskService = {
   addChecklist,
   addTodo,
   cleanTasksLabelIds,
-  getById
+  getById,
+  addImg
 }
 
 async function query(boardId, groupId, filter) {
@@ -38,7 +39,7 @@ async function getById(boardId, groupId, taskId) {
 
 function add(title, groupId, board) {
   const group = board.groups.find((group) => group._id === groupId);
-  const savedTask = { title, _id: utilService.makeId(), description: '' };
+  const savedTask = { title, _id: utilService.makeId(), description: "" };
   group.tasks.push(savedTask);
   return Promise.resolve(savedTask);
 }
@@ -72,7 +73,6 @@ async function save(boardId, groupId, title) {
     group.tasks.push({ title, id: utilService.makeId() });
     await storageService.put(STORAGE_KEY, board);
     return group;
-
   } catch (err) {
     throw err;
   }
@@ -82,36 +82,57 @@ function addChecklist(title, taskId, groupId, board) {
   const checklist = {
     _id: utilService.makeId(),
     todos: [],
-    title
-  }
-  const group = board.groups.find(group => group._id === groupId)
-  const task = group.tasks.find(task => task._id === taskId)
-  if (task.checklists) task.checklists.push(checklist)
-  else task.checklists = [checklist]
+    title,
+  };
+  const group = board.groups.find((group) => group._id === groupId);
+  const task = group.tasks.find((task) => task._id === taskId);
+  if (task.checklists) task.checklists.push(checklist);
+  else task.checklists = [checklist];
 }
 
 function addTodo(title, checkListId, groupId, taskId, board) {
   const todo = {
     _id: utilService.makeId(),
     isDone: false,
-    title
-  }
+    title,
+  };
 
-  const group = board.groups.find(group => group._id === groupId)
-  const task = group.tasks.find(task => task._id === taskId)
-  const checklist = task.checklists.find(checklist => checklist._id === checkListId)
-  checklist.todos.push(todo)
+  const group = board.groups.find((group) => group._id === groupId);
+  const task = group.tasks.find((task) => task._id === taskId);
+  const checklist = task.checklists.find(
+    (checklist) => checklist._id === checkListId
+  );
+  checklist.todos.push(todo);
 
-  return board
+  return board;
+}
+
+function addImg(imgUrl, task, groupId, board) {
+  const attachmentImage = {
+    _id: utilService.makeId(),
+    createdAt: Date.now(),
+    url: imgUrl,
+    name: "Attachment Image",
+  };
+
+  const groupIdx = board.groups.findIndex((group) => group._id === groupId);
+  const taskIdx = board.groups[groupIdx].tasks.findIndex(
+    (currTask) => currTask._id === task._id
+  );
+  if (!board.groups[groupIdx].tasks[taskIdx].attachments)
+    board.groups[groupIdx].tasks[taskIdx].attachments = [];
+  board.groups[groupIdx].tasks[taskIdx].attachments.push(attachmentImage);
 }
 
 function cleanTasksLabelIds(board, labelId) {
-  board.groups.forEach(group => {
-    group.tasks.forEach(task => {
-      if (!task.labelIds || !task.labelIds.length) return
-      const labelIdIdx = task.labelIds?.findIndex(currLabelId => currLabelId === labelId)
-      if (labelIdIdx === 0 || labelIdIdx) task.labelIds.splice(labelIdIdx, 1)
-    })
-  })
-  return board
+  board.groups.forEach((group) => {
+    group.tasks.forEach((task) => {
+      if (!task.labelIds || !task.labelIds.length) return;
+      const labelIdIdx = task.labelIds?.findIndex(
+        (currLabelId) => currLabelId === labelId
+      );
+      if (labelIdIdx === 0 || labelIdIdx) task.labelIds.splice(labelIdIdx, 1);
+    });
+  });
+  return board;
 }

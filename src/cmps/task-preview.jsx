@@ -19,11 +19,12 @@ export function TaskPreview({ task, groupId, board, onRemoveTask, index }) {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}>
-          <Link to={`${groupId}/${task._id}`} className="task-preview">
-            <div className="task-title">
-              {isShowLabels() && <TaskLabelsList labelIds={task.labelIds} board={board} />}
+          <Link to={`${groupId}/${task._id}`} className={`task-preview`}>
+            {task.cover && task.coverSize === 'half' && <div style={task.cover} className={`task-list-cover ${task.cover.backgroundImage ? 'img' : ''}`}></div>}
+            <div style={(task.cover && task.coverSize === 'full') ? task.cover : {}} className={`task-title ${(task.cover && task.coverSize === 'full') ? 'full' : ''} ${(task.cover?.backgroundImage) ? 'img' : ''}`}>
+              {isShowLabels() && (!task.coverSize || task.coverSize === 'half') && <TaskLabelsList labelIds={task.labelIds} board={board} />}
               {task.title}
-              <TaskPreviewIcons groupId={groupId} task={task} board={board} />
+              {(!task.coverSize || task.coverSize === 'half') && <TaskPreviewIcons groupId={groupId} task={task} board={board} />}
             </div>
 
           </Link>

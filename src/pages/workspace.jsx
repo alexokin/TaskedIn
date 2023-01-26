@@ -35,7 +35,7 @@ export function Workspace() {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
     const addModalLocToSet = {
       left: `${BoundingClientRect?.left + BoundingClientRect?.width + 5}px`,
-      bottom: '8px'
+      bottom: `200px`
 
     }
     if (window.innerWidth < BoundingClientRect?.left + BoundingClientRect?.width + 285) addModalLocToSet.left = `${window.innerWidth - 300}px`
@@ -45,8 +45,6 @@ export function Workspace() {
 
   return (
     <div className="workspace">
-      {/* <h1>Boards</h1>
-      <BoardFilter onSetFilter={onSetFilter} /> */}
 
       {boards.filter(board => board.isStarred).length !== 0 && <div className="starred-boards">
 
