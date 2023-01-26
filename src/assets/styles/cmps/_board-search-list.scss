@@ -34,7 +34,6 @@
         }
     }  
 
-
     .search-list {
         border: 1px solid $clr9;
         background-color: $clr6;
@@ -67,5 +66,11 @@
                 color: black;
             }
         }
+    }
+
+    @media (max-width:500px) {
+        left: 32px !important;
+        top: 50px !important;
+        width: 300px;
     }
 }

@@ -8,6 +8,7 @@ import { BoardSearchList } from './board-search-list'
 import { useEffect } from 'react'
 import { BoardRecentList } from './board-recent-list'
 import { useSelector } from 'react-redux'
+import { FiPlus } from "react-icons/fi";
 
 export function MainHeader() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -81,11 +82,11 @@ export function MainHeader() {
             Starred
             <AiOutlineDown />
           </div>
-          <div className='btn-create' onClick={(event) => onToggleCreateBoardModal(event)}>Create</div>
+          <div className='btn-create' onClick={(event) => onToggleCreateBoardModal(event)}> <span>Create</span><FiPlus /> </div>
         </div>
         <div className='right-container'>
           <div className='search-container' onClick={(event) => toggleSearchList(event)}>
-            <BiSearch /> Search
+            <BiSearch /> <span>Search</span>
           </div>
           <img width='26px' style={{ borderRadius: '50%' }} src="https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333627/trello-profile-pics/T043N4KE97B-U0436HRD15K-ed7a82d2139d-512_xrimhd.jpg" alt="" />
         </div>

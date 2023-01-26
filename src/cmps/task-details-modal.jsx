@@ -76,15 +76,15 @@ export function TaskDetailsModal({
             setTaskDetailsModal={setTaskDetailsModal}
           />
         );
-        case "Dates":
-          return (
-            <Dates
+      case "Dates":
+        return (
+          <Dates
             board={board}
             task={task}
             groupId={groupId}
             setTaskDetailsModal={setTaskDetailsModal}
-            />
-          )
+          />
+        )
 
       default:
         return;
@@ -101,8 +101,8 @@ export function TaskDetailsModal({
         return "Labels";
       case "Cover":
         return "Cover";
-        case "Attachment":
-          return "Attach from...";
+      case "Attachment":
+        return "Attach from...";
       default:
         return type;
     }
@@ -110,8 +110,14 @@ export function TaskDetailsModal({
 
   const title = getModalTitle();
 
+  function handleBlur({ relatedTarget }) {
+    if ( !relatedTarget) {
+      setTaskDetailsModal(null)
+    }
+  }
+
   return (
-    <section className="task-details-modal" style={modalStyle}>
+    <section tabIndex='0' onBlur={handleBlur} className="task-details-modal" style={modalStyle}>
       {title && (
         <div className="task-modal-title">
           <p>{title}</p>

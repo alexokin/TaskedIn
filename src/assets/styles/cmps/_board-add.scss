@@ -121,4 +121,9 @@
             }
         }
     }
+
+    @media (max-width:500px) {
+        left: 44px !important;
+        top: 100px !important;
+    }
 }

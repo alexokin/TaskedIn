@@ -30,6 +30,10 @@ export function Dates({ board, task, groupId, setTaskDetailsModal }) {
 
   return (
     <section className="dates">
+      <input type="text"
+        autoFocus
+        style={{ height: '0', width: '0', position: 'absolute', opacity: '0' }}
+      />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <CalendarPicker
           date={selectedDate}

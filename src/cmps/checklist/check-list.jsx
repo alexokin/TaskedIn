@@ -26,6 +26,7 @@ function onAddChecklist(ev) {
             type="text"
             value={title}
             onChange={handleChange}
+            autoFocus
           />
           <button className="blue btn">Add</button>
         </form>

@@ -110,6 +110,7 @@ export function Labels({
               className="search-label"
               type="text"
               placeholder="Search labels…"
+              autoFocus
             />
           </div>
           <p className="sub-header">Labels</p>

@@ -5,9 +5,9 @@ import { GrFormClose } from "react-icons/gr"
 export function GroupActions({ onToggleModal,onRemoveGroup, group, onCopyGroup }) {
     const ElRef = useRef(null)
 
-    useEffect(() => {
-        ElRef.current.focus()
-    }, [])
+    // useEffect(() => {
+    //     ElRef.current.focus()
+    // }, [])
 
 
     return (

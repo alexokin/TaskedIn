@@ -2,9 +2,9 @@
     list-style: none;
     padding-left: 0;
     display: grid;
-    gap: 16px;
-    row-gap: 32px;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    row-gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 96px;
     margin: 8px 16.5px;
 
@@ -28,8 +28,7 @@
 
         &:hover {
 
-            .btn-starred,
-            .btn-remove-board {
+            .btn-starred {
                 translate: 0;
             }
         }
@@ -54,19 +53,12 @@
                 translate: 0;
             }
         }
+    }
 
-        .btn-remove-board {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: none;
-            color: $clr9;
-            translate: 150%;
-            transition: translate 0.5s;
-
-            &:hover {
-                color: black;
-            }
-        }
+    @media (min-width:500px) {
+        gap: 16px;
+        row-gap: 32px;
+        grid-template-columns: repeat(4, 1fr);
+        
     }
 }
