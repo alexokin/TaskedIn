@@ -54,10 +54,10 @@ export function TaskDetailsSidebar({ task, taskId, groupId, board, onOpenModal  
           <ImAttachment className="icon" />
           Attachment
         </button>
-        <button>
+        {/* <button>
           <IoLocationSharp className="icon" />
           Location
-        </button>
+        </button> */}
          {!task?.cover && <button ref={coverBtnRef} onClick={() => onOpenModal('Cover', coverBtnRef)} >
           <BsSquareHalf
             className="icon"
