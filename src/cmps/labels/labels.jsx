@@ -144,7 +144,7 @@ export function Labels({
                   }}
                   className="edit"
                 >
-                  <GrFormEdit />
+                  <GrFormEdit/>
                 </button>
               </li>
             ))}

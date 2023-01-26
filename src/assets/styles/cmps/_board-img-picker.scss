@@ -1,9 +1,12 @@
 .board-img-picker {
     height: 0;
     translate: 150%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
 
     &.open {
-        height: auto;
+        height: 100%;
         translate: 0;
         transition: translate 0.3s;
     }
@@ -37,7 +40,29 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        overflow: auto;
+        height: calc(100% - 36px);
         gap: 8px;
+        margin-bottom: 8px;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+    
+        &::-webkit-scrollbar-button {
+            display: none;
+        }
+    
+        &::-webkit-scrollbar-track {
+            
+            background-color: rgba(191, 196, 206, 0.5);
+            border-radius: 0.5em;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(191, 196, 206);
+            border-radius: 0.3em;
+        }
 
         .img-item {
             position: relative;

@@ -20,7 +20,7 @@ export function BoardImgPicker({ board, isBgImgPickerMenuOpen }) {
     async function getImgsFromApi(searchTxt) {
         try {
             const result = await boardService.getUnsplashApi().search
-                .getPhotos({ query: searchTxt, orientation: "landscape", per_page: '10' })
+                .getPhotos({ query: searchTxt, orientation: "landscape", per_page: '20' })
             return result.response.results.map(item => {
                 return {
                     id: item.id,
@@ -66,7 +66,7 @@ export function BoardImgPicker({ board, isBgImgPickerMenuOpen }) {
             </form>
 
             {imgs && <div className="imgs-container">
-                {imgs.slice(0, 10).map(img => {
+                {imgs.map(img => {
                     return (
                         <div className="img-item" key={img.id} onClick={() => onSetStyle(img.url)}>
                             <img src={img.url} />

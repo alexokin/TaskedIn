@@ -10,9 +10,10 @@
         min-height: 32px;
         height: fit-content;
         overflow-wrap: break-word;
-        max-width: 256px;
+        width: 100%;
         cursor: pointer;
         padding: 4px 8px;
+        padding-bottom: 8px;
         color: $clr45;
 
         &:hover {

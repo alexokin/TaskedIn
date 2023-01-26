@@ -7,7 +7,13 @@
     position: fixed;
     height: 48px;
     z-index: 1;
-    // overflow-x: hidden;
+    
+    .divider{
+        border-left: 1px solid lightgray;
+        margin: 12px 8px 8px 8px;
+        // float: left;
+        max-height: 16px;
+    }
 
     button {
         background-color: rgba(255, 255, 255, 0.2);
@@ -71,6 +77,7 @@
             height: 32px;
             padding: 0;
             margin-right: 4px;
+            margin-left: 0;
             font-size: 1.1em;
             display: flex;
             align-items: center;
@@ -86,6 +93,12 @@
             height: 32px;
             width: 78px;
             transition: translate 0.3s;
+
+            svg{
+                position: relative;
+                top:1.5px;
+                right: 2px;
+            }
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.3);
@@ -109,7 +122,6 @@
 
         .members-container {
             width: 80px;
-            margin-left: 0.5em;
             position: relative;
             overflow-x: hidden;
             display: flex;

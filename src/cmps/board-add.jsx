@@ -49,9 +49,12 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
 
     return (
         <div tabIndex="0" style={addModalLoc} className="board-add" onBlur={handleBlur} >
-            <h3>Create board</h3>
-            <hr />
+            <div className="borad-add-header">
+                <span className="title">Create board</span>
+                <button className="btn-close" onClick={onToggleAddBoardModal}><GrFormClose /></button>
+            </div>
 
+            <hr />
             <div className="board-preview-img" style={boardToAdd?.style}>
                 <div className="board-preview-img"></div>
             </div>
@@ -91,7 +94,6 @@ export function BoardAdd({ onToggleAddBoardModal, addModalLoc, fromHeader }) {
                 {!boardToAdd.title && <div>👋 Board title is required</div>}
                 <button className="btn-create" disabled={boardToAdd.title === ''} >Create</button>
             </form>
-            <button className="btn-close" onClick={onToggleAddBoardModal}><GrFormClose /></button>
         </div>
     )
 }

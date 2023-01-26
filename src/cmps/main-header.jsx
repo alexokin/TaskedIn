@@ -54,7 +54,7 @@ export function MainHeader() {
     setIsRecentListOpen(prevState => !prevState)
     setmodalLoc(modalLocToSet)
   }
-  
+
   function onToggleCreateBoardModal(ev) {
     const BoundingClientRect = ev?.target.getBoundingClientRect()
     const modalLocToSet = {
@@ -69,9 +69,9 @@ export function MainHeader() {
     <div>
       {!hideHeader && <div style={board.headerStyle} className='main-header'>
         <div className='left-container'>
-        
+
           <a className='logo' href="/">
-          <AiOutlineHome /></a>
+            <AiOutlineHome /></a>
           <a className='logo' href="/workspace">TaskedIn</a>
           <div className='btn-recent' onClick={(event) => toggleRecentList(event)}>
             Recent
@@ -87,7 +87,7 @@ export function MainHeader() {
           <div className='search-container' onClick={(event) => toggleSearchList(event)}>
             <BiSearch /> Search
           </div>
-          <img width='24px' src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" />
+          <img width='26px' style={{ borderRadius: '50%' }} src="https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333627/trello-profile-pics/T043N4KE97B-U0436HRD15K-ed7a82d2139d-512_xrimhd.jpg" alt="" />
         </div>
 
         {isStarredListOpen && <BoardStarredList toggleStarredList={toggleStarredList} modalLoc={modalLoc} />}

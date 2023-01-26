@@ -5,7 +5,30 @@
     padding: 0.5em;
     border: 1px solid lightgray;
     max-width: 280px;
-    color: black;
+    color: $clr45;
+
+    .borad-add-header{
+        display: flex;
+        .title{
+            flex-grow: 1;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: none;
+            margin: 0;
+            padding: 0;
+            svg{
+                color: red !important;
+                font-size: 24px;
+            }
+        }
+    }
+    
 
     .board-preview-img {
 
@@ -97,14 +120,5 @@
                 }
             }
         }
-    }
-
-    .btn-close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: none;
-        color: gray;
-        font-size: 1em;
     }
 }
