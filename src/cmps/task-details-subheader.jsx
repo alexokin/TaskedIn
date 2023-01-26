@@ -1,8 +1,9 @@
 import React from "react";
+import { TaskDatesSubheader } from "./Dates/task-dates-subheader";
 import { TaskLabelsSubheader } from "./labels/task-labels-subheader";
 import { TaskMembersSubheader } from "./members/task-members-subheader";
 
-export function TaskDetailsSubheader({ task, groupId, onOpenModal }) {
+export function TaskDetailsSubheader({ task, groupId, onOpenModal, board }) {
   function isShowLabels() {
     if (task.labelIds && task.labelIds.length && task.labelIds !== 0)
       return true;
@@ -28,6 +29,14 @@ export function TaskDetailsSubheader({ task, groupId, onOpenModal }) {
           />
         )}
       </section>
+      {task.dueDate && (
+        <TaskDatesSubheader
+          board={board}
+          task={task}
+          groupId={groupId}
+          onOpenModal={onOpenModal}
+        />
+      )}
     </section>
   );
 }
