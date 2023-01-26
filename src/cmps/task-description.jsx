@@ -6,8 +6,16 @@ import { updateTask } from "../store/actions/task.actions";
 export function TaskDescription({ board, task, groupId }) {
   const [isDescOpen, setIsDescOpen] = useState(false);
   const [descText, setDescText] = useState(task.description);
+  let textAreaRef = useRef()
   const initialDesc = useRef();
 
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = "0px";
+      const scrollHeight = textAreaRef.current.scrollHeight;
+      textAreaRef.current.style.height = scrollHeight + "px";
+    }
+  }, [isDescOpen]);
 
   useEffect(() => {
     if (isDescOpen) {
@@ -33,6 +41,7 @@ export function TaskDescription({ board, task, groupId }) {
   }
 
   function handleBlur({ relatedTarget }) {
+    setDescText(prevState => prevState)
     if (relatedTarget?.id === 'cancel') {
       setTaskDesc(true)
     } else {
@@ -48,19 +57,19 @@ export function TaskDescription({ board, task, groupId }) {
         <GrTextAlignFull className="description-icon" />
       </div>
       <div className="description-body">
-        <div className="input-container">
-          <input
-            value={descText}
-            className={`${!task.description ? 'empty' : ''}`}
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={() => {
-              setIsDescOpen(true)
-            }}
-            placeholder="Add a more detailed description..."
-            type="text"
-          />
-        </div>
+        <textarea
+          value={descText}
+          className={`${!task.description ? 'empty' : ''}`}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          onFocus={() => {
+            setIsDescOpen(true)
+          }}
+          placeholder="Add a more detailed description..."
+          type="text"
+          ref={textAreaRef}
+          rows={2}
+        />
         <div className={`btns-container ${isDescOpen ? 'open' : ''}`}>
           <button id="save" className="btn-save">Save</button>
           <button id="cancel" className="btn-cancel">Cancel</button>

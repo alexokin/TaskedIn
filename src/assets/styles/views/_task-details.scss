@@ -182,7 +182,7 @@
 
 @media (min-width: 780px) {
   .task-details {
-    max-width: 768px;
+    min-width: 768px;
 
     .task-body {
       flex-direction: row;
