@@ -6,7 +6,8 @@
 
     li {
         position: relative;
-        height: fit-content;
+        overflow: hidden;
+        height: 100%;
     }
 
 }

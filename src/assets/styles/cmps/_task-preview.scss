@@ -10,7 +10,7 @@
         min-height: 32px;
         height: fit-content;
         overflow-wrap: break-word;
-        width: 256px;
+        max-width: 256px;
         cursor: pointer;
         padding: 4px 8px;
         color: $clr45;
@@ -37,6 +37,13 @@
         height: 32px;
         border-top-left-radius: 0.3em;
         border-top-right-radius: 0.3em;
+
+        &+.task-title {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+
 
         &.img {
             height: 138px;
