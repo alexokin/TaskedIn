@@ -7,9 +7,20 @@
         height: 36px;
         width: 100%;
         margin-bottom: 12px;
-
+        border: none;
+        outline: none;
+        background-color: #fafbfc;
+        box-shadow: inset 0 0 0 2px #dfe1e6;
+        border-radius: 3px;
         &:hover {
             background-color: #ebecf0;
+        }
+
+        &:focus {
+            background-color: #fff;
+        border: none;
+
+            box-shadow: inset 0 0 0 2px #0079bf;
         }
     }
 
@@ -74,9 +85,11 @@
         }
     }
 }
-.task-members-subheader{
+
+.task-members-subheader {
     margin-bottom: 8px;
-    .title{
+
+    .title {
         color: #5e6c84;
         font-size: 12px;
         font-weight: 600;
@@ -87,21 +100,22 @@
 
     .members-container {
         display: flex;
-        gap:0.2rem;
+        gap: 0.2rem;
         height: 32px;
         align-items: center;
         margin-right: 12px;
+
         img {
             width: 32px;
             border-radius: 50%;
         }
-    
+
         .member-img {
             display: flex;
             flex-direction: column;
             align-self: center;
         }
-    
+
         .btn-add-member {
             margin: 0;
             align-items: center;
@@ -113,7 +127,7 @@
             height: 32px;
             justify-content: center;
             width: 32px;
-    
+
             &:hover {
                 background-color: #e1e4e9
             }
