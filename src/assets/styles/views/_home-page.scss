@@ -55,6 +55,7 @@
 
     .signin-a {
         color: $clr34;
+        font-size: rem(22px);
     }
 
     .signin-btn {
@@ -158,10 +159,10 @@
     }
 
     .ui-img {
-        height: 455px;
-        width: 728px;
+        height: 450px;
+        width: 730px;
         margin-bottom: 110px;
-        margin-left: 25px;
+        margin-left: -180px;
     }
 
 }
@@ -333,6 +334,7 @@
     background-blend-mode: normal, normal, normal;
     color: $clr34;
     height: 1050px;
+    padding-bottom: 60px;
 
     .see-sub-section {
         margin-left: 490px;
@@ -442,6 +444,7 @@
             margin-left: 60px;
             margin-top: 40px;
             display: inline-block;
+            margin-bottom: 20px;
         }
 
         .h3-left {
@@ -468,8 +471,8 @@
         .right-img-section {
             max-width: 100%;
             height: auto;
-            margin-top: 40px;
-            margin-left: -40px;
+            margin-top: 30px;
+            margin-left: -30px;
             margin-right: 50px;
         }
 

@@ -18,7 +18,7 @@ export function HomePage() {
               <div className="left-signup-div">
                 <button className="signin-btn">
                   <a href="/workspace" className="signin-a">
-                    Let's start Tasked it!
+                    START!
                   </a>
                 </button>
               </div>
@@ -35,7 +35,7 @@ export function HomePage() {
 
         <section className="productivity-powerhouse-section">
           <div className="productivity-powerhouse-div">
-            <p className="powerhouse-div-p">TRELLO 101</p>
+            <p className="powerhouse-div-p">TaskedIn 101</p>
             <h2 className="powerhouse-div-h2">A Productivity powerhouse</h2>
           </div>
           <p className="powerhouse-div-p2">
@@ -201,23 +201,23 @@ export function HomePage() {
               tried-and-true templates, then customize it to make it your own.
             </p>
           </div>
-          <div className="right-explore-section">
+          {/* <div className="right-explore-section">
             <a href="">
               <span>Explore all Templates</span>
             </a>
-          </div>
+          </div> */}
         </div>
 
         <section className="see-main-section">
           <div className="see-sub-section">
-            <h2 className="see-sub-h2">See work in a whole new way</h2>
+            {/* <h2 className="see-sub-h2">See work in a whole new way</h2>
             <p className="see-sub-p">
               View your teams projects from every angle and bring a fresh
               perspective to the task at hand.
-            </p>
-            <a href="" className="discover-btn">
+            </p> */}
+            {/* <a href="" className="discover-btn">
               <span>Discover TaskedIn views</span>
-            </a>
+            </a> */}
           </div>
 
           <section className="centered-main">
