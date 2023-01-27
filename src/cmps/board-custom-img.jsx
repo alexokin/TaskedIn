@@ -2,32 +2,20 @@ import { useState } from "react"
 import { uploadService } from "../services/upload.service"
 import { updateBoard } from "../store/board.actions"
 import { FiPlus } from "react-icons/fi";
-import { useEffect } from "react";
 import { GrFormClose } from "react-icons/gr"
 import { FastAverageColor } from 'fast-average-color'
-const STORAGE_KEY = 'customBgDB'
-
 
 export function BoardCustomImg({ board }) {
     const [isUploading, setIsUploading] = useState(false)
-    let [imgsToDisplay, setImgsToDisplay] = useState(null)
     const [selectedImg, setSelectedImg] = useState(null)
     const getAverageColor = new FastAverageColor()
-
-    useEffect(() => {
-        ; (async () => {
-            const ImgsToSet = await uploadService.getUploadedCollection(STORAGE_KEY)
-            setImgsToDisplay(ImgsToSet)
-        })()
-    }, [])
-
 
     async function uploadImg(ev) {
         setIsUploading(true)
         const img = await uploadService.uploadImg(ev)
-        const imgToSave = await uploadService.saveUploadedCollection(STORAGE_KEY, img)
-        imgsToDisplay.push(imgToSave)
-        setImgsToDisplay(prevImgs => prevImgs)
+        if (!board.customBgs) board.customBgs = []
+        board.customBgs.push(img)
+        updateBoard(board)
         onSetStyle(img.secure_url)
         setIsUploading(false)
     }
@@ -43,10 +31,10 @@ export function BoardCustomImg({ board }) {
         updateBoard(boardToSet)
     }
 
-    async function onRemoveImg() {
-        await uploadService.removeFromUploadedCollection(STORAGE_KEY, selectedImg._id)
-        const imgsToSet = imgsToDisplay.filter(img => img._id !== selectedImg._id)
-        setImgsToDisplay(imgsToSet)
+    async function onRemoveImg(ev) {
+        ev.stopPropagation()
+        board.customBgs = board.customBgs.filter(img => img.public_id !== selectedImg.public_id)
+        updateBoard(board)
         setSelectedImg(null)
     }
 
@@ -68,13 +56,13 @@ export function BoardCustomImg({ board }) {
                     </div>}
                 </div>
 
-                {imgsToDisplay && imgsToDisplay.map(img => {
+                {board.customBgs && board.customBgs.map(img => {
                     return (
-                        <div className="custom-img-item" key={img._id} onClick={() => onSetStyle(img.secure_url)}>
+                        <div className="custom-img-item" key={img.public_id} onClick={() => onSetStyle(img.secure_url)}>
                             <img src={img.secure_url} />
                             <a onClick={(event) => onSetSelectedImg(event, img)}>Remove</a>
 
-                            {selectedImg?._id === img._id && <div className="remove-modal">
+                            {selectedImg?.public_id === img.public_id && <div className="remove-modal">
                                 <div className="modal-header">
                                     <span> Delete background?</span>
                                     <button className="btn-close-modal" onClick={() => setSelectedImg(null)}><GrFormClose /></button>
