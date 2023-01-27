@@ -42,6 +42,7 @@ export function GroupList({ groups, board }) {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
+                      className="li-group"
                     >
                       <GroupPreview group={group} board={board} />
                     </li>

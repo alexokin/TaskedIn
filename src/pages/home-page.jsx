@@ -18,7 +18,7 @@ export function HomePage() {
               <div className="left-signup-div">
                 <button className="signin-btn">
                   <a href="/workspace" className="signin-a">
-                    START!
+                    START DEMO
                   </a>
                 </button>
               </div>
@@ -201,23 +201,15 @@ export function HomePage() {
               tried-and-true templates, then customize it to make it your own.
             </p>
           </div>
-          {/* <div className="right-explore-section">
-            <a href="">
-              <span>Explore all Templates</span>
-            </a>
-          </div> */}
         </div>
 
         <section className="see-main-section">
           <div className="see-sub-section">
-            {/* <h2 className="see-sub-h2">See work in a whole new way</h2>
+            <h2 className="see-sub-h2">See work in a whole new way</h2>
             <p className="see-sub-p">
               View your teams projects from every angle and bring a fresh
               perspective to the task at hand.
-            </p> */}
-            {/* <a href="" className="discover-btn">
-              <span>Discover TaskedIn views</span>
-            </a> */}
+            </p>
           </div>
 
           <section className="centered-main">

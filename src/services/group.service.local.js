@@ -4,6 +4,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { boardService } from './board.service.local.js'
 import { updateBoard } from '../store/board.actions.js'
+import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'board'
 
@@ -22,7 +23,8 @@ window.cs = groupService
 
 async function query(boardId) {
     try {
-        const board = await storageService.get(STORAGE_KEY, boardId)
+        // const board = await storageService.get(STORAGE_KEY, boardId)
+        const board = await httpService.get(STORAGE_KEY)
         return board.groups
     } catch (err) {
         throw err
@@ -31,7 +33,8 @@ async function query(boardId) {
 
 async function getById(boardId, groupId) {
     try {
-        const board = await storageService.get(STORAGE_KEY, boardId)
+        // const board = await storageService.get(STORAGE_KEY, boardId)
+        const board = await httpService.get(`board/${boardId}`)
         const group = board.groups.find(group => group._id === groupId)
         return group
     } catch (err) {
@@ -42,9 +45,10 @@ async function getById(boardId, groupId) {
 async function remove(boardId, groupId) {
     // throw new Error('Nope')
     try {
-        const board = await storageService.get(STORAGE_KEY, boardId)
+        // const board = await storageService.get(STORAGE_KEY, boardId)
+        const board = await httpService.get(`board/${boardId}`)
         board.groups = board.groups.filter(group => group._id !== groupId)
-        await storageService.put(STORAGE_KEY, board)
+        // await storageService.put(STORAGE_KEY, board)
         updateBoard(board)
     } catch (err) {
         throw err
@@ -53,7 +57,8 @@ async function remove(boardId, groupId) {
 
 async function save(boardId, group) {
     try {
-        const board = await boardService.getById(boardId)
+        // const board = await boardService.getById(boardId)
+        const board = await httpService.get(`board/${boardId}`)
         if (group._id) {
             board.groups = board.groups.map(currGroup => {
                 if (currGroup._id !== group._id){
@@ -70,7 +75,7 @@ async function save(boardId, group) {
             group._id = utilService.makeId()
             board.groups.push(group)
         }
-        await storageService.put(STORAGE_KEY, board)
+        // await storageService.put(STORAGE_KEY, board)
         updateBoard(board)
         return group
     } catch (err) {
