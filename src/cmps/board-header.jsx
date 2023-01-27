@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { boardService } from "../services/board.service.local";
 import { IoFilterSharp } from "react-icons/io5";
@@ -16,6 +16,10 @@ export function BoardHeader({ board }) {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
   const filter = useSelector((storeState) => storeState.systemModule.filter)
   const [tilteToEdit, setTitleToEdit] = useState(board.title)
+
+  useEffect(()=>{
+    setTitleToEdit(board.title)
+  },[board])
 
   function onToggleStar() {
     boardService.toggleStar(board._id)

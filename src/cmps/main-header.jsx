@@ -21,7 +21,8 @@ export function MainHeader() {
   const [hideHeader, setHideHeader] = useState(false)
 
   useEffect(() => {
-    if (window.location.href === 'http://localhost:3030/') {
+    console.log(window.location.href)
+    if (window.location.href === 'http://localhost:3000/' || window.location.href === 'http://localhost:3000/login-signup') {
       setHideHeader(true)
     }
   }, [])
