@@ -111,9 +111,10 @@ export function TaskDetailsModal({
   const title = getModalTitle();
 
   function handleBlur({ relatedTarget }) {
-    if ( !relatedTarget) {
-      setTaskDetailsModal(null)
-    }
+    if (type === 'Attachment') return
+      if (!relatedTarget) {
+        setTaskDetailsModal(null)
+      }
   }
 
   return (

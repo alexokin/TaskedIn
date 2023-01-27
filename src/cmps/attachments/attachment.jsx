@@ -19,6 +19,7 @@ export function Attachment({ task, groupId, board, setTaskDetailsModal }) {
   }
 
   async function onUploadImg(ev) {
+    ev.preventDefault()
     try {
       setIsAdding(true);
       const url = await uploadService.uploadImg(ev);
