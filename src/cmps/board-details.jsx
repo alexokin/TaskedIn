@@ -8,11 +8,13 @@ import { useSelector } from "react-redux";
 import { loadBoards, setBoard } from "../store/board.actions.js";
 import { TaskDetails } from "./task-details";
 import { BoardHeader } from "./board-header.jsx";
+import { QuickEdit } from "./quickedit/quick-edit.jsx";
 
 export function BoardDetails() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
   const filter = useSelector((storeState) => storeState.systemModule.filter);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [quickEdit, setQuickEdit] = useState(null)
   const { boardId, taskId } = useParams();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export function BoardDetails() {
       <BoardHeader board={board} />
 
       <div className="board-content">
-        {board && <GroupList board={board} groups={board.groups} />}
+        {board && <GroupList setQuickEdit={setQuickEdit} quickEdit={quickEdit} board={board} groups={board.groups} />}
 
         <div className="group-add-container">
           {!isAddModalOpen && (
@@ -48,6 +50,7 @@ export function BoardDetails() {
       </div>
 
       {taskId && <TaskDetails />}
+      {quickEdit && <QuickEdit board={board} setQuickEdit={setQuickEdit}/>}
     </div>
   );
 }

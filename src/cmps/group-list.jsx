@@ -4,7 +4,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { GroupPreview } from "./group-preview.jsx";
 import { updateDrag } from "../store/board.actions";
 
-export function GroupList({ groups, board }) {
+export function GroupList({ groups, board, setQuickEdit, quickEdit }) {
   function handleOnDragEnd(result) {
     const { source, destination } = result;
     if (
@@ -44,7 +44,12 @@ export function GroupList({ groups, board }) {
                       ref={provided.innerRef}
                       className="li-group"
                     >
-                      <GroupPreview group={group} board={board} />
+                      <GroupPreview
+                        group={group}
+                        board={board}
+                        quickEdit={quickEdit}
+                        setQuickEdit={setQuickEdit}
+                      />
                     </li>
                   )}
                 </Draggable>
