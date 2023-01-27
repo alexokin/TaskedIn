@@ -2,6 +2,11 @@
     text-decoration: none;
     color: inherit;
     background-color: aqua;
+    &:hover {
+        .quick-edit-icon {
+          display: flex;
+        }
+      }
 
     .task-title {
         background-color: $clr6;
@@ -51,5 +56,25 @@
             background-size: cover;
         }
     }
+    .quick-edit-icon {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        height: 28px;
+        width: 28px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        color: #42526e;
+        background-color: #f4f5f7;
+        opacity: 0.8;
+        display: none;
+    
+        &:hover {
+          opacity: 1;
+        }
+      }
 
 }

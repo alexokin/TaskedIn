@@ -42,6 +42,7 @@ export function GroupList({ groups, board, setQuickEdit, quickEdit }) {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
+                      className="li-group"
                     >
                       <GroupPreview
                         group={group}

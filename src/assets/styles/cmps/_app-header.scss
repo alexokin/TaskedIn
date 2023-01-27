@@ -45,5 +45,34 @@
             background-color: $clr33;
         }
     }
+}
 
+@media (max-width:600px) {
+    .header-main {
+        width: 100vw;
+        
+        .header-sub {
+            width: 100%;
+            background-color: aqua;
+            grid-template-columns: 1fr 3fr;
+
+            .a-logo {
+                margin: 0;
+                width: 100px;
+                height: 50px;
+            }
+
+            .a-login {
+                right: 0;
+            }
+
+            .a-try {
+                position: absolute;
+                margin-left: 0;
+                width: 150px;
+                padding: 1rem 1rem;
+                right: 0;
+            }
+        }
+    }
 }
