@@ -7,7 +7,7 @@ import { GroupTitle } from "./group-title.jsx";
 import { TaskList } from "./task-list.jsx";
 import { FiPlus } from "react-icons/fi";
 
-export function GroupPreview({ group, board }) {
+export function GroupPreview({ group, board, setQuickEdit, quickEdit }) {
 
   const filter = useSelector((storeState) => storeState.systemModule.filter)
   const [isFiltered, setIsFiltered] = useState(false)
@@ -27,7 +27,7 @@ export function GroupPreview({ group, board }) {
   return (
     <div className="group-preview">
       <GroupTitle group={group} board={board} />
-     <TaskList groupTasks={group.tasks} board={board} groupId={group._id}/>
+     <TaskList groupTasks={group.tasks} board={board} groupId={group._id} setQuickEdit={setQuickEdit} quickEdit={quickEdit}/>
       <div className="add-container">
         {!isAddModalOpen && <div onClick={onToggleAddModal} className="btn-open-add-task"><div className="plus"><FiPlus /></div>Add a card</div>}
         {isAddModalOpen && <AddTask onToggleAddModal={onToggleAddModal} tasks={group.tasks} board={board} groupId={group._id} />}

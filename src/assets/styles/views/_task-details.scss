@@ -152,6 +152,8 @@
   }
 }
 
+
+
 @media (min-width: 480px) {
   .task-details {
     max-width: 460px;
@@ -168,6 +170,7 @@
 @media (min-width: 640px) {
   .task-details {
     max-width: 600px;
+
     .task-sidebar {
       .btn-container {
         height: 130px;
@@ -182,14 +185,15 @@
 
 @media (min-width: 780px) {
   .task-details {
-    max-width: 768px;
+    min-width: 768px;
 
     .task-body {
       flex-direction: row;
+
       .task-sidebar {
         padding-inline-start: 8px;
         padding-block-end: 0;
-    
+
         .btn-container {
           gap: 0;
           display: block;
