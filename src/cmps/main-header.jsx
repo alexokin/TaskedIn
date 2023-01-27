@@ -20,7 +20,7 @@ export function MainHeader() {
   const [hideHeader, setHideHeader] = useState(false)
 
   useEffect(() => {
-    if (window.location.href === 'http://localhost:3000/') {
+    if (window.location.href === 'http://localhost:3030/') {
       setHideHeader(true)
     }
   }, [])

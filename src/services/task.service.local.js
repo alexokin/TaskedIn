@@ -2,6 +2,7 @@ import { utilService } from "./util.service";
 import { storageService } from "./async-storage.service";
 import { boardService } from "./board.service.local";
 import { groupService } from "./group.service.local";
+import { httpService } from './http.service.js'
 
 const STORAGE_KEY = "board";
 
@@ -48,7 +49,8 @@ async function remove(board, groupId, taskId) {
   try {
     const group = board.groups.find((group) => group._id === groupId);
     group.tasks = group.tasks.filter((task) => task._id !== taskId);
-    await storageService.put(STORAGE_KEY, board);
+    // await storageService.put(STORAGE_KEY, board);
+    await await boardService.save(board)
   } catch (err) {
     throw err;
   }
@@ -60,7 +62,8 @@ async function update(board, groupId, task) {
     group.tasks = group.tasks.map((currTask) =>
       currTask._id === task._id ? task : currTask
     );
-    await storageService.put(STORAGE_KEY, board);
+    // await storageService.put(STORAGE_KEY, board);
+    await httpService.put(`board/${board._id}`, board)
   } catch (err) {
     throw err;
   }
@@ -71,7 +74,8 @@ async function save(boardId, groupId, title) {
     const board = await boardService.getById(boardId);
     const group = board.groups.find((group) => group._id === groupId);
     group.tasks.push({ title, id: utilService.makeId() });
-    await storageService.put(STORAGE_KEY, board);
+    // await storageService.put(STORAGE_KEY, board);
+    await httpService.put(`board/${board._id}`, board)
     return group;
   } catch (err) {
     throw err;

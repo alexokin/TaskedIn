@@ -5,6 +5,7 @@ import { userService } from './user.service.js'
 import { updateBoard, updateBoardNoSet } from '../store/board.actions.js'
 import { FaUserCircle } from "react-icons/fa";
 import { createApi } from "unsplash-js";
+import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'board'
 const boardStyles = [
@@ -58,50 +59,86 @@ export const boardService = {
 
 window.cs = boardService
 
-async function query(filterBy = getDefaultFilter()) {
-    var boards = await storageService.query(STORAGE_KEY)
-    if (filterBy.title) {
-        const regex = new RegExp(filterBy.title, 'i')
-        boards = boards.filter(board => regex.test(board.title))
-    }
-    boards.sort((board1, board2) => board1[filterBy.sortBy].localeCompare(board2[filterBy.sortBy]) * filterBy.sortDesc)
-    return boards
+// async function query(filterBy = getDefaultFilter()) {
+//     var boards = await storageService.query(STORAGE_KEY)
+//     if (filterBy.title) {
+//         const regex = new RegExp(filterBy.title, 'i')
+//         boards = boards.filter(board => regex.test(board.title))
+//     }
+//     boards.sort((board1, board2) => board1[filterBy.sortBy].localeCompare(board2[filterBy.sortBy]) * filterBy.sortDesc)
+//     return boards
+// }
+
+async function query(filterBy = { txt: '' }) {
+        // return storageService.get(STORAGE_KEY)
+    return await httpService.get(STORAGE_KEY, filterBy)
 }
 
-function getById(boardId) {
-    return storageService.get(STORAGE_KEY, boardId)
+async function getById(boardId) {
+    // return storageService.get(STORAGE_KEY, boardId)
+    return await httpService.get(`board/${boardId}`)
 }
 
 async function remove(boardId) {
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, boardId)
+    // await storageService.remove(STORAGE_KEY, boardId)
+    return await httpService.delete(`board/${boardId}`)
 }
+
+// async function save(board) {
+//     var savedBoard
+//     if (board._id) {
+//         savedBoard = await storageService.put(STORAGE_KEY, board)
+//     } else {
+//         // Later, owner is set by the backend
+//         //board.createdBy = userService.getLoggedinUser()
+//         board.members = [
+//             {
+//                 _id: "u101",
+//                 fullname: "Eli Shallev",
+//                 imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333645/trello-profile-pics/T043N4KE97B-U049AMXDTPY-9ec00af7e7df-512_kaegik.jpg'
+//             },
+//             {
+//                 _id: "u102",
+//                 fullname: "Alex Okin",
+//                 imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333627/trello-profile-pics/T043N4KE97B-U0436HRD15K-ed7a82d2139d-512_xrimhd.jpg'
+//             },
+//             {
+//                 _id: "u103",
+//                 fullname: "Yossef Nahari",
+//                 imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333641/trello-profile-pics/T043N4KE97B-U04310KBZ6K-8b9f2fcd3a1e-512_ejqkve.jpg'
+//             },
+//         ]
+//         savedBoard = await storageService.post(STORAGE_KEY, board)
+//     }
+//     return savedBoard
+// }
 
 async function save(board) {
     var savedBoard
     if (board._id) {
-        savedBoard = await storageService.put(STORAGE_KEY, board)
+        savedBoard = await httpService.put(`board/${board._id}`, board)
+
     } else {
-        // Later, owner is set by the backend
-        //board.createdBy = userService.getLoggedinUser()
-        board.members = [
-            {
-                _id: "u101",
-                fullname: "Eli Shallev",
-                imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333645/trello-profile-pics/T043N4KE97B-U049AMXDTPY-9ec00af7e7df-512_kaegik.jpg'
-            },
-            {
-                _id: "u102",
-                fullname: "Alex Okin",
-                imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333627/trello-profile-pics/T043N4KE97B-U0436HRD15K-ed7a82d2139d-512_xrimhd.jpg'
-            },
-            {
-                _id: "u103",
-                fullname: "Yossef Nahari",
-                imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333641/trello-profile-pics/T043N4KE97B-U04310KBZ6K-8b9f2fcd3a1e-512_ejqkve.jpg'
-            },
-        ]
-        savedBoard = await storageService.post(STORAGE_KEY, board)
+        board.members =
+            [
+                {
+                    _id: "u101",
+                    fullname: "Eli Shallev",
+                    imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333645/trello-profile-pics/T043N4KE97B-U049AMXDTPY-9ec00af7e7df-512_kaegik.jpg'
+                },
+                {
+                    _id: "u102",
+                    fullname: "Alex Okin",
+                    imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333627/trello-profile-pics/T043N4KE97B-U0436HRD15K-ed7a82d2139d-512_xrimhd.jpg'
+                },
+                {
+                    _id: "u103",
+                    fullname: "Yossef Nahari",
+                    imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333641/trello-profile-pics/T043N4KE97B-U04310KBZ6K-8b9f2fcd3a1e-512_ejqkve.jpg'
+                }
+            ]
+            savedBoard = await httpService.post('board', board)
     }
     return savedBoard
 }
@@ -139,7 +176,7 @@ function getEmptyBoard() {
         title: '',
         isStarred: false,
         archivedAt: '',
-        style: { backgroundColor: 'lightgray', largeLabels: false},
+        style: { backgroundColor: 'lightgray', largeLabels: false },
         headerStyle: { backgroundColor: 'lightgray' },
         labels: [],
         members: [],

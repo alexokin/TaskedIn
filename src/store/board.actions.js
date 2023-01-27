@@ -44,6 +44,7 @@ export async function setBoard(boardId) {
         board.lastViewed = Date.now()
         board.headerStyle = board.headerStyle ? board.headerStyle : { backgroundColor: '#026aa7' }
         board = await boardService.save(board)
+        console.log('from back board', board)
         console.log('Board from DB:', board)
         store.dispatch({
             type: SET_BOARD,
@@ -67,6 +68,7 @@ export async function removeBoard(boardId) {
 
 export async function addBoard(board) {
     try {
+        console.log('IS here?', board)
         const savedBoard = await boardService.save(board)
         console.log('Added Board', savedBoard)
         store.dispatch(getActionAddBoard(savedBoard))
