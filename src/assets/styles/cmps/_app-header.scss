@@ -23,16 +23,14 @@
     }
 
     .header-nav-btns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: flex-end;
         position: relative;
     }
 
     .a-login {
         padding: 1rem 1.5rem;
         width: 120px;
-        position: absolute;
-        right: 300px;
         color: $clr31;
     }
 
@@ -42,8 +40,6 @@
         padding: 1rem 1.5rem;
         width: 210px;
         height: 60px;
-        position: absolute;
-        margin-left: 450px;
 
         &:hover {
             background-color: $clr33;
