@@ -1,10 +1,13 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { userService } from "../services/user.service"
+import { login, signup } from "../store/user.actions"
 
 
 export function LoginSignup() {
     const [userToSet, setUserToSet] = useState(userService.getEmptyUser())
     const [isSignUp, setIsSignUp] = useState(false)
+    const navigate = useNavigate()
 
 
     function handleChange({ target }) {
@@ -12,8 +15,21 @@ export function LoginSignup() {
         setUserToSet(prevUser => ({ ...prevUser, [field]: value }))
     }
 
-    function handleSubmit(ev) {
+    async function handleSubmit(ev) {
         ev.preventDefault()
+        try {
+            if (isSignUp) {
+                await signup(userToSet)
+            }
+            else {
+                delete userToSet.fullname
+                await login(userToSet)
+            }
+            navigate('/workspace')
+        } catch (err) {
+            console.log('had a problame', err)
+        }
+
     }
 
     function toggleLoginSignup() {
@@ -24,17 +40,24 @@ export function LoginSignup() {
 
     return (
         <section className="login-signup">
-            <div className="logo">TaskedIn</div>
+            <img src={require(`../assets/img/new-logo.png`)} alt="trello logo" className="logo" />
 
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="form-header">
                     <span className="title">Log in to TaskedIn</span>
                 </div>
                 <div className="form-content">
+                    {isSignUp && <input type="text"
+                        name="fullname"
+                        required
+                        placeholder="Enter full name"
+                        value={userToSet?.fullname}
+                        onChange={handleChange}
+                    />}
                     <input type="text"
                         name="username"
                         required
-                        placeholder="Enter email"
+                        placeholder="Enter user name"
                         value={userToSet?.username}
                         onChange={handleChange}
                     />
@@ -53,8 +76,10 @@ export function LoginSignup() {
                         {isSignUp ? 'Already have a account? Log in' : 'Sign up for an account'}
                     </span>
                 </div>
-
             </form>
+
+            <img className="left-img" src={require(`../assets/img/login-left-img.png`)} alt="" />
+            <img className="right-img" src={require(`../assets/img/login-right-img.png`)} alt="" />
         </section>
     )
 } 
