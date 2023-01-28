@@ -14,7 +14,7 @@ import { TaskAttachments } from "./attachments/task-attachments";
 import {  BsSquareHalf } from "react-icons/bs";
 import { useRef } from "react";
 
-export function TaskDetails() {
+export function TaskDetails({setQuickEdit}) {
   const board = useSelector((storeState) => storeState.boardModule.currBoard);
   const navigate = useNavigate();
   const { boardId, groupId, taskId } = useParams();
@@ -92,6 +92,7 @@ export function TaskDetails() {
         </section>
         {taskDetailsModal && (
           <TaskDetailsModal
+          setQuickEdit={setQuickEdit}
             board={board}
             setTaskDetailsModal={setTaskDetailsModal}
             task={task}

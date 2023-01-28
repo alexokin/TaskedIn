@@ -16,6 +16,7 @@ export function Labels({
   board,
   onToggleLabelEdit,
   isEditLabels,
+  setQuickEdit
 }) {
   let boardLabelsState = useSelector(
     (state) => state.boardModule.currBoard.labels || []
@@ -42,6 +43,7 @@ export function Labels({
         );
         task.labelIds.splice(labelIdx, 1);
       }
+      if (setQuickEdit) setQuickEdit(prevState => ({ ...prevState, task }))
       updateTask(task, groupId, board);
     } else if (target.type === "text") {
       const regex = new RegExp(target.value, "i");
@@ -73,6 +75,7 @@ export function Labels({
       board.labels.push(label);
       taskService.update(board, groupId, task);
       setSelectedLabel(null);
+      if (setQuickEdit) setQuickEdit(prevState => ({ ...prevState, task }))
       updateBoard(board);
       return;
     }

@@ -5,6 +5,7 @@
     padding-top: 8px;
     align-items: center;
 
+
     input {
         background: none;
         border: none;
@@ -12,6 +13,10 @@
         height: 28px;
         font-size: 1em;
         padding: 4px 8px;
+        font-family: 'Charlie-light';
+        font-weight: 700;
+        font-size: 14px;
+        color: #1c2a4b;
 
         &:focus {
             background-color: $clr6;
