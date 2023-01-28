@@ -3,7 +3,6 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { boardService } from "../services/board.service.local";
 import { IoFilterSharp } from "react-icons/io5";
 import { HiDotsHorizontal } from "react-icons/hi";
-import { MemberModal } from "./member-Modal";
 import { FilterModal } from "./filter-modal";
 import { useSelector } from "react-redux";
 import { setFilter } from "../store/system.actions";
@@ -11,7 +10,6 @@ import { SideMenu } from "./side-menu";
 import { updateBoard } from "../store/board.actions";
 
 export function BoardHeader({ board }) {
-  const [currMember, setCurrMember] = useState(null)
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
   const filter = useSelector((storeState) => storeState.systemModule.filter)
@@ -23,10 +21,6 @@ export function BoardHeader({ board }) {
 
   function onToggleStar() {
     boardService.toggleStar(board._id)
-  }
-
-  function onMemberSelect(member = null) {
-    setCurrMember(member)
   }
 
   function onToggleFilterModal() {
@@ -62,7 +56,7 @@ export function BoardHeader({ board }) {
         <div className="members-container">
           {board.members?.map((member, idx) => {
             return (
-              <img onClick={() => setCurrMember(member)} style={{ left: `${idx * 25}px` }} key={member._id} src={member.imgUrl} alt="" />
+              <img style={{ left: `${idx * 25}px` }} key={member._id} src={member.imgUrl} alt="" />
             )
           })}
 
@@ -71,7 +65,6 @@ export function BoardHeader({ board }) {
         {!isSideMenuOpen && <button className="btn-menu" onClick={() => setIsSideMenuOpen(true)}><HiDotsHorizontal /></button>}
 
         <SideMenu board={board} isSideMenuOpen={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen} />
-        {currMember && <MemberModal member={currMember} onMemberSelect={onMemberSelect} />}
         {isFilterModalOpen && <FilterModal board={board} onToggleFilterModal={onToggleFilterModal} />}
       </div>
     </div>
