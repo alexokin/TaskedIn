@@ -73,7 +73,7 @@ export function QuickEditButtons({
 
   function onOpenTaskDetails() {
     setQuickEdit(null);
-    navigate(`${location.pathname}${groupId}/${task._id}`);
+    navigate(`${location.pathname}/${groupId}/${task._id}`);
   }
   return (
     <React.Fragment>

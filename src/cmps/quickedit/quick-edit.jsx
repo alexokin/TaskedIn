@@ -22,6 +22,7 @@ export function QuickEdit({ board, setQuickEdit, pos, task, groupId }) {
     updateTask(task, groupId, board);
   }
 
+  if(!pos) return
   const modalPos = { top: pos.top + "px", left: pos.left + "px" };
 
   return (
