@@ -9,13 +9,17 @@ export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
 
+export const SOCKET_EVENT_BOARD_ADDED = 'board-added'
+export const SOCKET_EVENT_BOARD_UPDATED = 'board-updated'
+export const SOCKET_EVENT_BOARD_REMOVED = 'board-removed'
+
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
-// export const socketService = createSocketService()
-export const socketService = createDummySocketService()
+export const socketService = createSocketService()
+//export const socketService = createDummySocketService()
 
 // for debugging from console
 window.socketService = socketService
@@ -29,7 +33,9 @@ function createSocketService() {
     setup() {
       socket = io(baseUrl)
       setTimeout(()=>{
-        const user = userService.getLoggedinUser()
+        const user = userService.getLoggedinUser() || {}
+        if(!user._id) user._id = 'guest'
+        console.log('user in socket setup:',user)
         if (user) this.login(user._id)
       }, 500)
     },

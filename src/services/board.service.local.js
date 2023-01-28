@@ -2,10 +2,12 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { updateBoard, updateBoardNoSet } from '../store/board.actions.js'
+import { getActionAddBoard, getActionRemoveBoard, getActionUpdateBoard, updateBoard, updateBoardNoSet } from '../store/board.actions.js'
 import { FaUserCircle } from "react-icons/fa";
 import { createApi } from "unsplash-js";
 import { httpService } from './http.service.js'
+import { socketService, SOCKET_EVENT_BOARD_ADDED, SOCKET_EVENT_BOARD_UPDATED, SOCKET_EVENT_BOARD_REMOVED } from './socket.service.js';
+import { store } from '../store/store.js';
 
 const STORAGE_KEY = 'board'
 const boardStyles = [
@@ -43,6 +45,24 @@ const boardStylesImg = [
     }
 ]
 
+    ; (() => {
+        socketService.on(SOCKET_EVENT_BOARD_ADDED, (board) => {
+            console.log('GOT from socket', board)
+            store.dispatch(getActionAddBoard(board))
+        })
+        socketService.on(SOCKET_EVENT_BOARD_UPDATED, (board) => {
+            if (store.getState().boardModule.currBoard._id === board._id) {
+                console.log('GOT from socket', board)
+                store.dispatch(getActionUpdateBoard(board))
+            }
+
+        })
+        socketService.on(SOCKET_EVENT_BOARD_REMOVED, (boardId) => {
+            console.log('GOT from socket', boardId)
+            store.dispatch(getActionRemoveBoard(boardId))
+        })
+    })()
+
 export const boardService = {
     query,
     getById,
@@ -70,7 +90,7 @@ window.cs = boardService
 // }
 
 async function query(filterBy = { txt: '' }) {
-        // return storageService.get(STORAGE_KEY)
+    // return storageService.get(STORAGE_KEY)
     return await httpService.get(STORAGE_KEY, filterBy)
 }
 
@@ -138,7 +158,7 @@ async function save(board) {
                     imgUrl: 'https://res.cloudinary.com/dlhh3aon3/image/upload/v1674333641/trello-profile-pics/T043N4KE97B-U04310KBZ6K-8b9f2fcd3a1e-512_ejqkve.jpg'
                 }
             ]
-            savedBoard = await httpService.post('board', board)
+        savedBoard = await httpService.post('board', board)
     }
     return savedBoard
 }

@@ -10,6 +10,7 @@ import { BoardRecentList } from './board-recent-list'
 import { useSelector } from 'react-redux'
 import { FiPlus } from "react-icons/fi";
 import { userService } from '../services/user.service'
+import { MemberModal } from './member-Modal'
 
 export function MainHeader() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
@@ -17,6 +18,7 @@ export function MainHeader() {
   const [isSearchListOpen, setIsSearchListOpen] = useState(false)
   const [isRecentListOpen, setIsRecentListOpen] = useState(false)
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+  const [isMemberModalOpen,setIsMemberModalOpen] = useState(null)
   const [modalLoc, setmodalLoc] = useState(null)
   const [hideHeader, setHideHeader] = useState(false)
 
@@ -24,8 +26,10 @@ export function MainHeader() {
     console.log(window.location.href)
     if (window.location.href === 'http://localhost:3000/' || window.location.href === 'http://localhost:3000/login-signup') {
       setHideHeader(true)
+    } else{
+      setHideHeader(false)
     }
-  }, [])
+  }, [window.location.href])
 
 
   function toggleStarredList(ev) {
@@ -97,13 +101,14 @@ export function MainHeader() {
           <div className='search-container' onClick={(event) => toggleSearchList(event)}>
             <BiSearch /> <span>Search</span>
           </div>
-          <img width='26px' style={{ borderRadius: '50%' }} src={getMemberImg()} alt="" />
+          <img onClick={() => setIsMemberModalOpen(true)} width='26px' style={{ borderRadius: '50%' }} src={getMemberImg()} alt="" />
         </div>
 
         {isStarredListOpen && <BoardStarredList toggleStarredList={toggleStarredList} modalLoc={modalLoc} />}
         {isRecentListOpen && <BoardRecentList toggleRecentList={toggleRecentList} modalLoc={modalLoc} />}
         {isCreateModalOpen && <BoardAdd addModalLoc={modalLoc} onToggleAddBoardModal={onToggleCreateBoardModal} fromHeader={true} />}
         {isSearchListOpen && <BoardSearchList toggleSearchList={toggleSearchList} modalLoc={modalLoc} />}
+        {isMemberModalOpen && <MemberModal setIsMemberModalOpen={setIsMemberModalOpen} />}
       </div>}
     </div>
   )
