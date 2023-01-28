@@ -3,6 +3,7 @@
   width: 256px;
   z-index: 20;
   height: 160px;
+  
 
   textarea {
     font-family: 'charlie-Regular';
@@ -20,6 +21,9 @@
 
   button {
     padding: 8px 24px;
+    &.btn {
+      border-radius: 3px;
+    }
   }
 }
 
@@ -66,3 +70,4 @@
     }
   }
 }
+
