@@ -29,8 +29,8 @@ export function TaskPreview({
     ev.preventDefault();
     const rect = ref.current.getBoundingClientRect()
     const pos = { top: rect.top - 8, left: rect.left - 2.5 };
-    console.log(pos);
     setQuickEdit({ pos, task, groupId });
+
   }
 
   return (

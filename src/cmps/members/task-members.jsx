@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { BiCheck } from "react-icons/bi";
 import { updateTask } from "../../store/actions/task.actions";
 
-export function TaskMembers({task, groupId, board}) {
+export function TaskMembers({task, groupId, board, setQuickEdit, setQuickEditModal}) {
   const boardMembers = useSelector((state) => state.boardModule.currBoard.members);
   const [membersToShow, setMembersToShow] = useState(boardMembers || []);
 
@@ -26,6 +26,7 @@ export function TaskMembers({task, groupId, board}) {
       if (task.memberIds) task.memberIds.push(memberId);
       else task.memberIds = [memberId];
     }
+    if(setQuickEdit) setQuickEdit(prevState => ({ ...prevState, task }))
     updateTask(task, groupId, board)
   }
 

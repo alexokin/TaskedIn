@@ -11,8 +11,10 @@ export function TaskDetailsModal({
   task,
   groupId,
   setTaskDetailsModal,
+  setQuickEditModal,
   data,
   board,
+  setQuickEdit
 }) {
   const [isEditLabels, setIsEditLabels] = useState(null);
 
@@ -41,6 +43,8 @@ export function TaskDetailsModal({
       case "Members":
         return (
           <TaskMembers
+          setQuickEditModal={setQuickEditModal}
+          setQuickEdit={setQuickEdit}
             board={board}
             task={task}
             groupId={groupId}
@@ -50,6 +54,7 @@ export function TaskDetailsModal({
       case "Labels":
         return (
           <Labels
+          setQuickEdit={setQuickEdit}
             task={task}
             groupId={groupId}
             board={board}
@@ -64,12 +69,12 @@ export function TaskDetailsModal({
             setTaskDetailsModal={setTaskDetailsModal}
             groupId={groupId}
             board={board}
-
           />
         );
       case "Cover":
         return (
           <TaskCover
+          setQuickEdit={setQuickEdit}
             board={board}
             task={task}
             groupId={groupId}
@@ -84,7 +89,7 @@ export function TaskDetailsModal({
             groupId={groupId}
             setTaskDetailsModal={setTaskDetailsModal}
           />
-        )
+        );
 
       default:
         return;
@@ -118,7 +123,12 @@ export function TaskDetailsModal({
   }
 
   return (
-    <section tabIndex='0' onBlur={handleBlur} className="task-details-modal" style={modalStyle}>
+    <section
+      tabIndex="0"
+      onBlur={handleBlur}
+      className="task-details-modal"
+      style={modalStyle}
+    >
       {title && (
         <div className="task-modal-title">
           <p>{title}</p>

@@ -58,6 +58,9 @@ async function remove(board, groupId, taskId) {
 
 async function update(board, groupId, task) {
   try {
+    console.log('board', board)
+    console.log('groupId', groupId)
+    console.log('task', task)
     const group = board.groups.find((group) => group._id === groupId);
     group.tasks = group.tasks.map((currTask) =>
       currTask._id === task._id ? task : currTask

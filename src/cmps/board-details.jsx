@@ -49,8 +49,8 @@ export function BoardDetails() {
         </div>
       </div>
 
-      {taskId && <TaskDetails />}
-      {quickEdit && <QuickEdit board={board} setQuickEdit={setQuickEdit}/>}
+      {taskId && <TaskDetails setQuickEdit={setQuickEdit}/>}
+      {quickEdit && <QuickEdit pos={quickEdit.pos} task={quickEdit.task} groupId={quickEdit.groupId} board={board} setQuickEdit={setQuickEdit}/>}
     </div>
   );
 }

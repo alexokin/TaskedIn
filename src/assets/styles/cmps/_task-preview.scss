@@ -2,11 +2,12 @@
     text-decoration: none;
     color: inherit;
     background-color: aqua;
+    position: relative;
     &:hover {
         .quick-edit-icon {
-          display: flex;
+            display: flex;
         }
-      }
+    }
 
     .task-title {
         background-color: $clr6;
@@ -49,32 +50,30 @@
             border-top-right-radius: 0;
         }
 
-
-
         &.img {
             height: 138px;
             background-size: cover;
         }
     }
-    .quick-edit-icon {
-        position: absolute;
-        top: 2px;
-        right: 2px;
-        height: 28px;
-        width: 28px;
-        font-size: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 3px;
-        color: #42526e;
-        background-color: #f4f5f7;
-        opacity: 0.8;
-        display: none;
-    
-        &:hover {
-          opacity: 1;
-        }
-      }
+}
 
+.quick-edit-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 28px;
+    width: 28px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    color: #42526e;
+    background-color: #f4f5f7;
+    opacity: 0.8;
+    display: none;
+
+    &:hover {
+        opacity: 1;
+    }
 }
