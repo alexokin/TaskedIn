@@ -18,15 +18,16 @@ export function MainHeader() {
   const [isSearchListOpen, setIsSearchListOpen] = useState(false)
   const [isRecentListOpen, setIsRecentListOpen] = useState(false)
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
-  const [isMemberModalOpen,setIsMemberModalOpen] = useState(null)
+  const [isMemberModalOpen, setIsMemberModalOpen] = useState(null)
   const [modalLoc, setmodalLoc] = useState(null)
   const [hideHeader, setHideHeader] = useState(false)
 
   useEffect(() => {
     console.log(window.location.href)
-    if (window.location.href === 'http://localhost:3000/' || window.location.href === 'http://localhost:3000/login-signup') {
+    if (window.location.href === 'http://localhost:3000/' || window.location.href === 'http://localhost:3000/login-signup' ||
+      window.location.href === 'https://taskedin-project.onrender.com/login-signup' || window.location.href === 'https://taskedin-project.onrender.com') {
       setHideHeader(true)
-    } else{
+    } else {
       setHideHeader(false)
     }
   }, [window.location.href])
