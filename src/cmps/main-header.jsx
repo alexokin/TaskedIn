@@ -24,10 +24,11 @@ export function MainHeader() {
   const [hideHeader, setHideHeader] = useState(false)
 
   useEffect(() => {
-    console.log(window.location.href)
-    if (window.location.href === 'http://localhost:3000/' || window.location.href === 'http://localhost:3000/login-signup' ||
-      window.location.href === '/login-signup' || window.location.href === '') {
+    console.log('path:',window.location.pathname)
+    if (window.location.href === 'http://localhostt:3000/' || window.location.href === 'http://localhostt:3000/login-signup' ||
+      window.location.pathname === '/login-signup' || window.location.pathname === '/') {
       setHideHeader(true)
+      
     } else {
       setHideHeader(false)
     }
