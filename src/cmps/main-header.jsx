@@ -26,7 +26,7 @@ export function MainHeader() {
   useEffect(() => {
     console.log(window.location.href)
     if (window.location.href === 'http://localhost:3000/' || window.location.href === 'http://localhost:3000/login-signup' ||
-      window.location.href === 'https://taskedin-new.onrender.com/login-signup' || window.location.href === 'https://taskedin-new.onrender.com') {
+      window.location.href === '/login-signup' || window.location.href === '') {
       setHideHeader(true)
     } else {
       setHideHeader(false)
