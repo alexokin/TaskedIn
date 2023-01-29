@@ -23,6 +23,7 @@ export function TaskPreview({
   }
 
   function toggleEditModal(ev, ref) {
+    ev.stopPropagation()
     console.log(ref);
     if (quickEdit) return setQuickEdit(null);
     ev.stopPropagation();
