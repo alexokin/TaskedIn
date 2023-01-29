@@ -99,11 +99,6 @@ function getModalPosition(type, ref) {
   const pos = { bottom: rect.bottom + 8, left: rect.left };
   if (window.innerWidth - rect.right < 150) pos.left -= 130;
   if (window.innerHeight - rect.bottom < 450) pos.bottom -= 200;
-  
-  if (type === "Filter" || type === "Account") {
-    pos.right = 5;
-    pos.bottom += 8;
-  }
   return pos;
 }
 

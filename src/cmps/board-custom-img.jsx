@@ -4,6 +4,8 @@ import { updateBoard } from "../store/board.actions"
 import { FiPlus } from "react-icons/fi";
 import { GrFormClose } from "react-icons/gr"
 import { FastAverageColor } from 'fast-average-color'
+import tinycolor from "tinycolor2";
+import { setAppTheme } from "../store/system.actions";
 
 export function BoardCustomImg({ board }) {
     const [isUploading, setIsUploading] = useState(false)
@@ -29,6 +31,10 @@ export function BoardCustomImg({ board }) {
         const headerColor = await getAverageColor.getColorAsync(imgUrl)
         boardToSet.headerStyle = { backgroundColor: headerColor.rgba }
         updateBoard(boardToSet)
+
+
+        // const appTheme = tinycolor(headerColor.rgba).isDark() ? 'dark' : 'light'
+        // setAppTheme(appTheme)
     }
 
     async function onRemoveImg(ev) {

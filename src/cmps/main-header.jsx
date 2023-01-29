@@ -14,6 +14,7 @@ import { MemberModal } from './member-Modal'
 
 export function MainHeader() {
   const board = useSelector((storeState) => storeState.boardModule.currBoard)
+  const appTheme = useSelector((storeState) => storeState.systemModule.appTheme)
   const [isStarredListOpen, setIsStarredListOpen] = useState(false)
   const [isSearchListOpen, setIsSearchListOpen] = useState(false)
   const [isRecentListOpen, setIsRecentListOpen] = useState(false)
@@ -25,7 +26,7 @@ export function MainHeader() {
   useEffect(() => {
     console.log(window.location.href)
     if (window.location.href === 'http://localhost:3000/' || window.location.href === 'http://localhost:3000/login-signup' ||
-      window.location.href === 'https://taskedin-project.onrender.com/login-signup' || window.location.href === 'https://taskedin-project.onrender.com') {
+      window.location.href === 'https://taskedin-new.onrender.com/login-signup' || window.location.href === 'https://taskedin-new.onrender.com') {
       setHideHeader(true)
     } else {
       setHideHeader(false)
@@ -82,7 +83,7 @@ export function MainHeader() {
 
   return (
     <div>
-      {!hideHeader && <div style={board.headerStyle} className='main-header'>
+      {!hideHeader && <div style={board.headerStyle} className={`main-header ${appTheme}`}>
         <div className='left-container'>
 
           <a className='logo' href="/">

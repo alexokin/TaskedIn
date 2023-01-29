@@ -68,7 +68,7 @@
             font-size: 14px;
             align-items: center;
             justify-content: center;
-            background-color: rgba(255, 255, 255, 0.2);
+            // background-color: rgba(255, 255, 255, 0.2);
             cursor: pointer;
             border-radius: 0.3em;
             width: 40px;
@@ -83,7 +83,21 @@
         }
     }
 
-    img{
+    // &.dark {
+    //     .left-container {
+    //         .btn-create {
+    //             background-color: green;
+    //         }
+    //     }
+    // }
+
+    // &.light {
+    //     .btn-create {
+    //         background-color: black;
+    //     }
+    // }
+
+    img {
         cursor: pointer;
     }
 
